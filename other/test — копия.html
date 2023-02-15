@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/film.css">
+<title>Рик и Морти Сыендук</title>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+  <body>
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../about.html">ABOUT</a>
+  </div>
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<style>
+#video12 {
+  position: relative;
+  padding-bottom: 75%;
+}
+#video12 iframe {
+  position: absolute;
+  width: calc(100% - 7em);
+  height: 100%;
+}
+#video12 div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 7em;
+  height: 100%;
+  overflow-y: auto;
+}
+#video12 span {
+  display: block;
+  text-align: center;
+}
+#video12 span:hover {
+  color: #ff3200;
+  cursor: pointer;
+}
+#video12 span:focus {
+  color: blue;
+}
+</style>
+
+
+<br />
+<h3 style="text-align: left;">
+</h3>
+<h2 class="MsoNormal">&nbsp;&nbsp;<u style="background-color: yellow; font-size: medium; font-weight: normal; text-align: center;"><b><span style="background-color: white;">Рик и Морти</span></b></u></h2>
+<h2 class="MsoNormal">
+<span style="font-size: small; font-weight: normal;">
+
+
+
+
+<h3 style="text-align: center;">
+</h3>
+<div id="video12">
+<iframe allowfullscreen="" frameborder="0" height="360" src="https://drive.google.com/file/d/1SRWjZNcsXAWxHeXFKaGLy_yDm7Bc18M1/preview" width="480"></iframe>
+  <br />
+<div>
+<b><span data-video="1SRWjZNcsXAWxHeXFKaGLy_yDm7Bc18M1" tabindex="0">--1-- сезон</span></b>
+<span data-video="1SRWjZNcsXAWxHeXFKaGLy_yDm7Bc18M1" tabindex="0">серия 1</span>
+    <span data-video="13ZueO8KhU6uTxn6kRINz9nbQzoWFL51I" tabindex="0">серия 2</span>
+    <span data-video="1I7NiXqJwMtZ_LkrP3ddoAFqbUNVDBlZf" tabindex="0">серия 3</span>
+ <span data-video="1VrPyMpSy0gDsC6ScV2L7ZZCIMAv5XH1K" tabindex="0">серия 4</span>
+    <span data-video="1SXiFIoTpsQc8SMsHC7rGPnPspNSRclyz" tabindex="0">серия 5</span>
+    <span data-video="1IKUJ92G605MEmeGIR3p_IH36o-wsZMna" tabindex="0">серия 6</span>
+ <span data-video="1R452a1KbkNTkFDuVqVbQ81F2vSyiXPql" tabindex="0">серия 7</span>
+ <span data-video="1Xv4EnUzRetQY_MyxzAN6zH44YlIXrKp0" tabindex="0">серия 8</span>
+ <span data-video="1LWUiVHrEC-RZYRufYutZMj0WYWhvnLD4" tabindex="0">серия 9</span>
+ <span data-video="1nFjN05zDfHKTXOh20VAb-15xQ-Q31s_5" tabindex="0">серия 10</span>
+ <span data-video="1VlxaJVvpmMgrdolBTivNOEhD-GAQATDi" tabindex="0">серия 11</span>
+
+
+  </div>
+</div>
+<script>
+var IMG = document.querySelectorAll('#video12 span'),
+    IFRAME = document.querySelector('#video12 iframe');
+for (var i = 0; i < IMG.length; i++) {
+  IMG[i].onclick = function() {
+    IFRAME.src = 'https://drive.google.com/file/d/' + this.dataset.video + '/preview';
+    if(this.dataset.end) IFRAME.src = IFRAME.src.replace(/([\s\S]*)/g, '$1&end=' + this.dataset.end);
+    if(this.dataset.start) IFRAME.src = IFRAME.src.replace(/([\s\S]*)/g, '$1&start=' + this.dataset.start);
+    this.style.backgroundColor='rgba(0,0,0,.2)';
+  }
+}
+</script></span></h2>
+</div>
+</html>
