@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Bat файл заметки</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/text.css">
+	<meta name="description" content="Bat файл заметки">
+    <meta name="keywords" content=".bat"> 
+ </head>
+ <body>
+ <div class="header">
+ <h2>DzenIT</h2>
+</div>
+
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../about.html">ABOUT</a>
+</div>
+
+<center><h1>Bat файл заметки</h1></center>  
+  <!-- Комментарий -->
+ <center><h2> <p>Собираем игры с EGS в автоматическом режиме</h2></center>  
+  <p>Берем портативный браузер хром. В нём логиним все наши профили с egs. Пишем простой батник для запуска их автоматически.</p>
+  <p>При запуске нужно вставить ссылку на игру, если ссылка одна то второе предложение пропускаем клавишей ENTER. Когда закончили забирать игры, жмем в bat окне любую клавишу и запускаетсья следующий профиль</p>
+  <details><summary><b>Посмотреть код</b></summary>  <pre>set /p url1=ssulka1: 
+set /p url2=ssulka1: 
+start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Default" --new-window %url1% --new-window %url2%
+pause
+start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Profile 1" --new-window %url1% --new-window %url2%
+pause
+start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Profile 2" --new-window %url1% --new-window %url2%
+pause
+start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Profile 3" --new-window %url1% --new-window %url2%
+pause
+start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Profile 4" --new-window %url1% --new-window %url2%
+pause
+start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Profile 5" --new-window %url1% --new-window %url2%
+pause
+start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Profile 6" --new-window %url1% --new-window %url2%
+pause
+start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Profile 7" --new-window %url1% --new-window %url2%
+
+pause</pre></details>
+
+<p>Портативную версию хрома для windows x64 можно скачать отсюда <a href="https://t.me/dzenit_xyz/6" target="_blank">скачать</a>(телеграм)</p>
+
+ <center><h2> <p>Удаление/копирование xcopy</h2></center>  
+<p>Простые примеры копировать и удалить</p>
+<pre>DEL /S /Q z:\1\gm_scripts\*.*
+xcopy z:\3\gm_scripts\* z:\1\gm_scripts\ /f /i /y /s
+</pre>
+
+<p>И еще</p>
+<pre>cd c:\Users\fox\
+XCOPY c:\5\* z:\5 /s /i</pre>
+<br>
+<pre>cd c:\Users\fox\
+XCOPY c:\3\gm_scripts\* c:\grease\ /f /i /y /s
+XCOPY c:\grease\* c:\aesf\1\gm_scripts\ /f /i /y /s</pre>
+ <center><h2> <p>Делаем Бэкап при помощи bat</h2></center>  
+<details><summary><b>Посмотреть код</b></summary><pre>set year=%date:~-4,4%
+set month=%date:~-10,2%
+set day=%date:~-7,2%
+set hour=%time:~-11,2%
+set hour=%hour: =0%
+set min=%time:~-8,2%
+
+set zipfilename=data-%month%-%day%-%year%-time-%hour%-%min%.zip
+set destination=%~dp1
+
+set source="c:\myfolder_for_backup\"
+set dest="%destination%f:\backup\imacros/%zipfilename%"
+
+set AppExePath="c:\Program Files\7-Zip\7z.exe"
+
+if not exist %AppExePath% set AppExePath="%ProgramFiles%\7-Zip\7z.exe"
+
+if not exist %AppExePath% goto notInstalled
+
+echo Backing up %source% to %dest%
+
+%AppExePath% a %dest% %source%
+
+echo %source% backed up to %dest% is complete!
+
+goto end
+
+:notInstalled
+
+echo Can not find 7-Zip, please install it from:
+echo  http://7-zip.org/
+
+:end
+</pre></details>
+
+
+ <center><h2> <p>Распаковываем архив при помощи 7zip и .bat</h2></center>  
+ 
+ 
+ <pre>
+TIMEOUT /T 5
+set AppExePath="c:\Program Files\7-Zip\7z.exe"
+%AppExePath% x c:\aesf.7z -o"d:\"</pre>
+
+	 <p><b>Запаковать каждый файл в отдельный zip</b> в командной строке cmd</p>
+		
+	 <pre>for %i in ("<b>D:\FOLDER_IN\*.*</b>") do ("C:\Program Files\7-zip\7z" a "<b>d:\FOLDER_OUT\%~ni.zip</b>" "%i")</pre>
+	 
+	 <p><b>>Сжать каждую папку отдельно 7z</b> используя командную строку (метод сжатия -t7z -m0=LZMA2:d=96m:fb=273 -mx=9 -mmt=2 )</p>
+	 
+	 	 <pre>for /d %i in ("<b>d:\FOLDER_IN</b>\*.*") do ("C:\Program Files\7-zip\7z" a -t7z -m0=LZMA2:d=96m:fb=273 -mx=9 -mmt=2"<b>d:\FOLDER_OUT</b>\%~ni.7z" "%i")</pre>
+	 
+ <center><h2> <p>Запуск сетевых служб</h2></center>  
+  <pre>@echo off
+ncpa.cpl</pre>
+
+ <center><h2> <p>Остановка/запуск приложений exe</h2></center>  
+<pre>taskkill /F /IM  Lightshot.exe
+START C:\"Program Files (x86)"\joxi\joxi.exe</pre>
+<p>И наоборот</p>
+<pre>taskkill /F /IM  joxi.exe
+START C:\"Program Files (x86)"\Skillbrains\lightshot\Lightshot.exe</pre>
+ <center><h2> <p>Качаем потоковое видео ffmpeg</h2></center>  
+<pre>ffmpeg -i "https://url.m3u8" -c copy -bsf:a aac_adtstoasc "output.mp4"</pre>
+<a href="https://t.me/dzenit_xyz/7" target="_blank">ffmpeg</a>
+
+ <center><h2> <p>Делаем меню</h2></center> 
+<details><summary><b>Посмотреть код</b></summary>
+ <pre>
+@Echo off
+ 
+:m0
+Echo 4to_copiruem V RAM?:
+Echo.
+Echo 1 - #1
+Echo 2 - #2
+Echo 3 - #3
+Echo 0 - #0
+echo.
+ 
+Set /p choice="choice: "
+if not defined choice goto m0
+if "%choice%"=="1" goto m1
+if "%choice%"=="2" goto m2
+if "%choice%"=="3" goto m3
+if "%choice%"=="0" goto end
+Echo.
+Echo Wrong selection, try again...
+Echo.
+Echo.
+goto m0
+ 
+:m1
+c:\01.bat
+goto m0
+ 
+:m2
+c:\02.bat
+goto m0
+ 
+:m3
+c:\03.bat
+goto m0
+
+goto m0
+
+:end
+pause</pre></details>
+ <center><h2> <p>Работа со временем</h2></center>  
+ <p>Синхронизация </p>
+ <pre>@echo off
+w32tm /resync
+</pre>
+<p>Запуск службы времени</p>
+  <pre>net start w32time</pre>
+  <p>Установка времени</p>
+   <pre>time 00:00</pre>
+   <a href="https://t.me/dzenit_xyz/10" target="_blank">+/- 1 min</a>
+
+ </body>
+</html>
