@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>yt-dlp </title>
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--   <link rel="stylesheet" href="../css/text.css">-->
+    <meta name="description" content="yt-dlp установка и настройка">
+    <meta name="keywords" content="Android, yt-dlp, termux">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="yt-dlp установка и настройка">
+    <meta property="og:description" content="Android, yt-dlp, termux">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add a gray background color with some padding */
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background: #f1f1f1;
+        }
+
+        body {}
+
+        a {
+            text-decoration: none;
+            /* Отменяем подчеркивание у ссылки */
+            color: #0065cc;
+            /* Цвет текста */
+        }
+
+        /* The navbar container */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* Navbar links */
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Links - change color on hover */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Header/Blog Title */
+        .header {
+            padding: 30px;
+            font-size: 40px;
+            text-align: center;
+            background: white;
+        }
+
+        .text_image img {
+            max-width: 100%
+        }
+
+        /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 800px) {
+
+            .leftcolumn,
+            .rightcolumn {
+                width: 100%;
+                padding: 0;
+            }
+        }
+
+        pre {
+            margin: 10px 0px 10px 10px;
+            padding: 10px;
+            color: #1f5757;
+            font: 16px normal helvetica, sans-serif;
+            border-left: 4px solid #d97025;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2>DzenIT</h2>
+    </div>
+
+    <div class="topnav">
+        <a href="../index.html">HOME</a>
+        <a href="../zen.html">ZEN</a>
+        <a href="../it.html">IT</a>
+        <a href="../soft.html">SOFT</a>
+        <a href="../apk.html">APK</a>
+        <a href="../live.html">LIVE</a>
+        <a href="../game.html">GAME</a>
+        <a href="../other.html">OTHER</a>
+        <a href="../about.html">ABOUT</a>
+    </div>
+
+    <center>
+        <h1>yt-dlp установка и настройка </h1>
+    </center>
+    <!-- ссылка <a href="" target="_blank">скачать</a>-->
+    <!-- спойлер <details><summary></b>Посмотреть код</b></summary><pre>содержание</pre></details></a>-->
+    <!-- отображение рисунка в base64 <img src="data:image/webp;base64, тут код base64" alt="описание"/>-->
+    <!--Маштабируемый рисунок  -->
+<!--   <br>
+<div class="text_image">
+	<center>
+	<img src="data:image/webp;base64, тут код base64" alt="Прошивка Lenovo a316i"
+	</center>
+</div>
+<br>
+-->
+<p>yt-dlp на сегодняшний день является очень мощным пакетом для работы с видео на ютубе. По сей день он активно развиватеся и привносит новые возможности в отличии от свеого старшего собрата, который уже устарел и давно не обновлялся youtube-dl (я всё равно его люблю). </p>
+<b><p>Установка</p></b>
+<a href="https://play.google.com/store/apps/details?id=com.termux" target="_blank">Качаем Termux </a>
+<p>Предоставляем доступ к файловой системе командой</p>
+<pre>termux-setup-storage</pre>
+<p>Обновляем пакеты</p>
+<p><pre>apt update</pre></p>
+	<p><pre>apt upgrade</pre></p>
+<p>Устанавливаем Питон (занимает много)</p>
+<pre>pkg install python</pre>
+<p>Сразу обновим менеджер пакетов пип</p>
+<pre>pip install --upgrade pip</pre>
+<p>Установим наш пакет yt-dlp</p>
+<pre>pip install yt-dlp</pre>
+<p>Если появилась ошибка ...Encountered error while trying to install package... пробуем установить пакет вот этой командой</p>
+
+<pre>python3 -m pip install --no-deps -U yt-dlp</pre>
+<p>В дальнейшем для поднятия качество потребуется установка ffmpeg</p>
+<pre>apt install ffmpeg</pre>
+<p>Качаем видео разных форматов и аудио в mp3
+Лучший формат в mp4 обычно 720p</p>
+
+<pre>yt-dlp -f mp4 url</pre>
+
+<p>По форматам
+
+720p</p>
+
+<pre>yt-dlp -f 22 url</pre>
+
+<p>360p</p>
+
+<pre>yt-dlp -f 18 url</pre>
+
+<p>Максимальное качество, обычно в формате webm</p>
+
+<pre>yt-dlp url</pre>
+
+<p>Скачать в mp3 (обычно битрейт от 128-140 зависит от видео)</p>
+
+<pre>yt-dlp -f 'ba' -x --audio-format mp3 URL -o '%(title)s.%(ext)s'</pre>
+<p>Дописав строчку --audio-quality и задав значение от 0 до 10 можно варьировать качество (по умолчанию 5, максимальное 0)</p>
+
+<pre>yt-dlp -f 'ba' -x --audio-format mp3 -o '%(title)s.%(ext)s'</pre>
+
+<p>Качаем в full HD формат mp4</p>
+	<pre>yt-dlp -f 'bv[height=1080][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 URL</pre>
+	
+<p>Пишем небольшие скрипты для скачивания видео и музыки с youtube в termux
+Для облгечения задачи и чтобы постоянно не вводить длинные команды, мы напишим пару скриптов для скачивания видео и музыки.
+Сперва установим текстовый редактор</p>
+<pre>apt install nano</pre>
+<p>Переходим в нашу корневую директорию termux с которой мы начинаем, команда</p>
+<pre>cd</pre>
+<p>Проверяем где находимся </p>
+<pre>pwd</pre>
+<p>Должно быть так </p>
+<pre>/data/data/com.termux/files/home</pre>
+<p>Создадим свой скрип для скачивание в mp3</p>
+	
+<pre>nano mp3.sh</pre>
+	
+<p>Добавим туда строки</p>
+	
+<pre>#!/bin/bash    
+echo input URL video youtube    
+read varname  
+yt-dlp -f 'ba' -x --audio-format mp3 "$varname" -o '%(title)s.%(ext)s'    
+mv *.mp3 storage/downloads/</pre>
+	
+<p>Последняя строка переносит на файл в mp3 в папку downloads
+Проверим его работоспособность</p>
+<pre>sh mp3.sh</pre>
+<p>По аналогии делаем скрипт и для видео</p>
+<pre>#!/bin/bash	    
+echo input URL video youtube 	    
+read varname	    
+yt-dlp -f mp4 "$varname" 	    
+mv *.mp4 storage/downloads/</pre>
+	
+	<p>Качаем в FULLHD</p>
+	
+<pre>#!/bin/bash
+echo input URL video youtube
+read varname
+yt-dlp -f 'bv[height=1080][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 "$varname
+mv *.mp4 storage/downloads/</pre>
+	
+	
+	
+	
+	<p><b>sh скрипты для скачивания с помощью yt-dlp в termux разных форматов</b></p>
+<br>
+<p>Скачать аудиоформат в mp3</p>
+
+<pre>#!/bin/bash
+cd storage/downloads/mp3/
+echo input URL video youtube [mp3]
+read varname
+yt-dlp -f 'ba' -x --audio-format mp3 "$varname" -o '%(title)s.%(ext)s'</pre>
+<br>
+<p>Качество 360p</p>
+<br>
+<pre>#!/bin/bash
+cd storage/downloads/mp4/
+echo input URL video youtube [360p]
+read varname
+yt-dlp -f 18 "$varname"</pre>
+<br>
+<p>Скачать ролик в качестве 480p (редкий формат, нужен предустановлен ffmpeg)</p>
+<br>
+<pre>#!/bin/bash
+cd storage/downloads/mp4/
+echo input URL video youtube [480p]
+read varname
+yt-dlp -f 'bv[height=480][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 "$varname"</pre>
+<br>
+<p>Скачать ролик в качестве 720p </p>
+<br>
+<pre>#!/bin/bash
+cd storage/downloads/mp4/
+echo input URL video youtube [720p]
+read varname
+yt-dlp -f 18 "$varname"</pre>
+<br>
+<p>Скачать в лучшем качестве</p>
+<br>
+<pre>#!/bin/bash
+cd storage/downloads/mp4/
+echo input URL video youtube [best]
+read varname
+yt-dlp "$varname"</pre>
+	
+<p>Любим и чтим
+РЕСУРС</p>
+https://github.com/yt-dlp/yt-dlp
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Sitemap generator на linux используя php </title>
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/text.css">
+	<meta name="description" content="Sitemap generator на linux используя php">
+    <meta name="keywords" content="sitemap, generator, linux, php, блог"> 
+	
+	<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+	<meta property="og:locale" content="ru_RU">
+	<!-- тип контента, по умолчанию используется article -->
+	<meta property="og:type" content="article">
+	<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+	<meta property="og:title" content="Sitemap generator на linux используя php">
+	<!-- описание страницы -->
+	<meta property="og:description" content="Делаем свою карту сайта без ограничений">
+ </head>
+ <body>
+ <div class="header">
+ <h2>DzenIT</h2>
+</div>
+
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../about.html">ABOUT</a>
+</div>
+
+<center><h1>Sitemap generator на linux используя php </h1></center>  
+  <!-- Комментарий -->
+  <p>Я использую простой генератор sitemap для своего сайта который взял с репозитория с гитхаб</p>
+  <pre>git clone https://github.com/knyzorg/Sitemap-Generator-Crawler.git</pre>
+  <p>Переходим в каталог</p>
+  <pre>cd Sitemap-Generator-Crawler</pre>
+  <p>Устанавливаем модули</p>
+  <pre>apt-get install php-curl
+apt-get install php</pre>
+  <p>Запускаем генератор</p>
+  <pre>php sitemap.php file=sitemap.xml site=https://site.com</pre>
+    <p>Для автоматизации можно создать скрипт и поместить в cron</p>
+	<p>Если репозитория нет, вот архив для скачивания (телеграм)
+	<a href="https://t.me/dzenit_xyz/5" target="_blank">--скачать--</a></p>
+	<p>Давайте создадим простой скрипт для автоматизации работы</p>
+	<pre>nano sitemap.sh</pre>
+	<p>Заполним его</p>
+  <pre>
+#!/bin/bash
+
+rm /var/www/html/sitemap.xml ;
+
+php /root/Sitemap-Generator-Crawler/sitemap.php file=/var/www/html/sitemap.xml site=https://lotositsh.github.io/
+</pre>
+<p>Директория /var/www/html/ расположение вашего сайта. Скрипт удаляет старый sitemap и создает на его месте новый. /root/Sitemap-Generator-Crawler/ это расположение директории со скриптом </p>
+  
+ </body>
+</html>

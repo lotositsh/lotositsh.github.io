@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+<meta charset="UTF-8">
+
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="python конвертация jpg и png в webp">
+<meta name="keywords" content="python, конвертация jpg png webp"> 
+
+<!-- fb -->
+<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+<meta property="og:locale" content="ua_RU">
+<!-- тип контента, по умолчанию используется article -->
+<meta property="og:type" content="article">
+<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+<meta property="og:title" content="python конвертация jpg и png в webp">
+<!-- описание страницы -->
+<meta property="og:description" content="python, конвертация jpg png webp">
+<!-- ссылка на изображение, которое будет публиковаться в записи -->
+<meta property="og:image" content="img/jpg2webp/jpg2web.webp">
+<!-- ссылка на текущую страницу -->
+<meta property="og:url" content="jpg2webp.html">
+<!-- название сайта -->
+<meta property="og:site_name" content="DzenIT">
+<script type="text/javascript">
+  function openImageWindow(src) {
+    var image = new Image();
+    image.src = src;
+    var width = image.width;
+    var height = image.height;
+    window.open(src,"Image","width=" + width + ",height=" + height);
+  }
+</script>
+
+<title>python конвертация jpg и png в webp</title>
+	
+	
+<link rel="stylesheet" href="../css/text.css">
+<link rel="stylesheet" href="../css/spoiler.css">
+</head>
+<body>
+	<div class="header">
+ <h2>DzenIT</h2>
+</div>
+
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../about.html">ABOUT</a>
+</div>
+	<center><h1><b>python 3 конвертация jpg и png в webp</b></h1></center>
+	<p>Напишем простой код на python 3 для конвертации всех файлов  в папке формата jpg и png в webp. Сам код с комментариями:</p>
+	<pre>
+#подключаем библиотеки
+from PIL import Image
+import PIL
+import os
+import glob
+#сканируем все файлы в директории
+files = os.listdir() 
+#выводим все файлы
+print(f"Все файлы в директории {files}")
+#отсеиваем только в формате jpg и png
+images = [file for file in files if file.endswith(('jpg', 'png'))]
+print(f"Все файлы с форматом jpg и png {images}")
+
+def convert_image(image_path, image_type):
+    # сам процесс конвертации
+    im = Image.open(image_path)
+    im = im.convert('RGB')
+    #здесь мы можем указать приписку к имени файла в кавычках
+    image_name = image_path.split('.')[0]
+    print(f"Это имя нового файла: {image_name}")
+
+    #сохраняем в новый формат webp
+    if image_type == 'jpg' or image_type == 'png':
+        im.save(f"{image_name}.webp", 'webp')
+    else:
+        #если не нашел файлов нужного нам формата - выдаст ошибку
+        raise Error
+for image in images:
+    if image.endswith('jpg'):
+        convert_image(image, image_type='jpg')
+    elif image.endswith('png'):
+        convert_image(image, image_type='png')
+    else:
+        raise Error
+input('для продолжения нажмите любую клавишу')
+	</pre>
+	<p>Скачать файл питона для изучения можно <a href="https://drive.google.com/file/d/1R-DJPKMJ_UC2vCS_qBFI_REoVPnLvaI3/view?usp=sharing" target="_blank">тут</a>, а также файл exe для windows <a href="https://drive.google.com/file/d/1ZXHfAfYqF9-sxLzMYMnAW3CK-B_tP7a-/view?usp=sharing" target="_blank">здесь</a>. Просто поместите программу с файлами jpg png, которые нужно перевести в формат webp и запустите.</p>
+<p>На картинке можем увидеть результат сжатия jpg в webp, разрешение 1600*1200. Без потери качества размер изображения уменьшился в 5 раз</p>
+
+<div class="text_image">
+	<center>
+	  <img src="img/jpg2webp/222jpg2web.webp" alt="конвертация jpg to webp" onclick = 'openImageWindow(this.src);'/>
+	</center>
+</div>
+	</body>
+</html>

@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<title>SSH FTP SFTP Termux</title>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SSH FTP SFTP Termux">
+<meta name="keywords" content="SSH, FTP, SFTP, Termux"> 
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSH FTP SFTP Termux">
+<meta name="twitter:description" content="SSH FTP SFTP Termux">
+<meta name="twitter:image" content="img/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH FTP SFTP Termux">
+<meta property="og:description" content="SSH FTP SFTP Termux">
+<meta property="og:image" content="img/ssh-ftp-termux.webp">
+<meta property="og:site_name" content="DzenIT">
+  </head>
+  <body>
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../about.html">ABOUT</a>
+  </div>
+  <center><h1>SSH FTP SFTP Termux</h1></center>
+  
+  <h3>FTP</h3>
+	 <p> Предупреждение : простой FTP в любом случае устарел и небезопасен. FTP-сервер Termux поддерживает только анонимный вход в систему, никакой аутентификации нет, и каждый в вашей сети может получить доступ к файлам на вашем устройстве. Вместо этого используйте SFTP (OpenSSH)!</p>
+
+<p>FTP-сервер Termux основан на busybox, а сервис управляется [Termux-services]. Если вы решили использовать FTP-сервер, установите эти пакеты:</p>
+	  <pre>pkg install busybox termux-services</pre>
+	  <p>После установки вам необходимо перезапустить сеанс или получить этот файл:</p>
+	  <pre>source $PREFIX/etc/profile.d/start-services.sh</pre>
+	  	    
+	  <p>Теперь вы готовы включить и запустить службу демона FTP:</p>
+	  <pre><p>sv-enable ftpd</p></pre>
+		<pre><p>sv up ftpd</p></pre>
+	  
+	  <h3>SSH</h3>
+	  <p>SSH обеспечивает безопасный доступ к удаленным хостам и заменяет такие инструменты, как telnet, rlogin, rsh, ftp. Termux предоставляет SSH через два пакета: dropbear и openssh . Если вы никогда раньше не использовали эти инструменты, рекомендуется установить «openssh», так как он более распространен.</p>
+	  <h3>Использование SSH-клиента</h3>
+	 <p> Вы можете получить SSH-клиент, установив openssh или dropbear.</p>
+	  <p><b>Пример</b></p>
+	  <p>Чтобы войти на удаленную машину, на которой работает демон ssh на стандартном порту (22):</p>
+	  
+	  <pre>ssh user@hostname_or_ip</pre>
+	  <p>То же, что и выше, но если демон ssh работает на другом порту, например 8022:</p>
+	  <pre>ssh -p 8022 user@hostname_or_ip</pre>
+	  <p>Использование аутентификации с открытым ключом с помощью ssh, работающего на стандартном порту, и закрытого ключа, хранящегося в файле `id_rsa`:</p>
+	 <pre> ssh -i id_rsa user@hostname_or_ip</pre>
+
+	  <p>Использование SSH-сервера OpenSSH</p>
+	  <p>OpenSSH (также известный как OpenBSD Secure Shell) — это набор безопасных сетевых утилит, основанных на протоколе Secure Shell (SSH), который обеспечивает безопасный канал по незащищенной сети в архитектуре клиент-сервер.</p>
+
+<p>Порт SSH по умолчанию в Termux — 8022.</p>
+	  
+	  <p>Чтобы запустить сервер OpenSSH, вам необходимо выполнить эту команду:</p>
+	  <pre>sshd</pre>
+	  <p>Если вам нужно остановить `sshd`, просто завершите его процесс:</p>
+	  <pre>pkill sshd</pre>
+	  <p><b>Настройка аутентификации по паролю</b></p>
+	  <p>Аутентификация по паролю включена по умолчанию. Это позволит вам начать работу с ним намного проще. Прежде чем продолжить, убедитесь, что вы понимаете, что аутентификация по паролю менее безопасна, чем аутентификация на основе открытого ключа.</p>
+	  <p>1. Убедитесь, что все обновлено и установлен пакет openssh:</p>
+	  <pre>pkg upgrade
+pkg install openssh</pre>
+	 <p> 2. Аутентификация по паролю включена по умолчанию в файле конфигурации. Но вы все равно можете просмотреть его ($PREFIX/etc/ssh/sshd_config), он должен быть таким:</p>
+	  <pre>PrintMotd yes
+PasswordAuthentication yes
+Subsystem sftp /data/data/com.termux/files/usr/libexec/sftp-server</pre>
+	  <p>3. Установите новый пароль. Выполнить команду passwd. Хотя программа допускает минимальную длину пароля 1 символ, рекомендуемая длина пароля составляет более 8-10 символов. Пароли не выводятся на консоль.</p>
+	  <pre>$ passwd
+New password:
+Retype new password:
+New password was successfully set.</pre>
+	  <p><b>Настройка аутентификации с открытым ключом</b></p>
+	  <p>1. Если у вас нет ключей, вы можете их сгенерировать. В этом примере мы сгенерируем ключ RSA. На ПК выполните эту команду:</p>
+	  <pre>ssh-keygen -t rsa -b 2048 -f id_rsa</pre>
+	  <p>2. Скопируйте ключ на удаленную машину (Termux). Для установки pubkey на удаленном компьютере необходимо включить аутентификацию по паролю. Теперь сделайте:</p>
+	  <pre>ssh-copy-id -p 8022 -i id_rsa IP_ADDRESS</pre>
+	  <p>Не забудьте заменить «IP_ADDRESS» фактическим IP-адресом вашего устройства в локальной сети. Это можно определить с помощью команды <b>ifconfig</b>.</p>
+	  
+	  <p>Если все в порядке, вы увидите сообщение, подобное этому:</p>
+	  <pre>Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh -p '8022' '192.168.1.4'"
+and check to make sure that only the key(s) you wanted were added.</pre>
+	 <p> 3. С этого момента аутентификация по паролю может быть отключена. Отредактируйте файл $PREFIX/etc/ssh/sshd_config и замените строку, начинающуюся с «PasswordAuthentication», на</p>
+	  <pre>PasswordAuthentication no</pre>
+	  
+	  
+	  
+	  <h3>Использование SFTP</h3>
+	  <p>Пакет OpenSSH предоставляет инструмент для доступа к удаленным хостам через SFTP. Это позволит вам работать с файлами так же, как и через FTP, но с большей безопасностью.</p>
+	  <p>Подключение к Termux (sshd прослушивает порт 8022):</p>
+	  <pre>$sftp-P 8022 192.168.1.20</pre>
+	  <p>Подключение к другому месту (прослушивание sshd на стандартном порту):</p>
+	  <pre>sftp sftp.example.com</pre>
+	  <p>Однако, чтобы использовать SFTP-клиент командной строки, вы должны знать некоторые основные команды:</p>
+	<p>cd PATH - изменить текущий каталог на `ПУТЬ`.</p>
+<p>get REMOTE [LOCAL] - скачать файл `REMOTE` и переименовать его в `LOCAL` (необязательно).</p>
+<p>mkdir PATH — создать каталог `PATH`.</p>
+<p>ls [PATH] - список файлов в каталоге `PATH`. Если нет аргумента, будут перечислены файлы в текущем каталоге.</p>
+<p>put LOCAL [REMOTE] - Загрузите файл `LOCAL` и переименуйте его в `REMOTE` (необязательно).</p>
+<p>rm FILE - Удалить файл `FILE`.</p>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+  
+   </body>
+
+</html>

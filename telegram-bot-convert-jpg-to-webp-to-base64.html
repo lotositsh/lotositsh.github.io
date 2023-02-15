@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+<meta charset="UTF-8">
+
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Telegram bot конвертирует jpg webp base64">
+<meta name="keywords" content="python, Telegram, bot, jpg,webp,base64 "> 
+
+<!-- fb -->
+<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+<meta property="og:locale" content="ua_RU">
+<!-- тип контента, по умолчанию используется article -->
+<meta property="og:type" content="article">
+<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+<meta property="og:title" content="Telegram bot конвертирует jpg webp base64">
+<!-- описание страницы -->
+<meta property="og:description" content="Telegram bot конвертирует jpg webp base64">
+<!-- ссылка на текущую страницу -->
+<meta property="og:site_name" content="DzenIT">
+
+
+<title>Telegram bot конвертирует jpg webp base64</title>
+	
+	
+<link rel="stylesheet" href="../css/text.css">
+
+</head>
+<body>
+	<div class="header">
+ <h2>DzenIT</h2>
+</div>
+
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../about.html">ABOUT</a>
+</div>
+	<center><h1><b>Telegram bot конвертирует jpg webp base64</b></h1></center>
+<p>Понадобился простой бот который будет конвертировать любое изображение в формат webp и потом переводит его в формат base64 сохраняет в текстовый файл и отправляет пользователю.</p> 
+<p>Надеюсь у вас есть небольшой опыт работы в python и библиотеки вы сами сможете установить.</p>
+	<p>А так постараюсь оставить все в комментариях к коду или нет..</p>.
+<br>
+<pre>import telebot
+import os
+from PIL import Image
+import base64
+import time
+
+bot = telebot.TeleBot('тут ваш ТОКЕН')
+@bot.message_handler(commands=['start', 'go'])
+def start_handler(message):
+    chat_id = message.chat.id
+    bot.send_message(chat_id, 'Приветствие при нажатии на старт')
+
+
+@bot.message_handler(content_types='photo')
+def handle_file3(message):
+    chat_id = message.chat.id
+	#получаем id фотки
+    user_photo_id = message.photo[-1].file_id
+    file_photo = bot.get_file(user_photo_id)
+	#ищем файл с раширением
+    filename, file_extension = os.path.splitext(file_photo.file_path)
+    downloaded_file_photo = bot.download_file(file_photo.file_path)
+	#тут можно добавить расположение 'photo/' + user_photo_id + file_extension
+    src = user_photo_id + file_extension
+    try:
+        with open(src,'wb') as new_file:
+            new_file.write(downloaded_file_photo)
+        time.sleep(1)
+        bot.send_message(chat_id, text='Загружаю на сервер...')
+        im = Image.open(user_photo_id + file_extension).convert("RGB")
+        im.save((user_photo_id + '.webp'),'webp')
+        time.sleep(1)
+        bot.send_message(chat_id, text='Конвертирую в webp...')
+        time.sleep(1)
+        bot.send_document(chat_id, data=open(user_photo_id + '.webp', 'rb'))
+        with open((user_photo_id + '.webp'), "rb") as img_file:
+            b64_string = base64.b64encode(img_file.read())
+            bas64 = (b64_string.decode('utf-8'))
+        time.sleep(1)
+        f1 = open(user_photo_id + '.txt', 'a', encoding='utf-8')
+        f1.write(bas64)
+        f1.close()
+        time.sleep(1)
+        bot.send_message(chat_id, text='Конвертирую в base64 ...')
+        time.sleep(1)
+        bot.send_document(chat_id, data=open(user_photo_id + '.txt', 'rb'))
+        time.sleep(1)
+		#Подчищаем за собой 
+        os.remove(user_photo_id + file_extension)
+        time.sleep(1)
+        os.remove(user_photo_id + '.txt')
+        time.sleep(1)
+        os.remove(user_photo_id + '.webp')
+        bot.send_message(chat_id, text='Чисто')
+    except:
+        bot.send_message(chat_id, text='Sorry Error')
+if __name__ == '__main__':
+     bot.polling(none_stop=True)</pre>
+
+	<p>Оставлю <a href="https://t.me/jpg2webp2base64_bot" target="_blank">ссылку</a> на бота, вдруг еще работает =)</p>
+	А здесь вы найдете информацию про <a href="https://lotositsh.github.io/it/vds-server-telegram-bot.html" target="_blank">дешевый сервер</a>
+	</body>
+</html>

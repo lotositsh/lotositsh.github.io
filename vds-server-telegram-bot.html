@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+<meta charset="UTF-8">
+
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Выбор и настройка VDS сервера для telegram bot">
+<meta name="keywords" content="vds, vps, server, telegram, bot, настройка, выбор, дешевый, бесплатный"> 
+
+<!-- fb -->
+<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+<meta property="og:locale" content="ua_RU">
+<!-- тип контента, по умолчанию используется article -->
+<meta property="og:type" content="article">
+<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+<meta property="og:title" content="Выбор и настройка VDS сервера для telegram bot">
+<!-- описание страницы -->
+<meta property="og:description" content="Выбираем самый дешевый vps/vds сервер для телеграм бота и настраиваем его">
+<!-- ссылка на изображение, которое будет публиковаться в записи -->
+<meta property="og:image" content="img/vds-server-telegram-bot/01-vds.webp">
+<!-- ссылка на текущую страницу -->
+<meta property="og:url" content="vds-server-telegram-bot.html">
+<!-- название сайта -->
+<meta property="og:site_name" content="DzenIT">
+<script type="text/javascript">
+  function openImageWindow(src) {
+    var image = new Image();
+    image.src = src;
+    var width = image.width;
+    var height = image.height;
+    window.open(src,"Image","width=" + width + ",height=" + height);
+  }
+</script>
+
+<title>Выбор и настройка VDS сервера для telegram bot</title>
+	
+	
+<link rel="stylesheet" href="../css/text.css">
+	<link rel="stylesheet" href="../css/spoiler.css">
+</head>
+<body>
+	<div class="header">
+ <h2>DzenIT</h2>
+</div>
+
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../about.html">ABOUT</a>
+</div>
+<center><h1><b><s>Выбор и</s> настройка VDS сервера для telegram bot</b></h1></center>
+<p>	Рано или поздно приходиться выбирать сервер для telegram бота. Поэтому я написал эту шпаргалку - как выбрать и настроить сервер на начальном этапе.</p>
+	<s><h2>Выбор сервера</h2>
+<p>Самый первый и дешевый сервер я нашел на сайте <b><a href="https://alienvds.com/?tarif=954" target="_blank">alienvds</a></b>. Прайс и параметры системы меня устроили. </p>
+<li>1 ядро 1200 Mhz</li>
+<li>512 RAM</li>
+<li>3 Gb SSD</li>
+<li>Цена 70 центов</li>
+	<br><br>
+	<div class="text_image">
+	<center>
+	  <img src="img/vds-server-telegram-bot/02-vds.webp" alt="vds vps самый дешевый" onclick = 'openImageWindow(this.src);'/>
+	</center>
+	</div>
+	<p>Этого более чем достаточно для начального старта. С учетом того, что вся работа будет в консоли через ssh, то чистая система будет занимать ~ 1Gb места и 40 Mb озу. </p>
+<p>Выбор операционных систем невелик, поэтому будем довольствоваться Ubuntu 16.04. Обязательно выбирайте самую свежую версию</p></s>
+	
+<div class="text_image">
+	<center>
+	  <img src="img/vds-server-telegram-bot/03-vds.webp" alt="дешевый сервер для телеграм бота" onclick = 'openImageWindow(this.src);'/>
+</center>
+	</div>
+	<br><br>
+	<s><p>Пополняем, оплачиваем, заказываем через корзину, после ждем пару минут и сервер готов для использования. Все данные нам предоставляют: ссылку для прямого захода, логин, пароль, ip.</p></s>
+<p>Остается только подключиться к vds через ssh, я использую программу putty. Более подробно настройки и подключение по SSH можно прочесть в <a href="../ssh-tunnel-android-and-pc.html" target="_blank">этой статье</a>. Вот как выглядит мое соединение к VDS</p>
+	<br><br>
+	<div class ="text_image">
+	<center>
+	  <img src="img/vds-server-telegram-bot/04-vds.webp" alt="подключение по ssh к vps/vds" onclick = 'openImageWindow(this.src);'/>
+		</center></div>
+		<br><br>
+		<h2>Настройка VDS для bot telegram</h2>
+<p>Когда мы получили доступ в консоль, обычно под рутом (#root). Первым делом нужно обновить систему:</p>
+<pre>sudo apt update
+sudo apt upgrade</pre>
+<p>Настраиваем время сервера</p>
+<pre>dpkg-reconfigure tzdata</pre>
+<p>Устанавливаем самый необходимый софт: текстовый редактор и мониторинг ресурсов</p>
+<pre>sudo apt install htop
+sudo apt install nano</pre>
+<p>Проверяем версию нашего python3, т.к. это может повлиять на работу скриптов</p>
+<pre></pre>python3 -V
+Устанавливаем pip3 
+<pre>sudo apt install python3-pip</pre>
+<p>Обновляем pip3 до последней версии </p>
+<pre>pip3 install --upgrade pip</pre>
+<p>Ставим необходимые модули, вот мой минимальный список </p>
+<pre>python3 -m pip install requests
+python3 -m pip install telebot
+python3 -m pip install pytelegrambotapi
+python3 -m pip install lxml
+python3 -m pip install python-telegram-bot
+python3 -m pip install transliterate
+python3 -m pip install beautifulsoup4
+python-telegram-bot==12.4.2</pre>
+<p>Закончив с установкой модулей и проверив работоспособность нашего бота, нужно запустить daemon, чтобы наш бот телеграма работал беспрерывно и в случае падения запускался снова самостоятельно. Создаем файл bot.service в /etc/systemd/system </p>
+<pre>sudo nano /etc/systemd/system/bot.service</pre>
+<p>Заполняем его. Желтым я выделил параметры, которые у каждого свои - имя, директория, название скрипта</p>
+<pre>[Unit]
+Description=Telegram bot 'wm'
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=dzenit
+WorkingDirectory=/home/dzenit
+ExecStart=/usr/bin/python3 /home/dzenit/wm.py
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target</pre>
+<p>Добавляем наш daemon, стартуем и проверяем статус </p>
+<pre>systemctl daemon-reload
+systemctl enable bot
+systemctl start bot
+systemctl status bot</pre>
+<br><br>
+<p>Если всё сделано правильно - мы увидим активную работу нашего скрипта</p>
+	<div class="text_image">
+		<center>
+		
+		  <img src="img/vds-server-telegram-bot/05-vds.webp" alt="запущенный бот в сервисах" onclick = 'openImageWindow(this.src);' />
+		</center>
+	</div>
+	<br>
+	<p>Были проблемы с латиницей, запускай скрипты через команду</p>
+	<pre>PYTHONIOENCODING=utf-8 python3 main.py</pre>
+<s><p>Таким образом мы выбрали дешевый сервер, настроили телеграм бота на беспрерывную работу и получили бесценный опыт. </p>
+	
+	<p>Итак за <b>10$</b> в год я получил сервер на котором:</p>
+	<p><a href="https://lotositsh.github.io/it/openvpn-ubuntu16.html" target="_blank">поднял свой vpn со скоростью 40-70 мб\с безлимитный</a></p> 
+	<p>Запустил свой сайт на котором вы сейчас находитесь</p>
+	<p>запустил около 10 самых разных ботов telegram (скачивания с ютуб, конвертация изображений, подсчет символов, обратная связь, боты для пересылок и многое другое)</p>
+	<p>И несмотря на всё это у меня по прежнему есть место и ресурс для дальнейших проектов</p>
+	<p>Вот моя реферальная <a href="https://alienvds.com/?tarif=954" target="_blank"><b>ссылка</b></a>, мне будет приятно если зарегистрируетесь именно по ней</p>
+	</s>
+	
+	
+	
+	
+	
+		<p><b>ps.</b> некоторые библиотеки питона 3,6 уже не поддерживаються, вот список моих с их версиями</p>
+ 
+		<div class="spoiler">
+    <label>
+        <input type="checkbox"/>
+        <span class="btn">Список библиотек для работы с версиями python 3.6 (нажмите чтобы открыть)</span>
+        <div class="text">
+<pre>
+altgraph==0.17
+attrs==19.3.0
+Automat==0.8.0
+beautifulsoup4==4.8.2
+bottle==0.12.18
+bs4==0.0.1
+cachetools==4.0.0
+certifi==2019.11.28
+cffi==1.13.2
+chardet==3.0.4
+colored==1.4.2
+constantly==15.1.0
+cryptography==2.8
+cssselect==1.1.0
+DateTime==4.3
+decorator==4.4.2
+ffmpeg==1.4
+future==0.18.2
+google-api-python-client==1.7.11
+google-auth==1.11.2
+google-auth-httplib2==0.0.3
+google-auth-oauthlib==0.4.1
+html5lib==1.0.1
+HTMLParser==0.0.2
+httplib2==0.17.0
+hyperlink==19.0.0
+idna==2.8
+incremental==17.5.0
+lxml==4.4.2
+mpv==0.1
+numpy==1.18.1
+oauthlib==3.1.0
+pandas==0.25.3
+parsel==1.5.2
+pdf2image==1.12.1
+pefile==2019.4.18
+Pillow==7.0.0
+Protego==0.1.16
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pycparser==2.19
+pygame==1.9.6
+PyHamcrest==2.0.0
+PyInstaller==3.6
+pyperclip==1.7.0
+PySocks==1.7.1
+pyTelegramBotAPI==3.6.7
+python-dateutil==2.8.1
+python-telegram-bot==12.4.2
+pytz==2019.3
+pywin32-ctypes==0.2.0
+queuelib==1.5.0
+requests==2.23.0
+requests-oauthlib==1.3.0
+rsa==4.0
+runscript==0.2.9
+schedule==0.6.0
+selenium==3.141.0
+service-identity==18.1.0
+six==1.14.0
+soupsieve==1.9.5
+tablib==2.0.0
+tgs==0.4.4
+tornado==6.0.3
+transliterate==1.10.2
+uritemplate==3.0.1
+urllib3==1.25.7
+vk-api==11.6.1
+w3lib==1.21.0
+webencodings==0.5.1
+wget==3.2
+XlsxWriter==1.3.7
+youtube-dl==2020.6.16.1
+zope.interface==4.7.1
+</pre>
+        </div>
+    </label>
+		
+</body>
+		</html>

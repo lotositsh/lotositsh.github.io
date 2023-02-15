@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/text.css">
+    <title>Orange Pi PC Заметки</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Orange Pi установка, настройка">
+    <meta name="keywords" content="orange pi pc, настройка, установка, armbian, vnc, vncserver">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Orange Pi PC Заметки">
+    <meta name="twitter:description" content="orange pi pc, настройка, установка, armbian, vnc, vncserver">
+    <meta name="twitter:image" content="img/orangepi.webp">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Orange Pi PC Заметки">
+    <meta property="og:description" content="orange pi pc, настройка, установка, armbian, vnc, vncserver">
+    <meta property="og:image" content="img/orangepi.webp">
+    <meta property="og:site_name" content="DzenIT">
+</head>
+
+<body>
+    <div class="header">
+        <h2>DzenIT</h2>
+    </div>
+    <div class="topnav">
+        <a href="../index.html">HOME</a>
+        <a href="../zen.html">ZEN</a>
+        <a href="../it.html">IT</a>
+        <a href="../soft.html">SOFT</a>
+        <a href="../apk.html">APK</a>
+        <a href="../live.html">LIVE</a>
+        <a href="../game.html">GAME</a>
+        <a href="../other.html">OTHER</a>
+        <a href="../about.html">ABOUT</a>
+    </div>
+    <center>
+        <h1>Orange Pi PC Заметки</h1>
+    </center>
+
+    <p>Взял Orange Pi PC в чистом виде, только плата. Разьем питание 1,7*4 взял со старых связок, где была куча разьемов для старых телефонов. С охлаждением всё интереснее, нашел радиатор от транзистора, распилил его и приклеил на двухсторонний скотч. Сколько не тестировал, но потребление было ниже 1 Ампера. SD карты пробовал разных фирм - всё работало, форматировал их следующим образом. </p>
+    <p>Программа для форматирования SD диска. Первый раз форматировал с параметрами <b>FULL + ON</b></p>
+    <a href="https://t.me/dzenit_xyz/45" target="_blank">SD Formatter</a>
+    <p>Программа для записи на диск образов</p>
+    <a href="https://t.me/dzenit_xyz/46" target="_blank">Win32DiskImager</a>
+</body>
+<p>Испытывал различные системы, за исключением Android. Armbian работал хорошо, за исключением otg, который должен был быть настроен самостоятельно. Ubuntu - плохо себя показал, процессор не мог справится даже с видео в 720p. Debian - основная система которую выбрал для orange pi</p>
+<p>Образы можно скачать с официального сайта <a href="http://www.orangepi.org/" target="_blank">www.orangepi.org</a>.
+Armbian официальный сайт <a href="https://www.armbian.com/" target="_blank">https://www.armbian.com/</a></p>
+<p><a href="https://t.me/dzenit_xyz/49" target="_blank">Armbian 22.02 Bullseye CLI Kernel 5.15</a> - сервер</p>
+<p> <a href="https://t.me/dzenit_xyz/48" target="_blank">Armbian 22.02 Focal XFCE</a> - оболочка XFCE</p>
+<p> <a href="https://t.me/dzenit_xyz/52" target="_blank">Android 7 beta</a> - не проверял, скачал для галочки(Встречал информацию что можно собрать 10ю версию, есть исходный код на github для самостоятельной компиляции)</p>
+<p><a href="https://t.me/dzenit_xyz/50" target="_blank">Ubuntu Focal</a> - xfce</p>
+<p><a href="https://t.me/dzenit_xyz/51" target="_blank">Debian Buster</a> - с оболочкой</p>
+<p><a href="https://t.me/dzenit_xyz/55" target="_blank">debian stretch server linux3.4.1</a> - сервер</p>
+<p><a href="https://t.me/dzenit_xyz/56" target="_blank">debian stretch desktop linux3.4.113</a> - десктоп</p>
+<p><b>Логин/Пароль</b> для входа по умолчанию</p>
+	<p>debian</p>
+<p>user(<b>root</b>), password(<b>orangepi</b>)</p>
+	<p>armbian</p>
+	<p>user(<b>root</b>), password(<b>1234</b>)</p>
+<p><a href="https://t.me/dzenit_xyz/60" target="_blank">retrorangepi</a> - выделил для этого образа отдельную флешку для теста, работает прикольно. Игры забрасывал через ftp filezilla(как включить доступ по ftp можете почитать ниже) root пароль orangepi порт 21. Сами ромы игры забрасывал в расположение /home/pi/RetroPie/roms каждый ром в свой эмулятор</p>
+	
+<p>Обсуждение дальше видется от системы armbian, первоначальная настройка понятная, подключится можно по ssh или используя монитор/телевизор (для этой модели orange pi pc)</p>
+<p>Первое после запуска что нужно сделать это обновить </p>
+<pre>sudo apt update</pre>
+<p>Много приколюх с разгоном и работой процессора, а также настройки локализации можно найти по команде</p>
+<pre>sudo armbian-config</pre>
+<p>Установим дополнительные виджеты для xfce, даст возможность добавить языковую панель, сенсоры температуры и другие ништяки</p>
+<pre>apt install xfce4-goodies</pre>
+<p>Ставим удаленный рабочий стол vncserver чтобы в комфорте управлять нашим творением через vnc viever</p>
+<pre>apt install x11vnc</pre>
+<p>Устанавливаем пароль на соединение</p>
+<pre>x11vnc - -storepasswd</pre>
+<p>Создаем скрипт для запуска удаленного рабочего стола</p>
+<pre>sudo nano vnc.sh</pre>
+<p>Сам скрипт</p>
+<pre>#!/bin/bash
+/bin/su <b>user</b> -c "/usr/bin/screen -dmS  xfce4 startxfce4"
+sleep 5
+x11vnc -dontdisconnect -display :0 -auth /var/run/lightdm/root/:0 -notruecolor -noxfixes -shared -forever -rfbport 5900 -bg -o /var/log/x11vnc.log -rfbauth /home/<b>user</b>/.vnc/passwd</pre>
+<p>Теперь нам доступна наша апельсинка через vnc, добавим в крон для автозапуска</p>
+<pre>crontab -e</pre>
+<p>В самый конец дописываем</p>
+<pre>@reboot sh /home/user/vnc.sh</pre>
+
+<p>Температуру на orange pi pc armbian можно посмотреть так</p>
+<pre>armbianmonitor -m</pre>
+<p>Также можно добавить сенсор на панель при установки xfce4-goodies</p>
+<p>На armbian <b>не работает otg</b>, исправляем это</p>
+<pre>sudo su</pre>
+<pre>echo "g_serial" >> /etc/modules</pre>
+<pre>mkdir -p /etc/systemd/system/serial-getty@ttyGS0.service.d</pre>
+<pre>nano /etc/systemd/system/serial-getty@ttyGS0.service.d/10-switch-role.conf</pre>
+<p>Добавляем текст</p>
+<pre>[Service]
+ExecStartPre=-/bin/sh -c "echo 2 > /sys/bus/platform/devices/sunxi_usb_udc/otg_role</pre>
+<p>Сохраняем</p>
+<pre>systemctl --no-reload enable serial-getty@ttyGS0.service</pre>
+<pre>echo "ttyGS0" >> /etc/securetty</pre>
+<pre>reboot</pre>
+<p><b>Раздаем интернет через eth0</b>, wlna0 подключен к интернету. Сразу скрпит sh</p>
+<p>Далее wlx000f00408516 это wlan0 (по умолчанию)</p>
+<pre>#!/bin/bash
+sleep 1
+ifconfig eth0 192.168.56.1 netmask 255.255.255.0
+sleep 2
+sysctl -w net.ipv4.ip_forward=1
+iptables -A FORWARD --in-interface <b>eth0</b> -j ACCEPT
+iptables --table nat -A POSTROUTING --out-interface <b>wlx000f00408516</b> -j MASQUERADE</pre>
+<p>На клиенте настраиваем ip следующим образом</p>
+<p>ip - 192.168.56.2</p>
+<p>маска - 255.255.255.0</p>
+<p>шлюз - 192.168.56.1</p>
+<p>Второй скрипт на очистку всех правил iptables, использую для остановки интернета</p>
+<pre>#!/bin/sh
+sysctl net.ipv4.ip_forward=0
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+echo "iptables clear"</pre>
+
+<p><b>Openvpn раздаем через wifi linux (для Orange pi ниже)</b></p>
+<pre>sudo apt-get install hostapd dnsmasq</pre>
+<pre>sudo update-rc.d hostapd disable</pre>
+<pre>sudo update-rc.d dnsmasq disable</pre>
+<pre>nano /etc/dnsmasq.conf</pre>
+
+<pre>
+bind-interfaces
+interface=<b>wlx000f00408516</b>
+dhcp-range=192.168.10.2,192.168.10.5</pre>
+
+nano /etc/hostapd.conf
+
+Здесь укажите свой интерфейс wlan0
+
+<pre>interface=<b>wlx000f00408516</b>
+driver=nl80211
+wpa_passphrase=12345678</pre>
+
+<p>Тестовый запуск <b>раздача обычного интернета из eth0 на wlan0</b></p>
+<pre>nano start.sh</pre>
+
+<pre>#!/bin/bash
+ifconfig <b>wlx000f00408516</b> 192.168.10.1
+service dnsmasq restart
+sysctl net.ipv4.ip_forward=1
+iptables -t nat -A POSTROUTING -o <b>eth0</b> -j MASQUERADE
+hostapd /etc/hostapd.conf</pre>
+<pre>nano stop.sh</pre>
+
+<pre>#!/bin/bash
+iptables -D POSTROUTING -t nat -o <b>eth0</b> -j MASQUERADE
+sysctl net.ipv4.ip_forward=0
+service dnsmasq stop
+service hostapd stop</pre>
+<p>Если hostapd выдает ошибку дравера и т.д., пробуем</p>
+<pre>sudo rfkill unblock wlan</pre>
+<p> Если всё ок и интернет у нас есть через wifi самое время продолжить</p>
+
+<p>Запуск vpn</p>
+<pre>sudo openvpn --config /home/user/vpn.ovpn</pre>
+<p>Проверяем наличие интерфейса tun0</p>
+<pre>ifconfig -a</pre>
+<p>Незабудьте заменить названия на свои интерфейсы, удачи</p>
+<pre>nano vpnwifi.sh</pre>
+
+<pre>iptables -t filter -F FORWARD
+iptables -t nat -F POSTROUTING
+iptables -t filter -I FORWARD -j ACCEPT
+iptables -t nat -I POSTROUTING -j MASQUERADE
+ip rule add from 192.168.0.0/24 lookup 61
+ip route add default dev <b>tun0</b> scope link table 61
+ip route add 192.168.0.0/24 dev <b>wlx000f00408516</b> scope link table 61
+ip route add broadcast 255.255.255.255 <b>eth0</b> scope link table 61
+ifconfig <b>wlx000f00408516</b> 192.168.10.1
+service dnsmasq restart
+sysctl net.ipv4.ip_forward=1
+iptables -t nat -A POSTROUTING -o <b>eth0</b> -j MASQUERADE
+hostapd /etc/hostapd.conf</pre>
+
+	
+	<h3><b>ORANGE PI точка доступа wifi</b></h3>
+	<p>Можете забыть что написано выше, т. к. мне не удалось раздать интернет апельсинкой. Теперь рабочий метод (для меня).</p>
+<p>Проверяем поддержку раздачи </p>
+<pre>iw list</pre>
+<p>Если <b>Supported interface modes: AP</b> — то всё ок.</p>
+
+<pre>apt-get install dnsmasq dkms hostapd -y </pre>
+
+<pre>nano /etc/network/interfaces</pre>
+
+<pre>auto lo
+iface lo inet loopback
+
+auto eth0
+
+
+auto wlan0
+iface wlan0 inet static
+address 192.168.12.1
+netmask 255.255.255.0
+network 192.168.12.0</pre>
+
+<pre>git clone https://github.com/oblique/create_ap</pre>
+<p>Бэкап с гитхаба в телеграме <a href="https://t.me/dzenit_xyz/73" target="_blank">здесь</a></p>
+<pre>cd create_ap</pre>
+<pre>make install</pre>
+
+<pre>rm /etc/create_ap.conf
+nano /etc/create_ap.conf</pre>
+
+
+<pre>CHANNEL=4
+GATEWAY=192.168.12.1
+WPA_VERSION=1+2
+ETC_HOSTS=0
+DHCP_DNS=gateway
+NO_DNS=0
+HIDDEN=0
+MAC_FILTER=0
+MAC_FILTER_ACCEPT=/etc/hostapd/hostapd.accept
+ISOLATE_CLIENTS=0
+SHARE_METHOD=nat
+IEEE80211N=0
+IEEE80211AC=0
+HT_CAPAB=’[HT40+]’
+VHT_CAPAB=
+DRIVER=nl80211
+NO_VIRT=0
+COUNTRY=
+FREQ_BAND=2.4
+NEW_MACADDR=
+DAEMONIZE=0
+NO_HAVEGED=0
+WIFI_IFACE=wlan0
+INTERNET_IFACE=eth0
+SSID=home
+PASSPHRASE=orangepi
+USE_PSK=0</pre>
+
+
+<pre>systemctl daemon-reload
+systemctl start create_ap.service
+systemctl status create_ap.service
+systemctl enable create_ap.service
+reboot
+systemctl status create_ap.service</pre>
+
+<p>Подключаемся к точке доступа, например с мобильного телефона:</p>
+<p>SSID=home</p>
+<p>PASSPHRASE=orangepi</p>
+
+<p>Незабываем запустить ip forward</p>
+
+<pre>sysctl net.ipv4.ip_forward=1
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</pre>
+
+	<p>С мобильного подключается нормально, ip выдает, проблем нету. С ПК были проблемы, он не хотел получать ip, поэтому я указал его самостоятельно</p>
+	
+	<br>
+<div class="text_image">
+	<center>
+	<img src="data:image/webp;base64, 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" alt="ORANGE PI точка доступа wifi">
+	</center>
+</div>
+<br>
+	
+<p>Сайт <a href="https://orangepi.su/content.php?p=160&chpu=Podnyat%20tochku%20dostupa%20WIFI%20na%20Orange%20Pi" target="_blank">источник</a></p>
+
+	<p>А для получения vpn я просто запустил openvpn и получил домашний wifi с трафиком vpn</p>
+	<p>Сервер за 70c в месяц <b><a href="(или 8$ год)" target="_blank">тут</a></b> (или <b>8$ год</b>), настройка vpn в этой <a href="./openvpn-ubuntu16.html" target="_blank">статье</a></p>
+	
+	
+	
+<p><b>Установка vnc vievwer на Orange pi</b></p>
+<p>Переходим на <a href="https://www.realvnc.com/en/connect/download/viewer/raspberrypi/" target="_blank">оффициальный сайт</a>, качаем пакет deb для raspberry pi</p>
+<p>Устанавливаем командой</p>
+<pre>sudo dpkg -i VNC-Viewer-6.22.315-Linux-ARM.deb</pre>
+<p>Логинимся и пользуемся как обычно, можно подключится к windows под любым ip, если там залогиниться vnc server</p>
+
+<p>Софт для соединение к orangepi используя ssh или vnc</p>
+<p>SSH - <a href="https://t.me/dzenit_xyz/3" target="_blank">Putty windows</a> </p>
+<p><a href="https://t.me/dzenit_xyz/58" target="_blank">VNC viever</a> - windows</p>
+<p><a href="https://t.me/dzenit_xyz/59" target="_blank">VNC Server</a> - windows </p>
+<p><a href="https://t.me/dzenit_xyz/57" target="_blank">VNC</a> - orange pi .deb  </p>
+
+<p>Незабываем доустановить пару полезных инструментов</p>
+<pre>apt install aircrack-ng</pre>
+<pre>apt install nmap</pre>
+
+<u><p>Локальный <b>ftp</b> для залива файлов</p></u>
+<pre>apt install vsftpd </pre>
+	<p>Редактируем конфигурационный файл</p>
+	<pre>nano /etc/vsftpd.conf</pre>
+	<br><u></u>
+	<pre>anonymous_enable=NO</pre>
+	<pre>local_enable=YES</pre>
+	<pre>write_enable=YES</pre>
+	<pre>force_dot_files=YES</pre>
+	<p>Включить пользователя рут для доступа по ftp</p>
+	<pre>nano /etc/ftpusers</pre>
+	<p>Закомментировать строку <b>#root и перезапустить</b></p>
+	<pre>systemctl restart vsftpd</pre>
+	
+	<p>Запуск/остановка и включение/выключение и проверка статуса службы производится коммандами</p>
+<br>
+<pre>systemctl start vsftpd</pre>
+	<pre>systemctl stop vsftpd</pre>
+
+	<pre>systemctl enable vsftpd</pre>
+<pre>systemctl disable vsftpd</pre>
+	<pre>systemctl status vsftpd</pre>
+
+<h1><b>Установка Debian</b></h1>
+<p>Несмотря на то, что многие пользуются armbian, мне больше по душе debian для orange pi, для него собрано свежее ядро, многие функции вроде otg работают из коробки. При этом он полностью имеет такую же основу как и armbian и отличается только запуском конфига ----> orangepi-config. Образ я использовал Debian Buster.</p>
+<p>Здесь подключение по ssh, root пароль orangepi или  orangepi| orangepi.</p>
+<p>Первым делом меняем пароль для рута и пользователя orangepi</p>
+<pre>passwd</pre>
+<p>После редактируем sources.list, там по умолчанию китайские сервера указаны, не очень быстрые как мне показалось (тут как хотите)</p>
+<p>Узнаем версию и идем на любой сайт-генератор sources</p>
+<pre>lsb_release -d</pre>
+
+<pre>deb [arch=armhf] http://ftp.nl.debian.org/debian/ buster main contrib non-free
+deb-src [arch=armhf] http://ftp.nl.debian.org/debian/ buster main contrib non-free
+
+deb [arch=armhf] http://ftp.nl.debian.org/debian/ buster-updates main contrib non-free
+deb-src [arch=armhf] http://ftp.nl.debian.org/debian/ buster-updates main contrib non-free
+
+deb [arch=armhf] http://security.debian.org/ buster/updates main contrib non-free
+deb-src [arch=armhf] http://security.debian.org/ buster/updates main contrib non-free</pre>
+
+<p>Обновляем пакеты</p>
+<pre>apt-get update</pre>
+<p>Настроим локали</p>
+<pre>dpkg-reconfigure locales</pre>
+<p>Установим офис</p>
+<pre>apt install libreoffice libreoffice-l10n-ru libreoffice-help-ru </pre>
+<p>Дальше чисто для себя каждый сам выбирает нужные ему пакеты</p>
+<pre>apt install xfce4-goodies xpdf vlc iceweasel x11vnc aircrack-ng nmap wavemon openvpn vsftpd speedcrunch mc wavemon mednafen idle telegram-desktop ffmpeg transmission p7zip-full</pre>
+
+<p>VNC viewer</p>
+<pre>wget https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-6.22.315-Linux-ARM.deb</pre>
+<pre>dpkg -i VNC-Viewer-6.22.315-Linux-ARM.deb</pre>
+
+<p>Игры.Эмулятор всего(сега, денди, сони и др.) mednafe + оболочка</p>
+
+<pre>apt install mednafen</pre>
+<pre>git clone https://github.com/AmatCoder/mednaffe</pre>
+	Бэкап можно скачать <a href="https://t.me/dzenit_xyz/65" target="_blank">тут</a>, на всякий случай
+<pre>apt install pkg-config libgtk-3-dev</pre>
+<pre>sudo ./configure
+sudo make
+sudo make install</pre>
+
+<p>Автологин</p>
+<pre>nano /etc/lightdm/lightdm.conf</pre>
+<p>Добавляем строчки</p>
+<pre>[Seat:*]
+autologin-user=user
+autologin-user-timeout=0</pre>
+</html>
