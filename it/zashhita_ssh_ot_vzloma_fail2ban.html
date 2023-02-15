@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Защита ssh от взлома с помощью fail2ban">
+	<meta name="keywords" content="ssh, fail2ban"> 
+	<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+	<meta property="og:locale" content="ru_RU">
+	<!-- тип контента, по умолчанию используется article -->
+	<meta property="og:type" content="article">
+	<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+	<meta property="og:title" content="Защита ssh от взлома с помощью fail2ban">
+	<!-- описание страницы -->
+	<meta property="og:description" content="Простые методы защиты ssh от брута">
+	<meta property="og:site_name" content="DzenIT">
+	
+	<title>Защита ssh от взлома с помощью fail2ban</title>
+	
+	<link rel="stylesheet" href="../css/text.css">
+</head>
+	<body>
+	<div class="header">
+ <h2>DzenIT</h2>
+</div>
+
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../about.html">ABOUT</a>
+</div>
+		<center><h1><b>Защита ssh от взлома с помощью fail2ban</b></h1></center>
+<p>Установка fail2ban</p>
+<pre>apt-get install fail2ban</pre>
+<p>включаем демона для беспрерывной работы</p>
+<pre>systemctl enable fail2ban</pre>
+<p>сбрасываем настройки</p>
+		<pre>cat /dev/null >/etc/fail2ban/jail.d/defaults-debian.conf</pre>
+
+<p>создаем свои настойки</p>
+<pre>nano /etc/fail2ban/jail.d/sshd.conf</pre>
+
+<pre>
+[sshd]
+enabled = true
+# бан ip в секундах
+bantime = 86400
+# если в течение 300 секунд было 2 неверные авторизации
+findtime = 300
+maxretry = 2</pre>
+
+<p>перезагружаем демона</p>
+<pre>systemctl restart fail2ban</pre>
+
+
+<p>проверка заблокированных ip </p>
+		<pre>fail2ban-client status sshd</pre>
+
+
+<p>Проверка журнала</p>
+		<pre>journalctl -xe</pre>
+<p>Отключение fail2ban</p>
+<pre>systemctl stop fail2ban
+systemctl disable fail2ban</pre>
+
+<p>Для улучшения защиты ssh рекомендую создать подключение только по ключу, можно ознакомиться со статьей <a href="ssh_key_connect_only.html" target="_blank">здесь</a></p>
+		
+<p>Оригинал <a href="https://www.servers.ru/knowledge/linux-administration/how-to-protect-ssh-using-fail2ban-on-ubuntu-16_04" target="_blank">статьи</a></p>
+	</body>
+		
+</html>

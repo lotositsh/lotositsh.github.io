@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta name="description" content="Соединение только по ключу SSH">
+	<meta name="keywords" content="ssh, key, only"> 
+	<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+	<meta property="og:locale" content="ru_RU">
+	<!-- тип контента, по умолчанию используется article -->
+	<meta property="og:type" content="article">
+	<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+	<meta property="og:title" content="Соединение только по ключу SSH">
+	<!-- описание страницы -->
+	<meta property="og:description" content="Защита ssh от взлома, соединение только по ключу">
+	<meta property="og:site_name" content="DzenIT">
+	
+	<title>Соединение только по ключу SSH</title>
+	
+	<link rel="stylesheet" href="../css/text.css">
+</head>
+	<body>
+	<div class="header">
+ <h2>DzenIT</h2>
+</div>
+
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../about.html">ABOUT</a>
+</div>
+		<center><h1><b>Соединение только по ключу SSH</b></h1></center>
+		
+
+<p>Как только у вас появляться сервер на ssh его начинают без перерыва брут форсить, поэтому чтобы защититься от этого можно настроить соединение только через ключ без ввода пароля</p>
+<p>Генерируем ключи</p>
+<pre>ssh-keygen -t rsa -b 2048</pre>
+<p>Указываем директорию для сохранения ключей авторизации и введем пароль для шифрования ключа (не менее 5 символов).</p>
+<p>По умолчанию ключи сохраняются в домашнюю директорию .ssh</p>
+<p>Там находиться 2 ключа:</p>
+<li>id_rsa  - этот ключ переносим на клиент и удаляем с сервера (если генерировали его там)</li>
+<li>id_rsa.pub – оставляем на сервере</li>
+<p>Переименовываем публичный ключ</p>
+<pre>cat id_rsa.pub >> ~/.ssh/authorized_keys</pre>
+<p>Настраиваем наш ssh для соединения по ключу авторизации</p>
+<p>Редактируем файл </p>
+<pre>nano /etc/ssh/sshd_config</pre>
+
+<p>В нём раскомментируем строчку</p>
+<pre>AuthorizedKeysFile      .ssh/authorized_keys
+PubkeyAuthentication yes</pre>
+<p>Перезагружаем наш ssh на сервере</p>
+<pre>service sshd restart</pre>
+
+<p>Если вы под windows, а создавали ключ на линукс, то можно воспользоваться puttygen.exe для его конвертации. Нажимаем Load вводим пароль который указывали и жмем Save private key .</p>
+
+<p>Нас просит ввести пользователя и пароль от сгенерированного нами ключа. 
+Только после успешного соединение через приватный ключ возвращаемся на сервер и отключаем вход по паролю</p>
+<pre>nano /etc/ssh/sshd_config</pre>
+
+<p>Добавляем строчку </p>
+<pre>PasswordAuthentication no</pre>
+<p>Перезагружаем SSH</p>
+<pre>service sshd restart</pre>
+<p>Создаем простой .bat файл для и помещаем в папку с программой Putty</p>
+<pre>putty.exe root@11.88.88.88 22 -i e:\pr.ppk
+pause</pre>
+<p>Теперь можно присоединиться в два клика и никакие брут форсы не страшны</p>
+		Скачать putty + puttygen можно через наш канал телеграма, прямая <a href="https://t.me/dzenit_xyz/3" target="_blank">ссылка</a>
+		
+<p>ps все команды выполнялись под root`ом, для обычного пользователя нужно перед командами использовать приставку sudo</p>
+
+		
+		
+			</body>
+		</html>

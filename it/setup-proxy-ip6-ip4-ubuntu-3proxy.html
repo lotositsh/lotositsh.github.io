@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<title>Настройка прокси ip4 ip6 в 3proxy</title>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Настраиваем прокси ip4, ip6 с помощью 3proxy в ubuntu 16.04">
+<meta name="keywords" content="ip4, ip6, 3proxy, ubuntu"> 
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Настройка прокси ip4 ip6 в 3proxy">
+<meta name="twitter:description" content="Настраиваем прокси ip4, ip6 с помощью 3proxy в ubuntu 16.04">
+<meta name="twitter:image" content="img/ip6-ip4-3proxy.webp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Настройка прокси ip4 ip6 в 3proxy">
+<meta property="og:description" content="Настраиваем прокси ip4, ip6 с помощью 3proxy в ubuntu 16.04">
+<meta property="og:image" content="img/ip6-ip4-3proxy.webp">
+<meta property="og:site_name" content="DzenIT">
+  </head>
+  <body>
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../about.html">ABOUT</a>
+  </div>
+  <center><h1>Настраиваем прокси ip4, ip6 с помощью 3proxy в ubuntu</h1></center>
+   
+<p>Сегодня расскажу вам как можно настроить прокси ip6 и ip4 для дальнейшего использования. Все команды я делал под root.</p>
+<p>Установим все необходимые библиотеки:</p>
+<pre>apt-get update
+apt-get upgrade -y
+apt-get install build-essential libevent-dev libssl-dev gcc make psmisc nano sudo screen -y </pre>
+<p>Будем использовать 3proxy, качаем офф. репозиторий или можете скачать с архива.</p>
+<pre>wget https://github.com/z3APA3A/3proxy/archive/0.8.12.tar.gz --no-check-certificate</pre>
+	  <a href="https://t.me/dzenit_xyz/66" target="_blank">Альтернатива</a>
+<pre>tar -xvf 0.8.12.tar.gz
+cd 3proxy-0.8.12 </pre>
+
+<p>Начнем со сборки 3proxy </p>
+<p>Делаем сервер анонимным</p>
+
+<pre>#define ANONYMOUS 1</pre> 
+
+<p>Начинаем сборку из исходников </p>
+
+<pre>make -f Makefile.Linux
+make -f Makefile.Linux install </pre>
+
+<p>Наш сервер собран, ищем его расположение. </p>
+
+<pre>cd ~/
+whereis 3proxy </pre>
+
+<p>Переходим в папку с конфигурацией </p>
+<pre>cd /usr/local/etc/3proxy </pre>
+
+<p>Редактируем файл 3proxy.cfg, используем любой редактор</p>
+<pre>nano 3proxy.cfg </pre>
+
+<p>Прокси ip6 и ip4 с авторизацией на https + socks. Вместо login пишем логин, а password заменяем на свой пароль. -p это порт</p>
+
+<pre>daemon 
+# http(s) 
+#auth none
+auth strong
+users login:CL:password
+allow * * * *
+#это прокси ip6 http(s)
+#proxy -6 -n -a -p2502 -i{ipv4} -e{ipv6} это пример
+proxy -6 -n -a -p2502 -i88.88.88.88 -e2991:41d0:602:2dd::45
+#proxy ip4
+proxy -n -a -p6311 -i88.88.88.88 -e88.88.88.88 
+
+# socks
+#auth none
+auth strong
+users login:CL:password
+allow * * * *
+#это прокси ip6 socks
+#socks -6 -p2502 -i{ipv4} -e{ipv6}
+proxy -6 -n -a -p2502 -i88.88.88.88 -e2991:41d0:602:2dd::45
+#proxy ip4
+socks -n -a -p6311 -i88.88.88.88 -e88.88.88.88 </pre>
+	  
+<p>Для авторизации без пароля и логина, нужно заменить строку  auth strong  на auth none </p>
+
+<p>Можное еще добавить dns для наших прокси. Вверху конфигурации перед daemon пропишите</p>
+
+<pre>nserver 1.1.1.1
+nserver 1.0.0.1
+nscache 65536
+timeouts 1 5 30 60 180 1800 15 60</pre>
+
+<p>Про подробную конфигурацию 3proxy  можете узнать тут https://3proxy.ru/howtor.asp </p>
+<p>Запуск</p>
+<pre>3proxy /usr/local/etc/3proxy/3proxy.cfg</pre>
+<p>Остановка</p> 
+<pre>killall -9 3proxy </pre>
+
+<p>Добавление к cron чтобы работал автоматически после перезагрузки сервера</p>
+<pre>crontab -e </pre>
+<p>Там внизу дописываем </p>
+<pre>@reboot sudo -u root /usr/local/etc/3proxy/bin/3proxy /usr/local/etc/3proxy/3proxy.cfg</pre> 
+<p>Проверяем </p>
+<pre>crontab -l </pre>
+
+<p>Использую proxyfoxy под firefox, он там дружит с автозиразацией по логину и паролю как в windows так и на android</p>
+ <p> Дешевый сервер за 1$ в месяц можете открыть <a href="https://alienvds.com/?tarif=954" target="_blank">тут</a> (реферальная ссылка, буду благодарен, если закажите сервер по ней)</p>
+   </body>
+
+</html>
