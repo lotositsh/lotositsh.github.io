@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+<meta charset="UTF-8">
+
+<link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Раздача интернета vpn на андроид для ПК">
+<meta name="keywords" content="vpn, android, pc, termux "> 
+
+<!-- Twitter -->
+<!-- Тип карты, по умолчанию используется summary -->
+<meta name="twitter:card" content="summary">
+<!-- Название страницы -->
+<meta name="twitter:title" content="Раздача vpn на android для ПК">
+<!-- Описание страницы -->
+<meta name="twitter:description" content="Раздаем интернет через vpn android для ПК">
+<!-- Cсылка на изображение -->
+<meta name="twitter:image" content="img/vpn-android-to-pc.webp">
+<!-- fb -->
+<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+<meta property="og:locale" content="ua_RU">
+<!-- тип контента, по умолчанию используется article -->
+<meta property="og:type" content="article">
+<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+<meta property="og:title" content="Раздача vpn на android для ПК">
+<!-- описание страницы -->
+<meta property="og:description" content="Раздаем интернет через vpn android для ПК">
+<!-- ссылка на изображение, которое будет публиковаться в записи -->
+<meta property="og:image" content="img/vpn-android-to-pc.webp">
+<!-- ссылка на текущую страницу -->
+<meta property="og:url" content="android-vpn-to-pc.html">
+<!-- название сайта -->
+<meta property="og:site_name" content="DzenIT">
+
+
+<title>Раздача vpn на android для ПК</title>
+<script type="text/javascript">
+  function openImageWindow(src) {
+    var image = new Image();
+    image.src = src;
+    var width = image.width;
+    var height = image.height;
+    window.open(src,"Image","width=" + width + ",height=" + height);
+  }
+</script>
+<link rel="stylesheet" href="css/text.css">
+</head>
+<body>
+	<div class="header">
+ <h2>DzenIT</h2>
+</div>
+
+	<div class="topnav">
+<a href="index.html">HOME</a>
+<a href="zen.html">ZEN</a>
+<a href="it.html">IT</a>
+<a href="soft.html">SOFT</a>
+<a href="apk.html">APK</a>
+<a href="live.html">LIVE</a>
+<a href="game.html">GAME</a>
+<a href="other.html">OTHER</a>
+<a href="about.html">ABOUT</a>
+</div>
+<center><h1><b>Раздаем интернет через vpn android для ПК</b></h1></center>
+<p>Суть - мы принимаем интернет через wifi на android включаем vpn и передаем трафик vpn на ПК через USB</p>
+<p>	Для этого необходимо иметь на телефоне РУТ права и установленный <a href="https://play.google.com/store/apps/details?id=com.termux" target="_blank">TERMUX</a>. Включаем vpn на телефоне и смотрим активные интерфейсы. Открываем Termux, пишем следующие команды:</p>
+
+<pre>netcfg | grep -i up</pre>
+<p>	Видим следующие интерфейсы</p>
+<li>rndis0 - usb (будет отображаться при включении передачи через usb)</li>
+<li>tun0 - vpn</li>
+<li>wlan0 - wifi</li>
+
+<p>Подключаем телефон к usb, включаем режим модема через usb, в терминале прописываем ifconfig, запоминаем наши интерфейсы, т.к. цифры могут отличаться. Нас интересует rndis0 и его ip адрес. В нашем случае этот адрес 192.168.42.129 (т.е локальный хост будет 92.168.42.0)</p>
+	<div class="text_image"> 
+	<center><img src="img/android-vpn-to-pc-ifconfig.webp" alt="Раздача интернета vpn на андроид для ПК" onclick = 'openImageWindow(this.src);'/></center></div>
+	<p>В терминале пишем SU, предоставляем рут права, пишем по строчкам</p>
+
+<pre>iptables -t filter -F FORWARD
+iptables -t nat -F POSTROUTING
+iptables -t filter -I FORWARD -j ACCEPT
+iptables -t nat -I POSTROUTING -j MASQUERADE
+ip rule add from 192.168.42.0/24 lookup 61
+ip route add default dev tun0 scope link table 61
+ip route add 192.168.42.0/24 dev rndis0 scope link table 61
+ip route add broadcast 255.255.255.255 dev rndis0 scope link table 61</pre>
+
+<p>Если все сделали правильно, то у вас должно появиться сетевое подключение и ip vpn вашего телефона.</p>
+<p>Теперь давайте это все запишем в sh скрипт, чтобы каждый раз не прописывать строки вручную. Под рутом пишем:</p>
+	<pre>echo -e 'iptables -t filter -F FORWARD ; iptables -t nat -F POSTROUTING ; iptables -t filter -I FORWARD -j ACCEPT ; iptables -t nat -I POSTROUTING -j MASQUERADE ; ip rule add from 192.168.42.0/24 lookup 61 ; ip route add default dev tun0 scope link table 61 ; ip route add 192.168.42.0/24 dev rndis0 scope link table 61 ; ip route add broadcast 255.255.255.255 dev rndis0 scope link table 61' > forward.sh</pre>
+<p>Теперь можем запускать наш скрипт просто написав</p>
+<pre>sh forward.sh</pre>
+<p>	В настройках сетевого подключения прописываем 192.168.1.1, чтобы исключить утечку по DNS. Проверяем результат на любом сайте, например whoer.net</p>
+<div class="text_image"><center><img src="img/android-vpn-to-pc-dns.webp" alt="" onclick = 'openImageWindow(this.src);'/></center></div>
+	<p>Чтобы вам проще было писать команды в termux, предлагаю ознакомиться со статьей <a href="ssh-tunnel-android-and-pc.html" target="_blank">как соединиться по ssh с телефоном</a>. Это позволит соединиться с вашим телефоном через пк.</p> 
+</body>
+</html>

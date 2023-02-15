@@ -1,0 +1,38 @@
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+	RewriteCond %{HTTP_HOST} ^51\.83\.203\.90$
+	RewriteRule ^(.*)$ https://dzenit.xyz/$1 [L,R=301]
+
+  # Check if browser supports WebP images
+  RewriteCond %{HTTP_ACCEPT} image/webp
+
+  # Check if WebP replacement image exists
+  RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+
+  # Serve WebP image instead
+  RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=REQUEST_image]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Vary: Accept for all the requests to jpeg and png
+  Header append Vary Accept env=REQUEST_image
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+
+<ifModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/css "access plus 7 days"
+ExpiresByType image/webp "access plus 6 days" 
+ExpiresByType image/png "access plus 6 days" 
+ExpiresByType text/javascript "access plus 6 days"
+ExpiresByType text/javascript "access plus 6 days"
+ExpiresByType text/html "access plus 6 day"
+</IfModule>  
+

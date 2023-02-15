@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+<meta charset="UTF-8">
+
+<link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ssh туннель с телефона на пк через termux">
+<meta name="keywords" content="ssh, android, pc, termux "> 
+
+<!-- Twitter -->
+<!-- Тип карты, по умолчанию используется summary -->
+<meta name="twitter:card" content="summary">
+<!-- Название страницы -->
+<meta name="twitter:title" content="ssh туннель android с помощью termux">
+<!-- Описание страницы -->
+<meta name="twitter:description" content="Создаем туннель между Android и ПК используя SSH">
+<!-- Cсылка на изображение -->
+<meta name="twitter:image" content="img/ssh-android-pc.webp">
+<!-- fb -->
+<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+<meta property="og:locale" content="ua_RU">
+<!-- тип контента, по умолчанию используется article -->
+<meta property="og:type" content="article">
+<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+<meta property="og:title" content="ssh туннель android с помощью termux">
+<!-- описание страницы -->
+<meta property="og:description" content="Создаем туннель между Android и ПК используя SSH">
+<!-- ссылка на изображение, которое будет публиковаться в записи -->
+<meta property="og:image" content="img/ssh-android-pc.webp">
+<!-- ссылка на текущую страницу -->
+<meta property="og:url" content="ssh-tunnel-android-and-pc.html">
+<!-- название сайта -->
+<meta property="og:site_name" content="DzenIT">
+
+
+<title>SSH termux android + windows pc</title>
+<script type="text/javascript">
+  function openImageWindow(src) {
+    var image = new Image();
+    image.src = src;
+    var width = image.width;
+    var height = image.height;
+    window.open(src,"Image","width=" + width + ",height=" + height);
+  }
+</script>
+<link rel="stylesheet" href="css/text.css">
+</head>
+<body>
+	<div class="header">
+ <h2>DzenIT</h2>
+</div>
+
+	<div class="topnav">
+<a href="index.html">HOME</a>
+<a href="zen.html">ZEN</a>
+<a href="it.html">IT</a>
+<a href="soft.html">SOFT</a>
+<a href="apk.html">APK</a>
+<a href="live.html">LIVE</a>
+<a href="game.html">GAME</a>
+<a href="other.html">OTHER</a>
+<a href="about.html">ABOUT</a>
+</div>
+
+<center><h1><b>ssh туннель android с помощью termux
+</b></h1></center>
+<p>Сейчас мы научимся заходить на android телефон через ssh на windows.</p>
+<p>Необходимые инструменты:</p>
+
+<li>termux</li>
+<li>putty</li>
+<li>немного терпения</li>
+
+<p>Качаем termux</p>
+<p>плеймаркет</p>
+<p><a href="https://play.google.com/store/apps/details?id=com.termux&hl=ru" target="_blank">https://play.google.com/store/apps/details?id=com.termux&hl=ru</a></p>
+<p>apk</p>
+<p><a href="https://drive.google.com/open?id=1XE9MEuU43a_Jzz9JyqK8X70rz67Y01Uj" target="_blank">https://drive.google.com/open?id=1XE9MEuU43a_Jzz9JyqK8X70rz67Y01Uj</a></p>
+
+<h3>Настройка termux для работы с SSH соединением </h3>
+<p>Первым делом ставим пароль командой, ввода не будет видно</p>
+<pre>passwd</pre>
+<p>Узнаем имя пользователя в termux</p>
+<pre>whoami</pre>
+	<div class="text_image">
+<center>
+  <img src="img/whoami-termux.webp" alt="" onclick = 'openImageWindow(this.src);' />
+</center>
+	</div>
+	<p>открываем и обновляемся, пишем команду:</p>
+<pre>apt-get update</pre>
+	<p>устанавливаем ssh на android</p>
+<pre>apt install openssh</pre>
+	<p>запускаем </p>
+<pre>sshd</pre>
+<p>открываем порт, для termux я использую 8022</p>
+<pre>ssh localhost -p 8022</pre>
+	<p>Узнаем наш локальный ip и запоминаем его</p>
+<pre>ifconfig</pre>
+<p>Порт открыт, настройка завершена. Для примера нам этого хватит, чуть дальше расскажу как создать ключ и подключатся по ключу.</p>
+	<center><h4>Настройка PUTTY для подключения к android по ssh</h4></center>
+<p>Качаем putty с официального сайта</p>
+<a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank">https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html</a>
+<p>или вот установочный файл</p>
+<a href="https://drive.google.com/file/d/1nJyVK1wgqDDO1OjQdGoAKpW8O0X8izz7/view" target="_blank">https://drive.google.com/file/d/1nJyVK1wgqDDO1OjQdGoAKpW8O0X8izz7/view</a>
+<p>Устанавливаем и запускаем в окно host name вбиваем наш ip увиденный в команде ifconfig и указываем открытый нами порт 8022.</p>
+	<div class="text_image">
+	<center>
+	  <img src="img/putty-8888.webp" alt="" onclick = 'openImageWindow(this.src);' />
+	</center>	
+		</div>
+<p>Заходим в браузер Firefox about:preferences#general. Выбираем прокси и в настройках ставим Socks5 localhost и порт 8888. И теперь мы используем интернет нашего телефона через браузер на windows</p>
+	<div class="text_image">
+		<center>
+		  <img src="img/putty-set.webp" alt="" onclick = 'openImageWindow(this.src);'/>
+        </center>
+		</div>
+	<center><h4>Подключение putty через командную строку CMD по SSH используя логин и пароль</h4></center>
+<p>Постоянно неудобно подключатся в putty через меню, поэтому проще использовать командную строку cmd или создать bat файл который будет подключаться автоматически.</p>
+
+<p>Переходим в командную строку win+r пишем cmd или просто пишем в поиск меню пуск cmd. Открывается черное окно, переходим в каталог putty </p>
+
+
+<pre>cd c:\Program Files\PuTTY</pre>
+
+<p>автологин в putty в ssh на андроид.</p>
+<pre>putty.exe -ssh name@192.168.0.103 8022 -pw password</pre>
+
+<p>подключаем Socks5 автоматически</p>
+<pre>putty.exe -ssh -D 8888 name@192.168.0.103 8022 -pw password</pre>
+
+<p>или создаем текстовый файл прописываем следующее и сохраняем в формате .bat</p>
+
+<pre>cd C:\Program Files\PuTTY
+putty.exe -ssh -D 8888 name@192.168.0.103 8022 -pw password</pre>
+
+</body>
+</html>
+	
