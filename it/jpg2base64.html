@@ -113,8 +113,9 @@
   });
 </script>
 	  <style>
- * {
+* {
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -124,34 +125,20 @@ body {
 }
 
 .container {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  gap: 1rem;
+  margin: 40px auto;
+  max-width: 600px;
+  padding: 20px;
 }
 
-.container > * {
-  flex: 1 1 300px;
-  max-width: 98%;
-}
 
 input[type="file"],
+		  
 textarea {
-  display: block;
-  width: 98%;
-  padding: 1rem;
+  width: 100%;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 10;
-}
-
-textarea {
-  height: 200px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 button {
@@ -168,14 +155,31 @@ button {
   transition: all 0.2s;
 }
 
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
 button:hover {
-  background-color: #0069d9;
+  background-color: #3e8e41;
 }
-
-button:active {
-  background-color: #005cbf;
+		  
+		  #copy {
+  margin-left: 10px;
 }
-
+#convert {
+  margin-left: 10px;
+}
+		  
+		  label {
+  display: block;
+  margin-bottom: 10px;
+}
 </style>
 
   
