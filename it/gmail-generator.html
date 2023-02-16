@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<title>Free Gmail Dot Trick Generator</title>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free Gmail Dot Trick Generator">
+<meta name="keywords" content="gmail,trick,generator"> 
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Gmail Dot Trick Generator">
+<meta name="twitter:description" content="Free Gmail Dot Trick Generator">
+<meta name="twitter:image" content="img/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Free Gmail Dot Trick Generator">
+<meta property="og:description" content="Free Gmail Dot Trick Generator">
+<meta property="og:image" content="img/">
+<meta property="og:site_name" content="DzenIT">
+  </head>
+  <body>
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../about.html">ABOUT</a>
+  </div>
+  <center><h1>Free Gmail Dot Trick Generator</h1></center>
+  <p>Max 3000 gmail in text area</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="input-group mb-3">
+                <input type="text" id="username" min="1" max="14" class="form-control" placeholder="example@gmail.com" aria-label="example@gmail.com" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" id="generate"><i class="fas fa-cog"></i> Generate</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emails" id="counter" class="float-right">Generated: 0</label>
+                <div class="input-group">
+                    <textarea class="form-control" id="emails" rows="16"></textarea>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="copy"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("copy").addEventListener("click", function() {
+        var textarea = document.getElementById("emails");
+        textarea.select();
+        document.execCommand('copy');
+    });
+</script>
+
+
+
+  <style>
+.container {
+  padding: 20px;
+}
+
+.form-control {
+  width: 100%;
+  height: 100%;
+  margin: 20px 0;
+}
+
+textarea {
+  height: 80vh;
+  resize: none;
+}
+
+@media (max-width: 768px) {
+  .form-control {
+    margin: 10px 0;
+  }
+}
+
+
+	  </style>
+	  
+	  <script>
+		  
+		  function updateEmails(e) {
+    document.getElementById("emails").value = "";
+    count = 0;
+    let t = new Date;
+    for (let t of generate(e)) {
+        if (count >= 3000) {
+            break;
+        }
+        document.getElementById("emails").value += t + "@gmail.com\r\n";
+        count += 1;
+        counterLabel.innerText = "Generated: " + count;
+    }
+    document.getElementById("emails").value = document.getElementById("emails").value.slice(0, -1);
+    new Date;
+}
+	  
+	  let counterLabel=document.getElementById("counter"),count=0,username=document.getElementById("username").value;function*generate(e){if(e.length<=1)yield e;else{let t=e[0],n=e.slice(1);for(let e of generate(n))yield t+e,yield t+"."+e}}function updateEmails(e){document.getElementById("emails").value="",count=0;let t=new Date;for(let t of generate(e))document.getElementById("emails").value+=t+"@gmail.com\r\n",count+=1,counterLabel.innerText="Generated: "+count;document.getElementById("emails").value=document.getElementById("emails").value.slice(0,-1);new Date}document.getElementById("generate").onclick=function(){let e=document.getElementById("username").value,t=document.getElementById("username").value;/@gmail\.com$/.test(t)?username!==e&&(username=e.split("@gmail.com")[0].replace(/[^a-zA-Z0-9]/g,""),console.log(username),username.length>1&&setTimeout(updateEmails(username),150)):alert("Please enter a valid Email Address")},document.getElementById("save").onclick=function(){blob=new Blob([document.getElementById("emails").value],{type:"text/plain;charset=utf-8",endings:"transparent"}),FileSaver.saveAs(blob,document.getElementById("username").value+".txt")};
+
+	  </script>
+   </body>
+
+</html>
