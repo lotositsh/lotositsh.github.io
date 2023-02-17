@@ -132,7 +132,14 @@ button:hover {
 </style>
 	  
 	  <script>
-		  
+if (e.length < 1 || e.length > 14) {
+    alert("Please enter a valid Email Address");
+    return;
+}
+updateEmails(e.split("@")[0].replace(/[^a-zA-Z0-9]/g, ""));
+
+		  let counterLabel = document.getElementById("counter");
+
 		  function updateEmails(e) {
     document.getElementById("emails").value = "";
     count = 0;
