@@ -149,6 +149,12 @@ function updateEmails(e) {
   new Date;
 }
 
+if (e.length < 1 || e.length > 14) {
+    alert("Enter 1 to 14 charters");
+    return;
+}
+updateEmails(e.split("@")[0].replace(/[^a-zA-Z0-9]/g, ""));
+
 	  </script>
    </body>
 
