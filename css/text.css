@@ -64,3 +64,23 @@ body {
    border-left: 4px solid #d97025;
    overflow: auto;
 }
+pre.code {
+  margin: 10px 0px 10px 10px;
+  padding: 10px;
+  color: #1f5757;
+  font: 16px normal helvetica, sans-serif;
+  border-left: 4px solid #d97025;
+  overflow: auto;
+
+}
+
+button.copy-button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  
+}
