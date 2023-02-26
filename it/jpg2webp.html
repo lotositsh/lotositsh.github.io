@@ -7,6 +7,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
 <meta name="viewport" content="width=device-width">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../css/script.js"></script>
 <meta name="description" content="python конвертация jpg и png в webp">
 <meta name="keywords" content="python, конвертация jpg png webp"> 
 
@@ -59,43 +60,41 @@
 </div>
 	<center><h1><b>python 3 конвертация jpg и png в webp</b></h1></center>
 	<p>Напишем простой код на python 3 для конвертации всех файлов  в папке формата jpg и png в webp. Сам код с комментариями:</p>
-	<pre>
-#подключаем библиотеки
-from PIL import Image
-import PIL
+
+	<pre class="code">
+	# Import necessary libraries
 import os
-import glob
-#сканируем все файлы в директории
-files = os.listdir() 
-#выводим все файлы
-print(f"Все файлы в директории {files}")
-#отсеиваем только в формате jpg и png
-images = [file for file in files if file.endswith(('jpg', 'png'))]
-print(f"Все файлы с форматом jpg и png {images}")
+from PIL import Image
 
-def convert_image(image_path, image_type):
-    # сам процесс конвертации
+# Define a function to convert images to webp format
+def convert_image(image_path):
+    # Open image
     im = Image.open(image_path)
-    im = im.convert('RGB')
-    #здесь мы можем указать приписку к имени файла в кавычках
-    image_name = image_path.split('.')[0]
-    print(f"Это имя нового файла: {image_name}")
 
-    #сохраняем в новый формат webp
-    if image_type == 'jpg' or image_type == 'png':
-        im.save(f"{image_name}.webp", 'webp')
-    else:
-        #если не нашел файлов нужного нам формата - выдаст ошибку
-        raise Error
+    # Convert image to RGB format
+    im = im.convert('RGB')
+
+    # Get image name and extension
+    image_name, image_ext = os.path.splitext(image_path)
+
+    # Save image in webp format
+    im.save(f"{image_name}.webp", 'webp')
+
+# Get all files in current directory
+files = os.listdir()
+
+# Filter out all image files
+images = [file for file in files if file.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.gif', '.tiff'))]
+
+# Convert each image to webp format
 for image in images:
-    if image.endswith('jpg'):
-        convert_image(image, image_type='jpg')
-    elif image.endswith('png'):
-        convert_image(image, image_type='png')
-    else:
-        raise Error
-input('для продолжения нажмите любую клавишу')
+    convert_image(image)
+
+# Print success message
+print("All images converted to webp format successfully!")
 	</pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
+	
 	<p>Скачать файл питона для изучения можно <a href="https://drive.google.com/file/d/1R-DJPKMJ_UC2vCS_qBFI_REoVPnLvaI3/view?usp=sharing" target="_blank">тут</a>, а также файл exe для windows <a href="https://drive.google.com/file/d/1ZXHfAfYqF9-sxLzMYMnAW3CK-B_tP7a-/view?usp=sharing" target="_blank">здесь</a>. Просто поместите программу с файлами jpg png, которые нужно перевести в формат webp и запустите.</p>
 <p>На картинке можем увидеть результат сжатия jpg в webp, разрешение 1600*1200. Без потери качества размер изображения уменьшился в 5 раз</p>
 <p>Улучшенная версия на github ---> <a href="https://github.com/lotositsh/image2webp.git" target="_blank" rel="noopener noreferrer">https://github.com/lotositsh/image2webp.git</a></p>
