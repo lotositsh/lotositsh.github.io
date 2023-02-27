@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<title>Расчет резистора для LED. Калькулятор</title>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Расчет резистора для LED. Калькулятор">
+<meta name="keywords" content="расчет резистора, светодиод, калькулятор"> 
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Расчет резистора для LED. Калькулятор">
+<meta name="twitter:description" content="Расчет резистора для LED. Калькулятор">
+<meta name="twitter:image" content="img/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Расчет резистора для LED. Калькулятор">
+<meta property="og:description" content="Расчет резистора для LED. Калькулятор">
+<meta property="og:site_name" content="DzenIT">
+  </head>
+  <body>
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../about.html">ABOUT</a>
+  </div>
+  <center><h1>Расчет резистора для светодиода LED. Калькулятор</h1></center>
+  
+  <center><h1>LED Resistor Calculator</h1></center>
+	<form>
+		<label for="voltage">Supply Voltage (V): </label>
+		<input type="number" id="voltage" name="voltage" min="1" max="100" step="0.1" required>
+		<br><br>
+		<label for="led-voltage">LED Voltage (V): </label>
+		<input type="number" id="led-voltage" name="led-voltage" min="1" max="100" step="0.1" required>
+		<br><br>
+		<label for="led-current">LED Current (mA): </label>
+		<input type="number" id="led-current" name="led-current" min="1" max="1000" required>
+		<br><br>
+		<input type="submit" value="Calculate">
+	</form>
+	<br><br>
+	<div id="result"></div>
+	<script>
+		const form = document.querySelector('form');
+		form.addEventListener('submit', function(event) {
+			event.preventDefault();
+			const voltage = parseFloat(document.querySelector('#voltage').value);
+			const ledVoltage = parseFloat(document.querySelector('#led-voltage').value);
+			const ledCurrent = parseInt(document.querySelector('#led-current').value);
+			const resistorValue = Math.round((voltage - ledVoltage) / (ledCurrent / 1000));
+			const resistorPower = Math.round((ledCurrent / 1000) * (voltage - ledVoltage));
+			document.querySelector('#result').innerHTML = `Resistor Value: ${resistorValue} ohms<br>Resistor Power: ${resistorPower} W`;
+		});
+	</script>
+	  
+   <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      color: #555;
+    }
+
+    form {
+      text-align: center;
+      margin: 0 auto;
+      width: 500px;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0px 0px 15px #ddd;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #777;
+    }
+
+    input[type=number] {
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 0px 0px 10px #ddd;
+      margin-bottom: 10px;
+      width: 80%;
+    }
+
+    input[type=submit] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0px 0px 10px #007bff;
+    }
+
+    input[type=submit]:hover {
+      background-color: #fff;
+      color: #007bff;
+      border: 1px solid #007bff;
+    }
+
+    #result {
+      text-align: center;
+      margin-top: 20px;
+      color: #777;
+    }
+  </style>
+	  
+   </body>
+
+</html>
