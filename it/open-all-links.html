@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html><head>
 <meta charset="UTF-8">
@@ -39,7 +38,7 @@
   <br>
 
 <br>
- <textarea id="links"></textarea>
+<textarea id="links"></textarea>
 <p>Enter delay in seconds</p>
 <input type="number" id="delay" placeholder="Enter delay in seconds">
 <button id="open-links-btn">Open links</button>
@@ -48,6 +47,7 @@
 function openLinksInNewTab() {
   var links = document.getElementById("links").value.split("\n");
   var delay = document.getElementById("delay").value * 1000;
+  var count = delay / 1000;
   for (var i = 0; i < links.length; i++) {
     if (links[i].trim() !== "") {
       setTimeout(function(url) {
@@ -56,7 +56,17 @@ function openLinksInNewTab() {
         a.target = "_blank";
         a.rel = "noopener noreferrer";
         document.body.appendChild(a);
-        a.click();
+        var linkText = document.createTextNode("Opening link in " + count + " seconds...");
+        a.appendChild(linkText);
+        var interval = setInterval(function() {
+          count--;
+          linkText.nodeValue = "Opening link in " + count + " seconds...";
+          if (count === 0) {
+            clearInterval(interval);
+            a.click();
+            count = delay / 1000;
+          }
+        }, 1000);
       }, delay * i, links[i]);
     }
   }
@@ -65,7 +75,58 @@ function openLinksInNewTab() {
 document.getElementById("open-links-btn").addEventListener("click", openLinksInNewTab);
 </script>
 
+
+
+
+<h3>Convert time to seconds</h3>
+
+<form>
+		<label for="hours">Hours:</label>
+		<input type="text" id="hours" name="hours" placeholder="0"><br>
+
+		<label for="minutes">Minutes:</label>
+		<input type="text" id="minutes" name="minutes" placeholder="0"><br>
+
+		<label for="seconds">Seconds:</label>
+		<input type="text" id="seconds" name="seconds" placeholder="0"><br>
+
+		<button type="button" onclick="convertTime()">Convert to seconds</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+		function convertTime() {
+			var hours = parseInt(document.getElementById("hours").value) || 0;
+			var minutes = parseInt(document.getElementById("minutes").value) || 0;
+			var seconds = parseInt(document.getElementById("seconds").value) || 0;
+			var totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+			document.getElementById("result").innerHTML = "Total seconds: " + totalSeconds;
+		}
+	</script>
+
+
+
 <style>
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-size: 1.2rem;
+  margin-top: 50px;
+}
+label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 5px;
+  width: 100px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
     .container {
         max-width: 800px;
         margin: 0 auto;
@@ -79,6 +140,20 @@ document.getElementById("open-links-btn").addEventListener("click", openLinksInN
   border: 5px solid #ccc;
   border-radius: 15px;
   margin-bottom: 10px;
+}
+button {
+  margin-top: 20px;
+  padding: 10px;
+  width: 150px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0062cc;
 }
     }
     #open-links-btn {
@@ -121,6 +196,8 @@ button {
 
 button:hover {
   background-color: #3e8e41;
+  
+
 </style><br><br><br>
 
 	  <details><summary><b>If not oppened</b></summary><div class="text_image">
