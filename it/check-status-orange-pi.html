@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<script src="../css/script.js"></script>
+<title>Проверка статуса orange pi через телеграм</title>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Проверка статуса orange pi через телеграм">
+<meta name="keywords" content="orange pi, status, telegram, bot"> 
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Проверка статуса orange pi через телеграм">
+<meta name="twitter:description" content="Проверка статуса orange pi через телеграм">
+<meta name="twitter:image" content="img/status.jpg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Проверка статуса orange pi через телеграм">
+<meta property="og:description" content="Проверка статуса orange pi через телеграм">
+<meta property="og:image" content="img/status.jpg">
+<meta property="og:site_name" content="DzenIT">
+  </head>
+  <body>
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../about.html">ABOUT</a>
+  </div>
+  <center><h1>Проверка статуса orange pi через телеграм</h1></center>
+  
+<p>Orange Pi — популярный мини-ПК, который можно использовать для различных приложений, таких как игры, медиацентры и проекты «сделай сам». Однако важно регулярно проверять его статус, чтобы убедиться, что он работает эффективно. В этой статье мы рассмотрим простой способ проверки температуры вашего Orange Pi и удаленной загрузки файлов с помощью бота Telegram.</p>
+
+<p>Для начала вам необходимо создать бота Telegram, следуя инструкциям, предоставленным Telegram. После того, как вы создали своего бота, вам необходимо получить токен бота и идентификатор чата. Они будут использоваться в коде для удаленной загрузки и обновления статуса.</p>
+
+<p>Код для проверки температуры вашего Orange Pi и удаленной загрузки файлов через Telegram-бот выглядит следующим образом:</p>
+	  
+	  <pre class="code">
+	  import os
+import logging
+from aiogram import Bot, Dispatcher, types, executor
+from aiogram.dispatcher.filters import Command
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+
+# Create a Telegram bot instance
+bot = Bot(token='YOUR_TOKEN_HERE')
+
+# Set up the dispatcher
+dp = Dispatcher(bot)
+
+# Define the handler for the /status command
+@dp.message_handler(Command('status'))
+async def status(message: types.Message):
+    user_id = message.from_user.id
+    allowed_user_id = 777777777  # Replace with your user ID
+
+    if user_id != allowed_user_id:
+        await message.answer(&quot;You are not authorized to run this command.&quot;)
+        return
+    # Run the command to get system status and store the output
+    cmd_output = os.popen(
+        &quot;free -m | awk 'NR==2{printf \&quot;RAM: %s/%sMB (%.2f%%)\\n\&quot;, $3,$2,$3*100/$2 }' &amp;&amp; &quot;
+        &quot;df -h | awk '$NF==\&quot;/\&quot;{printf \&quot;SD: %d/%dGB (%s)\\n\&quot;, $3,$2,$5}' &amp;&amp; &quot;
+        &quot;echo 'Temp: ' &amp;&amp; cat /sys/class/thermal/thermal_zone0/temp | awk '{printf \&quot;%.1f°C\\n\&quot;, $1/1000}' &amp;&amp; &quot;
+        # &quot;echo 'CPU usage: ' &amp;&amp; mpstat -P ALL | awk '{if($2 ~ /[0-9]+/ &amp;&amp; $2 &lt; 4) print \&quot;CPU\&quot;,$2\&quot;:\&quot;,100-$NF\&quot;%\&quot;}' &amp;&amp; &quot;
+        &quot;echo 'IP address: ' &amp;&amp; curl -s ifconfig.co &amp;&amp; echo ' ('$(curl -s ifconfig.co/country)')'&quot;,
+        &quot;r&quot;).read()
+
+    # Send the output back to the user
+    await message.answer(cmd_output)
+
+# Start the bot
+if __name__ == '__main__':
+    logging.info(&quot;Starting bot...&quot;)
+    executor.start_polling(dp, skip_updates=True)
+
+	  
+	  </pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
+<p>Можно также посмотреть его на git: <a href="https://github.com/lotositsh/Check-status-orange-pi-telegram" target="_blank" rel="noopener noreferrer">https://github.com/lotositsh/Check-status-orange-pi-telegram</a></p>
+	</body>
+
+</html>
