@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<script src="../css/script.js"></script>
+<title>Скрипт Python для воспроизведения аудиофайла в цикле с Wakelock в Termux</title>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Скрипт Python для воспроизведения аудиофайла в цикле с Wakelock в Termux">
+<meta name="keywords" content="cript, audio file, loop, interval, wakelock, termux-wake-lock, phone, sleep, duration, countdown, signal handler, SIGINT signal, CTRL+C, interrupt, user, error handling, termux-wake-unlock"> 
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Скрипт Python для воспроизведения аудиофайла в цикле с Wakelock в Termux">
+<meta name="twitter:description" content="Скрипт Python для воспроизведения аудиофайла в цикле с Wakelock в Termux">
+<meta name="twitter:image" content="img/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Скрипт Python для воспроизведения аудиофайла в цикле с Wakelock в Termux">
+<meta property="og:description" content="Скрипт Python для воспроизведения аудиофайла в цикле с Wakelock в Termux">
+<meta property="og:image" content="img/">
+<meta property="og:site_name" content="DzenIT">
+  </head>
+  <body>
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../about.html">ABOUT</a>
+  </div>
+  <center><h1>Скрипт Python для воспроизведения аудиофайла в цикле с Wakelock в Termux</h1></center>
+  
+  <p>Этот скрипт многократно воспроизводит аудиофайл (melody1.mp3) в цикле с заданным интервалом (60 секунд). Он также устанавливает блокировку с помощью команды termux-wake-lock, чтобы предотвратить переход телефона в спящий режим во время цикла.</p>
+
+<pre class="code">
+	  
+import time
+import os
+import signal
+
+filename = "melody1.mp3"
+duration = 1800
+interval = 60
+os.system("termux-wake-lock")
+
+# Define a signal handler function to release wakelock on SIGINT
+def signal_handler(sig, frame):
+    os.system("termux-wake-unlock")
+    print("\nWakelock released. Exiting...")
+    exit(0)
+
+# Register the signal handler function for SIGINT
+signal.signal(signal.SIGINT, signal_handler)
+
+# Start the countdown loop
+for i in range(duration, 0, -interval):
+    print(f"{i//60} minutes remaining...")
+    os.system("play " + filename)
+    time.sleep(interval)
+
+# Release wakelock at the end of the loop
+os.system("termux-wake-unlock")	  	  
+ </pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
+
+	  
+<p>Цикл выполняется в течение заданной продолжительности 1800 секунд (30 минут) и отображает обратный отсчет оставшегося времени в минутах на каждой итерации. После завершения цикла сценарий снимает блокировку с помощью команды termux-wake-unlock.</p>
+
+<p>Сценарий также включает функцию обработки сигнала, зарегистрированную для сигнала SIGINT (обычно запускается нажатием CTRL+C в терминале). Если сценарий прерывается пользователем вручную, обработчик сигналов снимает блокировку пробуждения и корректно завершает выполнение сценария.</p>
+
+<p>В целом, этот сценарий предназначен для многократного воспроизведения аудиофайла, поддерживая телефон в бодрствующем состоянии, и включает обработку ошибок, чтобы гарантировать, что блокировка пробуждения будет снята правильно, когда сценарий будет прерван.</p>
+	  
+	  Запуск выполняется командой
+	  <pre class="code">python namescript.py</pre>
+<button class="copy-button" onclick="copyCode(2)">Copy</button>
+  <br><br>
+	  <a href="https://github.com/lotositsh/termux-melody-every-1-minut" target="_blank" rel="noopener noreferrer">github</a>
+	  
+	  
+   </body>
+
+</html>
