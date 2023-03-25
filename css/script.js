@@ -3,7 +3,7 @@ function copyCode(index) {
   var codeBlock = document.getElementsByClassName("code")[index - 1];
 
   // Highlight the code block
-  codeBlock.style.backgroundColor = "yellow";
+  codeBlock.style.backgroundColor = "#EAF2F8";
   setTimeout(function() {
     codeBlock.style.backgroundColor = "white";
   }, 500);
