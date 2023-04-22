@@ -209,8 +209,12 @@ read varname
 yt-dlp -f 'bv[height=1080][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 "$varname
 mv *.mp4 storage/downloads/</pre>
 	
-	
-	
+	<p>Качаем плейлист в формате mp3</p>
+	<pre>
+	yt-dlp --format bestaudio --extract-audio --audio-format mp3 --download-archive videos.txt  https://www.youtube.com/playlist?list=PLOnp-UE9ll3WuNulRhIQjAsfx7bwZGcYp -o '%(channel_id)s/%(playlist_id)s/%(title)s.%(id)s.%(ext)s'
+	</pre>
+	<p>Качаем плейлист в 1080p с лучшим звуком</p>
+	<pre>yt-dlp -f 'bv*[height=1080]+ba' --download-archive videos.txt  https://www.youtube.com/playlist?list=PLlVlyGVtvuVnUjA4d6gHKCSrLAAm2n1e6 -o '%(channel_id)s/%(playlist_id)s/%(title)s.%(id)s.%(ext)s'</pre>
 	
 	<p><b>sh скрипты для скачивания с помощью yt-dlp в termux разных форматов</b></p>
 <br>

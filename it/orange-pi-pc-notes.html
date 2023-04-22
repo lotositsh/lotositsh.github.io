@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<script src="../css/script.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/text.css">
     <title>Orange Pi PC Заметки</title>
@@ -368,4 +369,51 @@ sudo make install</pre>
 <pre>[Seat:*]
 autologin-user=user
 autologin-user-timeout=0</pre>
+	
+	
+	<h3>Установка Python 3.9.1 на Debian Buster </h3>
+<pre class="code">apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev liblzma-dev</pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
+<pre class="code">wget https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tgz</pre>
+<button class="copy-button" onclick="copyCode(2)">Copy</button>
+<pre class="code">tar -xf Python-3.9.1.tgz</pre>
+<button class="copy-button" onclick="copyCode(3)">Copy</button>
+<pre class="code">cd Python-3.9.1</pre>
+<button class="copy-button" onclick="copyCode(4)">Copy</button>
+
+	<a href="https://t.me/dzenit_xyz/76" target="_blank" rel="noopener noreferrer">скачать альтернатива</a>
+<pre class="code">./configure --enable-optimizations</pre>
+<button class="copy-button" onclick="copyCode(5)">Copy</button>
+<pre class="code">make -j 4</pre>
+	<p>Указываем количество ядер для компляции</p>
+<button class="copy-button" onclick="copyCode(6)">Copy</button>
+<pre class="code">make altinstall</pre>
+<button class="copy-button" onclick="copyCode(7)">Copy</button>
+<pre class="code">python3.9 --version</pre>
+<button class="copy-button" onclick="copyCode(8)">Copy</button>
+	<pre>python3.9 -m pip install --upgrade pip</pre>
+<pre>python3.9 -m pip install -r requirements.txt</pre>
+	
+	
+	<h3>Устраняем ошибку: "Failed to build tiktoken 1894  ERROR: Could not build wheels for tiktoken, which is required to install pyproject.toml-based projects"</h3>
+	
+	
+	<pre class="code">curl https://sh.rustup.rs 296 -sSf | sh</pre>
+<button class="copy-button" onclick="copyCode(9)">Copy</button>
+<pre class="code">source "$HOME/.cargo/env"</pre>
+<button class="copy-button" onclick="copyCode(10)">Copy</button>
+	
+	
+	<h3>install pillow to orangepi </h3>
+<pre class="code">sudo apt install python-pil</pre>
+<button class="copy-button" onclick="copyCode(11)">Copy</button>
+<pre class="code">apt install python3-scipy</pre>
+<button class="copy-button" onclick="copyCode(12)">Copy</button>
+
+<h3>install aiogram orangepi</h3>
+<pre class="code">apt-get install build-essential python3-dev</pre>
+<button class="copy-button" onclick="copyCode(14)">Copy</button>
+<pre class="code">sudo pip3 install aiogram</pre>
+<button class="copy-button" onclick="copyCode(15)">Copy</button>
+	
 </html>
