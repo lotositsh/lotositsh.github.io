@@ -111,6 +111,8 @@
 <p><b>-qmin:v 19 -qmax:v 14</b> sets minimum and maximum quantization values (optional)</p>
 <p><em>-b:v 6M -maxrate:v 10M</em> sets average (target) and maximum bitrate allowed for the encoder</p>
 <br>
+<p><b>MP3 в MP4 без рисунка черный экран</b></p>
+<pre>ffmpeg -f lavfi -i color=c=black:s=1280x720:r=5 -i audio.mp3 -crf 0 -c:a copy -shortest output.mp4</pre>
 <p><b>Соотношение сторон</b></p>
 	<pre>ffmpeg -i input.mp4 -aspect 16:9 -vf scale=1280:720 output.mp4</pre>
 	<br>
