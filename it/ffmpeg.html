@@ -3,7 +3,7 @@
 	
 <head>
 <meta charset="UTF-8">
-
+<script src="../css/script.js"></script>
 <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
 <meta name="viewport" content="width=device-width">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -116,6 +116,38 @@
 <p><b>Соотношение сторон</b></p>
 	<pre>ffmpeg -i input.mp4 -aspect 16:9 -vf scale=1280:720 output.mp4</pre>
 	<br>
+	<p><b>Ускорение и замедление</b></p>
+<p>Замедлить видео в 5 раз:</p>
+<pre>ffmpeg -i input.mp4 -an -vf setpts=5*PTS result.mp4</pre>
+<p>Ускорить видео в 4 раза:</p>
+<pre>ffmpeg -i input.mp4 -an -vf setpts=0.25*PTS result.mp4</pre>
+
+<p>Ускорить видео в 4 раза:</p>
+<pre>ffmpeg -i input.mp4 -an -vf setpts=PTS/4 result.mp4</pre>
+<p>Ускорить видео в 20 раз:</p>
+<pre>ffmpeg -i input.mp4 -an -vf setpts=PTS/20 result.mp4</pre>
+
+
+<p>Ускорение замедление аудио</p>
+<p>Для изменения темпа используется аудиофильтр atempo:</p>
+<p>-af atempo=темп
+Темп должен быть в пределах 0.5...100</p>
+
+<p>Ускорить аудио в 5 раз:</p>
+<pre>ffmpeg -i input.wav -af atempo=5 result.mp3</pre>
+<p>Замедлить аудио в 2 раза:</p>
+<pre>ffmpeg -i input.wav -af atempo=0.5 result.mp3</pre>
+<pre>ffmpeg -i input.wav -af atempo=1/2 result.mp3</pre>
+
+<p>Для замедления аудио в 4 раза, нужно последовательно применить фильтр два раза:</p>
+<pre>ffmpeg -i input.wav -af atempo=0.5,atempo=0.5 result.mp3</pre>
+
+<p>Ускорить аудио и видео в 2 раза</p>
+<pre>ffmpeg -i input.mp4 -vf setpts=PTS/2 -af atempo=2 result.mp4</pre>
+<p>Замедлить аудио и видео в 2 раза</p>
+<pre>ffmpeg -i input.mp4 -vf setpts=PTS*2 -af atempo=0.5 result.mp4</pre>
+
+
 	<b><p>Добавляем ffmpeg в командную строку windows</p></b>
 	<p>Мой компьютер - Свойства - Дополнительные параметры системы - Переменные среды</p>
 	<p>Выбираем строку где Path - изменить, потом Создать, прописываем расположение папки ffmpeg.exe.</p>
