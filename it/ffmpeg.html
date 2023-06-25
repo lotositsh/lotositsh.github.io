@@ -147,6 +147,44 @@
 <p>Замедлить аудио и видео в 2 раза</p>
 <pre>ffmpeg -i input.mp4 -vf setpts=PTS*2 -af atempo=0.5 result.mp4</pre>
 
+<p><b>Разбиваем видеофайл на части по 15 минут ffmpeg</b></p>
+
+<pre>ffmpeg -i 1-1.mp4 -ss 00:00:00 -t 00:15:00 -c copy 1-1(01).mp4
+ffmpeg -i 1-1.mp4 -ss 00:15:00 -t 00:15:00 -c copy 1-1(02).mp4</pre>
+
+<p>Делаем это автоматически при помощи python:</p>
+
+<pre class="code">import os
+
+input_file = "1-1.mp4"  # Replace with the name of your input video file
+output_file_template = "1-1({:02d}).mp4"
+
+segments = ["00:00:00", "00:15:00", "00:30:00", "00:45:00", "01:00:00"]
+counter = 0
+
+for segment in segments:
+    counter += 1
+    output_file = output_file_template.format(counter)
+    command = f"ffmpeg -i {input_file} -ss {segment} -t 00:15:00 -c copy {output_file}"
+    os.system(command)</pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
+<br>
+<p>Или обычный bat файл:</p>
+
+<pre class="code">ffmpeg -i 1-1.mp4 -ss 00:00:00 -t 00:15:00 -c copy 1-1(01).mp4
+ffmpeg -i 1-1.mp4 -ss 00:15:00 -t 00:15:00 -c copy 1-1(02).mp4
+ffmpeg -i 1-1.mp4 -ss 00:30:00 -t 00:15:00 -c copy 1-1(03).mp4
+ffmpeg -i 1-1.mp4 -ss 00:45:00 -t 00:15:00 -c copy 1-1(04).mp4
+ffmpeg -i 1-1.mp4 -ss 01:00:00 -t 00:15:00 -c copy 1-1(05).mp4</pre>
+<button class="copy-button" onclick="copyCode(2)">Copy</button>
+
+<p>Обьеденить файлы mp4</p>
+<p>для windows cmd</p>
+
+<pre>(for %i in (*.mp4) do @echo file '%i') > mylist.txt</pre>
+
+<pre>ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.mp4</pre>
+
 
 	<b><p>Добавляем ffmpeg в командную строку windows</p></b>
 	<p>Мой компьютер - Свойства - Дополнительные параметры системы - Переменные среды</p>
