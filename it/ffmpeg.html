@@ -169,6 +169,29 @@ for segment in segments:
     os.system(command)</pre>
 <button class="copy-button" onclick="copyCode(1)">Copy</button>
 <br>
+<p>или</p>
+<pre class="code">import os
+from datetime import datetime, date, timedelta
+input_file = "output.mp4"  # Replace with the name of your input video file
+output_file_template = "1-1({:02d}).mp4"
+
+segments = ["00:00:00", "00:15:00"]
+
+counter = 0
+
+while True:
+    last_segment = segments[-1]
+    last_segment_time = datetime.strptime(last_segment, '%H:%M:%S').time()
+    new_segment_time = (datetime.combine(date.today(), last_segment_time) + timedelta(minutes=15)).time()
+    new_segment = new_segment_time.strftime('%H:%M:%S')
+    segments.append(new_segment)
+    counter += 1
+    output_file = output_file_template.format(counter)
+    command = f"ffmpeg -i {input_file} -ss {last_segment} -t 00:15:00 -c copy {output_file}"
+    os.system(command)
+    if new_segment == '23:59:59':
+        break</pre>
+<button class="copy-button" onclick="copyCode(2)">Copy</button>
 <p>Или обычный bat файл:</p>
 
 <pre class="code">ffmpeg -i 1-1.mp4 -ss 00:00:00 -t 00:15:00 -c copy 1-1(01).mp4
@@ -176,7 +199,7 @@ ffmpeg -i 1-1.mp4 -ss 00:15:00 -t 00:15:00 -c copy 1-1(02).mp4
 ffmpeg -i 1-1.mp4 -ss 00:30:00 -t 00:15:00 -c copy 1-1(03).mp4
 ffmpeg -i 1-1.mp4 -ss 00:45:00 -t 00:15:00 -c copy 1-1(04).mp4
 ffmpeg -i 1-1.mp4 -ss 01:00:00 -t 00:15:00 -c copy 1-1(05).mp4</pre>
-<button class="copy-button" onclick="copyCode(2)">Copy</button>
+<button class="copy-button" onclick="copyCode(3)">Copy</button>
 
 <p>Обьеденить файлы mp4</p>
 <p>для windows cmd</p>
