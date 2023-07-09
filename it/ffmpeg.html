@@ -88,7 +88,7 @@
 	<p>Вырезаем фрагмент фильма с 00:06:40 по 00:13:20 без кодирования в ffmpeg</p>
 	<pre>ffmpeg -ss 00:06:40 -i 01full.mp4 -to 00:13:20 -c copy 02.mp4</pre>
 	<p>или так</p>
-	<pre>ffmpeg 06-01.mp4 -ss 00:00:33 -to 00:22:55 -c copy sndk06-01.mp4</pre>
+	<pre>ffmpeg -i 06-01.mp4 -ss 00:00:33 -to 00:22:55 -c copy sndk06-01.mp4</pre>
 	<p>ffmpeg качаем потоковое видео m3u8</p>
 	<pre>ffmpeg -i "URL" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 video.mp4</pre>
 	<p>Команда для linux bash:</p>
