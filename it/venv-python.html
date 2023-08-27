@@ -86,11 +86,29 @@
 	  <br>
 	  <p><b>Windows</b></p>
 	  
-	  <p>Отличие состовляют только команды старта и активации виртуальной среды</p>
+	  <p>Запуск виртуальной среды</p>
 	  <pre class="code">python -m venv venv</pre>
 <button class="copy-button" onclick="copyCode(9)">Copy</button>
+	 <p>Активация виртуальной среды</p>
 	  <pre class="code">venv\Scripts\activate</pre>
 <button class="copy-button" onclick="copyCode(10)">Copy</button>
+	 <p> Обновление пакетов pip</p>
+	  <pre class="code">python -m pip install --upgrade pip</pre>
+<button class="copy-button" onclick="copyCode(11)">Copy</button>
+	  <p>Установка пакетов</p>
+	  
+	   <pre class="code"> pip install -r requirements.txt</pre>
+<button class="copy-button" onclick="copyCode(12)">Copy</button>
+	  <p>Проверка установленных пакетов</p>
+	   <pre class="code">pip freeze</pre>
+<button class="copy-button" onclick="copyCode(13)">Copy</button>
+	  <p>Сохранить все зависимые библиотеки после завершения</p>
+	  <pre class="code">pip freeze > requirements.txt</pre>
+<button class="copy-button" onclick="copyCode(14)">Copy</button>
+	  <p>Деактивация виртуальной среды</p>
+	  
+	  <pre class="code">deactivate</pre>
+<button class="copy-button" onclick="copyCode(15)">Copy</button>
 	  
 	  <p>После создания виртуальной среды новый интерпретатор Python устанавливается в подкаталог каталога вашего проекта. Этот интерпретатор полностью отличается от общесистемной установки Python и других виртуальных сред, которые вы, возможно, создали.</p>
 	  
