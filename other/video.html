@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFrame Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <iframe id="myIframe" src="https://www.example1.com" frameborder="0" width="100%" height="500"></iframe>
+    <button id="changeIframeLink1">Change iframe contents 1</button>
+    <button id="changeIframeLink2">Change iframe contents 2</button>
+    <button id="changeIframeLink3">Change iframe contents 3</button>
+    <button id="changeIframeLink4">Change iframe contents 4</button>
+    <script>
+        $(document).ready(function () {
+            $('#changeIframeLink1').on('click', function () {
+                $('#myIframe').attr('src', 'https://player.vimeo.com/video/858266446#t=333?h=34d6bcc753&title=0&byline=0&portrait=0');
+            });
+            $('#changeIframeLink2').on('click', function () {
+                $('#myIframe').attr('src', 'https://player.vimeo.com/video/858266446#t=444?h=34d6bcc753&title=0&byline=0&portrait=0');
+            });
+            $('#changeIframeLink3').on('click', function () {
+                $('#myIframe').attr('src', 'https://player.vimeo.com/video/858266446#t=555?h=34d6bcc753&title=0&byline=0&portrait=0');
+            });
+            $('#changeIframeLink4').on('click', function () {
+                $('#myIframe').attr('src', 'https://player.vimeo.com/video/858266446#t=777?h=34d6bcc753&title=0&byline=0&portrait=0');
+            });
+        });
+    </script>
+</body>
+</html>
