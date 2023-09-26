@@ -16,3 +16,12 @@ function copyCode(index) {
   document.execCommand("copy");
   window.getSelection().removeAllRanges();
 }
+//scroll
+window.addEventListener('scroll', function() {
+  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  if (scrollPosition > 300) {
+    document.querySelector('.scroll-to-top').style.display = 'block';
+  } else {
+    document.querySelector('.scroll-to-top').style.display = 'none';
+  }
+});
