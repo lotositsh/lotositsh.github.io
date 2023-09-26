@@ -140,6 +140,10 @@
 </p>
 <p>Для записи обратно из gzip используем следующую команду</p>
 <pre>gunzip -c image.img.gz | dd of=/dev/sdd bs=4k conv=fsync,noerror status=progress</pre>
+<p>Если обычная команда для записи на флешку из img</p>
+<pre>dd if=/media/user/image.img of=/dev/sdd bs=4M status=progress</pre>
+<p>В любом случаи на флешки отобразиться место записаного образа (уменьшенного), для восстановления первоначального значения, для обоих флешек, воспользуйтесь командой (только orangepi):</p>
+<pre>systemctl start orangepi-resize-filesystem.service</pre>
 <br>
 <a href="https://4pda.to/forum/index.php?showtopic=750921&st=3060#entry63760085" target="_blank" rel="noopener noreferrer">Оригинал статьи</a>
   
