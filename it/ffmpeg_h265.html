@@ -97,7 +97,11 @@ for configfiless in configfiles:
 	  
 	  <p>Кодировка высокого качества используя gpu 265/HEVC 10-bit</p>
 	  <pre>ffmpeg.exe -hwaccel cuda -i in_video.mp4 -pix_fmt p010le -c:v hevc_nvenc -preset slow -rc vbr_hq -b:v 6M -maxrate:v 10M -c:a aac -b:a 320k out_video.mp4</pre>
-  <p><b>Параметры</b></p>
+<br>
+	  <p>Конвертация всех видео с разрешением 1280:720:</p>
+<pre>ffmpeg -f concat -safe 0 -i mylist.txt  -c:v hevc_nvenc -vf "scale=1280:720" output.mp4</pre>
+<br>
+	  <p><b>Параметры</b></p>
 <p><em>-hwaccel cuda</em> используем NVidia CUDA GPU ускоритель</p>
 <p><em>-pix_fmt p010le</em> YUV 4:2:0 10-бит</p>
 <p><em>-c:v hevc_nvenc</em> кодек HEVC/h265 использует gpu</p>
