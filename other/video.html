@@ -19,16 +19,21 @@
 
         $(document).ready(function () {
             $('#changeIframeLink1').on('click', function () {
-                $('#myIframe').attr('src', 'https://player.vimeo.com/video/858266446#t=333?h=34d6bcc753&title=0&byline=0&portrait=0');
+                // Append a unique query parameter to the URL
+                var newSrc = 'https://player.vimeo.com/video/858266446#t=333?h=34d6bcc753&title=0&byline=0&portrait=0&r=' + new Date().getTime();
+                $('#myIframe').attr('src', newSrc);
             });
             $('#changeIframeLink2').on('click', function () {
-                $('#myIframe').attr('src', 'https://player.vimeo.com/video/858266446#t=444?h=34d6bcc753&title=0&byline=0&portrait=0');
+                var newSrc = 'https://player.vimeo.com/video/858266446#t=444?h=34d6bcc753&title=0&byline=0&portrait=0&r=' + new Date().getTime();
+                $('#myIframe').attr('src', newSrc);
             });
             $('#changeIframeLink3').on('click', function () {
-                $('#myIframe').attr('src', 'https://player.vimeo.com/video/858266446#t=555?h=34d6bcc753&title=0&byline=0&portrait=0');
+                var newSrc = 'https://player.vimeo.com/video/858266446#t=555?h=34d6bcc753&title=0&byline=0&portrait=0&r=' + new Date().getTime();
+                $('#myIframe').attr('src', newSrc);
             });
             $('#changeIframeLink4').on('click', function () {
-                $('#myIframe').attr('src', 'https://player.vimeo.com/video/858266446#t=777?h=34d6bcc753&title=0&byline=0&portrait=0');
+                var newSrc = 'https://player.vimeo.com/video/858266446#t=777?h=34d6bcc753&title=0&byline=0&portrait=0&r=' + new Date().getTime();
+                $('#myIframe').attr('src', newSrc);
             });
         });
     </script>
