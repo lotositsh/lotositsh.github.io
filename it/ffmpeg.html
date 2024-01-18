@@ -208,7 +208,30 @@ ffmpeg -i 1-1.mp4 -ss 01:00:00 -t 00:15:00 -c copy 1-1(05).mp4</pre>
 <pre>(for %i in (*.mp4) do @echo file '%i') > mylist.txt</pre>
 
 <pre>ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.mp4</pre>
+<br><br>
+<p><b>Замена аудиодорожки:</b></p>
 
+<pre class="code">ffmpeg -i namevideo.mp4 -i nameaudio.mp3 -c:v copy -map 0:v -map 1:a -shortest output.mp4</pre>
+<button class="copy-button" onclick="copyCode(4)">Copy</button>
+
+
+ <p>-c:v copy, чтобы скопировать видеопоток из файла без изменений.</p>
+<p> -map мы указываем карту потоков для видео и аудио: -map 0:v указывает, что мы хотим использовать видеопоток из первого входного файла, и -map 1:a указывает, что мы хотим использовать аудиопоток из второго входного файла.</p>
+<p>-shortest мы указываем ffmpeg остановить запись, когда закончится аудиодорожка. Наконец, мы указываем выходной файл, названный "output.mp4".</p> 
+
+<br>
+<p>Чтобы добавить звуковую дорожку «01.mp3» со 100% громкостью в файл «01.webp», сохраняя при этом исходную звуковую дорожку из «01.webp» с громкостью 85%, вы можете использовать следующую команду ffmpeg:</p>
+<pre class="code">ffmpeg -i 01.webm -i 01.mp3 -filter_complex "[0:a]volume=0.85[a1]; [1:a]volume=1[a2]; [a1][a2]amix=inputs=2:duration=longest[out]" -map 0:v -map "[out]" -c:v copy -shortest output.webp
+</pre>
+<button class="copy-button" onclick="copyCode(5)">Copy</button>
+
+<p>Процесс довольно длительный поэтому можно использовать gpu. Входной файл 02.webm, звук 02.mp3, выходной 02.mp4 пресет fast:</p>
+
+<pre class="code">ffmpeg -hwaccel cuda -i 02.webm -i 02.mp3 -filter_complex "[0:a]volume=0.85[a1]; [1:a]volume=1[a2]; [a1][a2]amix=inputs=2:duration=longest[out]" -map 0:v -map "[out]" -c:v h264_nvenc -preset fast -shortest 02.mp4</pre>
+<button class="copy-button" onclick="copyCode(6)">Copy</button>
+<br>
+<pre class="code">ffmpeg -hwaccel cuda -i 03.mp4 -i 03.mp3 -filter_complex "[0:a]volume=0.85[a1]; [1:a]volume=1[a2]; [a1][a2]amix=inputs=2:duration=longest[out]" -map 0:v -map "[out]" -c:v h264_nvenc -preset fast -b:v 500K -maxrate:v 1M  -shortest 03-cv.mp4</pre>
+<button class="copy-button" onclick="copyCode(7)">Copy</button>
 
 	<b><p>Добавляем ffmpeg в командную строку windows</p></b>
 	<p>Мой компьютер - Свойства - Дополнительные параметры системы - Переменные среды</p>
