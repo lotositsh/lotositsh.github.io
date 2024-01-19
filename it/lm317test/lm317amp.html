@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Расчет резистора для стабилизатора тока</title>
+    <script>
+        function calculateResistance() {
+            var desiredCurrent = parseFloat(document.getElementById('desiredCurrent').value);
+
+            // Проверка на ввод значения тока
+            if (isNaN(desiredCurrent) || desiredCurrent <= 0) {
+                alert("Пожалуйста, введите корректное положительное значение тока");
+                return;
+            }
+
+            // Вычисление значения резистора
+            var resistance = 1.25 / desiredCurrent;
+
+            // Отображение результата
+            document.getElementById('result2').innerHTML =
+              'Значение резистора R2: ' + resistance.toFixed(2) + ' Ом';
+        }
+    </script>
+</head>
+<body>
+    <h1>Расчет резистора для стабилизатора тока</h1>
+
+    <label for="desiredCurrent">Желаемый ток (Амперы):</label>
+    <input type="number" id="desiredCurrent" step="any" required>
+    <button onclick="calculateResistance()">Рассчитать</button>
+
+    <div id="result2"></div>
+	    <h1>Расчет резистора для стабилизатора тока</h1>
+
+    <label for="desiredCurrent">Желаемый ток (Амперы):</label>
+    <input type="number" id="desiredCurrent" step="any" required>
+    <button onclick="calculateResistance()">Рассчитать</button>
+
+    <div id="result2"></div>
+</body>
+</html>
