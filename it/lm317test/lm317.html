@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор LM317</title>
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            display: inline-block;
+            width: 150px;
+        }
+        .input-group input {
+            width: 200px;
+        }
+        .output-group {
+            margin-top: 20px;
+        }
+        .output-group label {
+            font-weight: bold;
+        }
+        .btn-calculate {
+            margin-top: 10px;
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Калькулятор LM317</h1>
+        
+        <div class="input-group">
+            <label>Входное напряжение (Vin): </label>
+            <input type="number" id="vin" step="0.01" required />
+        </div>
+        
+        <div class="input-group">
+            <label>Выходное напряжение (Vout): </label>
+            <input type="number" id="vout" step="0.01" required />
+        </div>
+        
+        <div class="input-group">
+            <label>Сопротивление R1: </label>
+            <input type="number" id="r1" step="0.01" required />
+        </div>
+        
+        <button class="btn-calculate" onclick="calculate()">Рассчитать</button>
+        
+        <div class="output-group">
+            <label>Результат:</label>
+            <p id="result"></p>
+        </div>
+        <p id="error" class="error-message"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            var vin = parseFloat(document.getElementById("vin").value);
+            var vout = parseFloat(document.getElementById("vout").value);
+            var r1 = parseFloat(document.getElementById("r1").value);
+            
+            var errorText = document.getElementById("error");
+            
+            if (isNaN(vin) || isNaN(vout) || isNaN(r1)) { // добавлены проверки на isNaN
+                errorText.innerHTML = "Пожалуйста, введите все значения.";
+                return;
+            }
+            
+            if (vin <= (vout + 2)) {
+                errorText.innerHTML = "Входное напряжение должно превышать выходное на 2 В.";
+                return;
+            }
+            
+            if (vin > 40) {
+                errorText.innerHTML = "Максимальное входное напряжение должно быть до 40 В.";
+                return;
+            }
+            
+            if (vout >= 37) { // добавлена проверка на напряжение на выходе
+                errorText.innerHTML = "Напряжение на выходе должно быть меньше 37 В.";
+                return;
+            }
+            
+            var vref = 1.25;
+            var r2 = ((vout / vref) - 1) * r1;
+            
+            errorText.innerHTML = "";
+            document.getElementById("result").innerHTML = "R2 = " + r2.toFixed(2) + " Ом";
+        }
+    </script>
+</body>
+</html>
