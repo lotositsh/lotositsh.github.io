@@ -39,7 +39,12 @@
 	display: block;
 	margin-bottom: 10px; /* Adjust the margin as needed */
 }
-	
+#error2 {
+  color: red;
+}
+#error {
+  color: red;
+}
 .container {
   margin: 20px auto;
   max-width: 600px;
@@ -110,17 +115,17 @@ button:hover {
 <br>
     <center><div class="input-group">
         <label>Входное напряжение (Вольт) (Vin): </label>
-        <input type="number" id="vin" step="0.01" required />
+        <input type="number" id="vin" step="0.01" required oninput="checkInputLength(this, 4)"/>
     </div>
     
     <div class="input-group">
         <label>Выходное напряжение (Вольт) (Vout): </label>
-        <input type="number" id="vout" step="0.01" required />
+        <input type="number" id="vout" step="0.01" required oninput="checkInputLength(this, 4)"/>
     </div>
     
     <div class="input-group">
         <label>Сопротивление R1 (Ом): </label>
-        <input type="number" id="r1" step="0.01" required />
+        <input type="number" id="r1" step="0.01" required oninput="checkInputLength(this, 10)"/>
     </div>
     
     <button class="btn-calculate" onclick="calculate()">Рассчитать</button>
@@ -144,72 +149,80 @@ button:hover {
 </div>
 <br>
 <center>    <label for="desiredCurrent">Желаемый ток (Амперы):</label>
-    <input type="number" id="desiredCurrent" step="any" required>
+    <input type="number" id="desiredCurrent" step="0.01" required oninput="checkInputLength(this, 4)"/>
     <button onclick="calculateResistance()">Рассчитать</button>
 	  
 
     <div id="result2"></div>
-	   <div id="power2"></div></center>
+	   <div id="power2"></div>
+	    <p id="error2" class="error-message"></p></center>
 <br><br>
 	  <center>
 	<img src="data:image/webp;base64, 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" alt="">
 	</center>
 <script>
-    function calculate() {
-        var vin = parseFloat(document.getElementById("vin").value);
-        var vout = parseFloat(document.getElementById("vout").value);
-        var r1 = parseFloat(document.getElementById("r1").value);
+function checkInputLength(input, maxLength) {
+    if (input.value.length > maxLength) {
+        input.value = input.value.slice(0, maxLength); // Обрезаем введенный текст до заданного лимита символов
+    }
+}
+function calculate() {
+    var vin = parseFloat(document.getElementById("vin").value);
+    var vout = parseFloat(document.getElementById("vout").value);
+    var r1 = parseFloat(document.getElementById("r1").value);
 
-        var errorText = document.getElementById("error");
+    var errorText = document.getElementById("error");
 
-        if (isNaN(vin) || isNaN(vout) || isNaN(r1)) {
-            errorText.innerHTML = "Пожалуйста, введите все значения.";
-            return;
-        }
-
-        if (vin <= (vout + 2)) {
-            errorText.innerHTML = "Входное напряжение должно превышать выходное на 2 В.";
-            return;
-        }
-
-        if (vin > 40) {
-            errorText.innerHTML = "Максимальное входное напряжение должно быть до 40 В.";
-            return;
-        }
-
-        if (vout >= 37) {
-            errorText.innerHTML = "Напряжение на выходе должно быть меньше 37 В.";
-            return;
-        }
-
-        var vref = 1.25;
-        var r2 = ((vout / vref) - 1) * r1;
-
-        // Расчет требуемой мощности резистора
-        var power = Math.pow(vin, 2) / r2;
-
-        errorText.innerHTML = "";
-        document.getElementById("result").innerHTML = "R2 = " + r2.toFixed(2) + " Ом";
-        document.getElementById("power").innerHTML = "Мощность резистора: " + power.toFixed(2) + " Вт";
+    if (isNaN(vin) || isNaN(vout) || isNaN(r1)) {
+        errorText.innerHTML = "Пожалуйста, введите все значения.";
+        return;
     }
 
-    function calculateResistance() {
-        var desiredCurrent = parseFloat(document.getElementById('desiredCurrent').value);
-
-        if (isNaN(desiredCurrent) || desiredCurrent <= 0 || desiredCurrent > 1.5) {
-            alert("Пожалуйста, введите корректное положительное значение тока, не более 1,5 А");
-            return;
-        }
-
-        var resistance = 1.25 / desiredCurrent;
-
-        // Расчет требуемой мощности резистора
-        var power = Math.pow(1.25, 2) / resistance;
-
-        document.getElementById('result2').innerHTML =
-            'R1 = ' + resistance.toFixed(2) + ' Ом';
-        document.getElementById("power2").innerHTML = "Мощность резистора P = " + power.toFixed(2) + " Вт";
+    if (vin <= (vout + 2)) {
+        errorText.innerHTML = "Входное напряжение должно превышать выходное на 2 В.";
+        return;
     }
+
+    if (vin > 40) {
+        errorText.innerHTML = "Максимальное входное напряжение должно быть до 40 В.";
+        return;
+    }
+
+    if (vout >= 37) {
+        errorText.innerHTML = "Напряжение на выходе должно быть меньше 37 В.";
+        return;
+    }
+
+    var vref = 1.25;
+    var r2 = ((vout / vref) - 1) * r1;
+
+    // Расчет требуемой мощности резистора
+    var power = Math.pow(vin, 2) / r2;
+
+    errorText.innerHTML = "";
+    document.getElementById("result").innerHTML = "R2 = " + r2.toFixed(2) + " Ом";
+    document.getElementById("power").innerHTML = "Мощность резистора: " + power.toFixed(2) + " Вт";
+}
+
+function calculateResistance() {
+    var desiredCurrent = parseFloat(document.getElementById('desiredCurrent').value);
+
+    var errorText = document.getElementById("error2");
+
+    if (isNaN(desiredCurrent) || desiredCurrent <= 0 || desiredCurrent > 1.5) {
+        errorText.innerHTML = "Пожалуйста, введите корректное положительное значение тока, не более 1,5 А";
+        return;
+    }
+
+    var resistance = 1.25 / desiredCurrent;
+
+    // Расчет требуемой мощности резистора
+    var power = Math.pow(1.25, 2) / resistance;
+
+    errorText.innerHTML = "";
+    document.getElementById('result2').innerHTML = 'R1 = ' + resistance.toFixed(2) + ' Ом';
+    document.getElementById("power2").innerHTML = "Мощность резистора P = " + power.toFixed(2) + " Вт";
+}
 </script>
 
 
