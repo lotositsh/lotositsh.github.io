@@ -191,7 +191,8 @@ yt-dlp "$varname"</pre>
 <pre class="code">yt-dlp.exe -f 22 -o "%(uploader)s/%(title)s/%(title)s.%(ext)s" --write-description --batch-file=url.txt</pre>
 <button class="copy-button" onclick="copyCode(1)">Copy</button>
 <p>Данная команда скачивает видео с канала  в формате MP4 с лучшим качеством. Они сохраняются в отдельные папки с использованием имени канала и названия ролика, а также загружаются описания для каждого видео.</p>
-<pre>yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a][ext=mp4]" -o "%(uploader)s/%(title)s/%(title)s.%(ext)s" --write-description https://youtube.com/@AnimadLive?si=9LmmKXLMefjRC_6W</pre>
+<pre class="code">yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a][ext=mp4]" -o "%(uploader)s/%(title)s/%(title)s.%(ext)s" --write-description https://youtube.com/@AnimadLive?si=9LmmKXLMefjRC_6W</pre>
+<button class="copy-button" onclick="copyCode(2)">Copy</button>
 <br>
 	<p>Обновляем в термукс</p>
 <pre>pip install --upgrade yt-dlp</pre>
