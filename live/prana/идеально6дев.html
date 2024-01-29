@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Аудио плеер</title>
+</head>
+<body>
+  <h1>Аудио плеер</h1>
+  <input type="number" id="inhaleTime" min="1" max="100"> Вдох
+  <input type="number" id="delayTime" min="0" max="100"> Задержка
+  <input type="number" id="exhalationTime" min="1" max="100"> Выдох
+  <input type="number" id="delayTime2" min="0" max="100"> Задержка2
+  <input type="number" id="count" min="1" max="100"> Количество повторений
+  <button onclick="startSequence()">Старт</button>
+  <button onclick="stopSequence()">Стоп</button>
+
+  <p>Оставшиеся повторения: <span id="remainingCount"></span></p>
+
+  <audio id="audioPlayer">
+    <source src="01.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    let isPlaying = false;
+    let stopRequested = false;
+
+    function startSequence() {
+      if (!isPlaying) {
+        var inhaleTime = document.getElementById('inhaleTime').value * 1000;
+        var delayTime = document.getElementById('delayTime').value * 1000;
+        var exhalationTime = document.getElementById('exhalationTime').value * 1000;
+        var delayTime2 = document.getElementById('delayTime2').value * 1000;
+        var count = document.getElementById('count').value || 1;
+
+        playAudioSequence(inhaleTime, delayTime, exhalationTime, delayTime2, count);
+      }
+    }
+
+    function stopSequence() {
+      stopRequested = true;
+    }
+
+    function playAudioSequence(inhaleTime, delayTime, exhalationTime, delayTime2, count) {
+      isPlaying = true;
+      stopRequested = false;
+
+      var audioPlayer = document.getElementById('audioPlayer');
+      var remainingCountDisplay = document.getElementById('remainingCount');
+      remainingCountDisplay.textContent = count;
+
+      function playSound(src, duration) {
+        audioPlayer.src = src;
+        audioPlayer.play();
+        return new Promise(resolve => setTimeout(resolve, duration));
+      }
+
+      async function sequence() {
+        for (let i = 0; i < count; i++) {
+          if (stopRequested) {
+            break;
+          }
+          remainingCountDisplay.textContent = count - i;
+          await playSound("01.ogg", inhaleTime);
+          if (delayTime > 0) {
+            await playSound("02.ogg", delayTime);
+          }
+          await playSound("03.ogg", exhalationTime);
+          if (delayTime2 > 0) {
+            await playSound("02.ogg", delayTime2);
+          }
+        }
+        remainingCountDisplay.textContent = "Готово";
+        isPlaying = false;
+        if (count > 0 && !stopRequested) {
+          await playSound("ot20.ogg", 1);
+        }
+      }
+
+      sequence();
+    }
+  </script>
+</body>
+</html>
