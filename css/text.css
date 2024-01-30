@@ -143,3 +143,11 @@ button.copy-button {
     background-color: #45a049;
     color: white;
   }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #777;
+    }
+
+
