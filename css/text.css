@@ -111,3 +111,35 @@ button.copy-button {
 .scroll-to-top:active {
   background-color: #777; /* –вет фона кнопки при нажатии на кнопку */
 }
+
+    form {
+      text-align: center;
+      margin: 0 auto;
+      width: auto;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0px 0px 15px #ddd;
+		max-width: 600px;
+    }
+
+ button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+
+  button:hover {
+    background-color: #45a049;
+    color: white;
+  }
