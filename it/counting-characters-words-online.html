@@ -5,18 +5,21 @@
 
 
 <link rel="stylesheet" href="../css/text.css">
-<script src="../css/script.js"></script>
-   <script>
-    function countCharacters() {
-      var inputText = document.getElementById("input").value;
-      var characterCount = inputText.length;
-      var characterCountNoSpaces = inputText.replace(/\s/g, '').length;
-      var wordCount = inputText.trim().split(/\s+/).length;
 
-      document.getElementById("characterCount").innerHTML = "Количество символов: " + characterCount;
-      document.getElementById("characterCountNoSpaces").innerHTML = "Количество символов без пробелов: " + characterCountNoSpaces;
-      document.getElementById("wordCount").innerHTML = "Количество слов: " + wordCount;
-    }
+  <script>
+function countCharacters() {
+  var inputText = document.getElementById("input").value;
+  var characterCount = inputText.length;
+  var characterCountNoSpaces = inputText.replace(/\s/g, '').length;
+  var wordCount = inputText.trim().split(/\s+/).filter(function(word) {
+    return word.length > 0; // Фильтрация пустых слов
+  }).length;
+
+  document.getElementById("characterCount").innerHTML = "Количество символов: " + characterCount;
+  document.getElementById("characterCountNoSpaces").innerHTML = "Количество символов без пробелов: " + characterCountNoSpaces;
+  document.getElementById("wordCount").innerHTML = "Количество слов: " + (inputText.trim() === "" ? 0 : wordCount); // Проверка на отсутствие ввода
+}
+
   </script>
 	<style>
 	
@@ -38,9 +41,10 @@ label {
 textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 5px solid #ccc;
   border-radius: 5px;
   margin-bottom: 10px;
+	max-width: 900px;
 }
 
 button {
@@ -63,6 +67,8 @@ button {
 }
     #input {
         font-size: 16px;
+		border: 10px;
+		
     }
 </style>
 	
@@ -94,7 +100,7 @@ button {
 
 
   </head>
-  <body>
+  <body onload="countCharacters()">
   <div class="header">
     <h2>DzenIT</h2>
   </div>
@@ -114,14 +120,17 @@ button {
   <center><h1>Подсчет количества символов и слов онлайн</h1></center>
   
 
-
-  <textarea id="input" rows="4" cols="50" onkeyup="countCharacters()"></textarea>
-<br>
-<div id="characterCount" style="font-size: 18px;"></div>
-	  <br>
-<div id="characterCountNoSpaces" style="font-size: 18px;"></div>
-	  <br>
-<div id="wordCount" style="font-size: 18px;"></div>
+<center><p><b>Введите текст</b></p></center>
+<center><textarea id="input" oninput="countCharacters()"></textarea></center>
+  <center><p><b>Результат:</b></p></center>
+  <form>  
+    
+    <div id="characterCount" style="font-size: 18px;"></div>
+    <br>
+    <div id="characterCountNoSpaces" style="font-size: 18px;"></div>
+    <br>
+    <div id="wordCount" style="font-size: 18px;"></div>
+  </form>
 
   
    </body>
