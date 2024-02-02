@@ -1,64 +1,61 @@
+
 <!DOCTYPE html>
-<html>
-	
-<head>
+<html><head>
 <meta charset="UTF-8">
+
+
+<link rel="stylesheet" href="../css/text.css">
 <script src="../css/script.js"></script>
+
+
 <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+
+
 <meta name="viewport" content="width=device-width">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ffmpeg заметки">
-<meta name="keywords" content="ffmpeg, конвертация"> 
 
-<!-- fb -->
-<!-- локализация сайта, для русскоязычного сайта ru_RU -->
-<meta property="og:locale" content="ru_RU">
-<!-- тип контента, по умолчанию используется article -->
-<meta property="og:type" content="article">
-<!-- заголовок страницы, который будет выводится в записи социальной сети -->
-<meta property="og:title" content="ffmpeg заметки">
-<!-- описание страницы -->
-<meta property="og:description" content="Записываю команды для ffmpeg, которые мне пригодились">
-<!-- ссылка на изображение, которое будет публиковаться в записи -->
-<!-- ссылка на текущую страницу -->
-<meta property="og:url" content="ffmpeg.html">
-<!-- название сайта -->
-<meta property="og:site_name" content="DzenIT">
-<script type="text/javascript">
-  function openImageWindow(src) {
-    var image = new Image();
-    image.src = src;
-    var width = image.width;
-    var height = image.height;
-    window.open(src,"Image","width=" + width + ",height=" + height);
-  }
-</script>
 
-<title>ffmpeg заметки</title>
-	
-	
-<link rel="stylesheet" href="../css/text.css">
-</head>
-<body>
-	<div class="header">
- <h2>DzenIT</h2>
-</div>
 
-<div class="topnav">
-<a href="../index.html">HOME</a>
-<a href="../zen.html">ZEN</a>
-<a href="../it.html">IT</a>
-<a href="../soft.html">SOFT</a>
-<a href="../apk.html">APK</a>
-<a href="../live.html">LIVE</a>
-<a href="../game.html">GAME</a>
-<a href="../other.html">OTHER</a>
-<a href="../w.html">W</a>
-<a href="../about.html">CONTACT</a>
-</div>
-		<center><h1><b>ffmpeg заметки</b></h1></center>
+<!-- Primary Meta Tags -->
+<title>FFmpeg обработка видео и аудио</title>
+<meta name="title" content="FFmpeg обработка видео и аудио" />
+<meta name="description" content="Как использовать FFmpeg для конвертации, перекодирования видео без потери качества, кодирования с использованием GPU. Откройте возможности замедления и ускорения видео и аудио, разделения видеофайла на части, замены и наложения различных аудиодорожек. Узнайте также, как произвести конвертацию видео в GIF" />
+<meta name="keywords" content="FFmpeg, конвертация битрейта, FullHD, HD качество, кодирование, GPU, кодек H264, замедление и ускорение видео и аудио, разделение видеофайла, замена аудиодорожки, наложение аудиодорожки, конвертация в GIF."> 
 
-<p>Для конвертации формата avi в mp4 без сжатия используют команду </p>
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="DzenIT" />
+<meta property="og:title" content="FFmpeg обработка видео и аудио" />
+<meta property="og:description" content="Как использовать FFmpeg для конвертации, перекодирования видео без потери качества, кодирования с использованием GPU. Откройте возможности замедления и ускорения видео и аудио, разделения видеофайла на части, замены и наложения различных аудиодорожек. Узнайте также, как произвести конвертацию видео в GIF" />
+<meta property="og:image" content="img/ffmpeg.jpg" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="FFmpeg обработка видео и аудио" />
+<meta property="twitter:description" content="Как использовать FFmpeg для конвертации, перекодирования видео без потери качества, кодирования с использованием GPU. Откройте возможности замедления и ускорения видео и аудио, разделения видеофайла на части, замены и наложения различных аудиодорожек. Узнайте также, как произвести конвертацию видео в GIF" />
+<meta property="twitter:image" content="img/ffmpeg.jpg" />
+
+
+  </head>
+  <body>
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../w.html">W</a>
+    <a href="../about.html">ABOUT</a>
+  </div>
+<a href="#top" class="scroll-to-top">Up</a>
+  <center><h1>FFmpeg обработка видео и аудио</h1></center>
+  
+  <p>Для конвертации формата avi в mp4 без сжатия используют команду </p>
 <pre>ffmpeg.exe -i input.avi out.mp4</pre>
 
 <p>Скачать ffmpeg можно по ссылке <a href="https://drive.google.com/file/d/1LudGIuq8b0cc7q5CZI3jPBAClkl00lR3/view?usp=sharing" target="_blank">тут</a></p>
@@ -233,6 +230,11 @@ ffmpeg -i 1-1.mp4 -ss 01:00:00 -t 00:15:00 -c copy 1-1(05).mp4</pre>
 <pre class="code">ffmpeg -hwaccel cuda -i 03.mp4 -i 03.mp3 -filter_complex "[0:a]volume=0.85[a1]; [1:a]volume=1[a2]; [a1][a2]amix=inputs=2:duration=longest[out]" -map 0:v -map "[out]" -c:v h264_nvenc -preset fast -b:v 500K -maxrate:v 1M  -shortest 03-cv.mp4</pre>
 <button class="copy-button" onclick="copyCode(7)">Copy</button>
 
+<p><b>ffmpeg конвертация в gif</b></p>
+<p>На конкретном примере мы обрежем видео с 00:04:24 до 00:04:47, уменьшим разрешения до 530:295 для уменьшения размера gif, снизим частоту кадров до 5 и сохраним в gif файл</p>
+<pre class="code">ffmpeg -i input.mp4 -ss 00:04:24 -to 00:04:47 -vf "scale=530:295" -r 5 output.gif</pre>
+<button class="copy-button" onclick="copyCode(7)">Copy</button>
+
 	<b><p>Добавляем ffmpeg в командную строку windows</p></b>
 	<p>Мой компьютер - Свойства - Дополнительные параметры системы - Переменные среды</p>
 	<p>Выбираем строку где Path - изменить, потом Создать, прописываем расположение папки ffmpeg.exe.</p>
@@ -245,10 +247,7 @@ ffmpeg -i 1-1.mp4 -ss 01:00:00 -t 00:15:00 -c copy 1-1(05).mp4</pre>
 <br>
 	<p>Сохраняем, перезагружаем.</p>
 	
-	
-	
-	
-	</body>
+  
+   </body>
 
-	
 </html>
