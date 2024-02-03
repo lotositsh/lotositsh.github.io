@@ -6,7 +6,11 @@ a {
     text-decoration: none; /* Отменяем подчеркивание у ссылки */
 	color: #0065cc; /* Цвет текста */
    } 
-	
+
+.size1 {
+  max-width: 800px; 
+	margin: 0 auto;
+}
 	/* The navbar container */
 .topnav {
     overflow: hidden;

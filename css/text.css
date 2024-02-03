@@ -9,6 +9,13 @@ body {
     padding: 20px;
     background: #f1f1f1;
 }
+li{
+	line-height: 1.5;
+}
+.size1 {
+  max-width: 800px; 
+	margin: 0 auto;
+}
 body {
 }
 
@@ -103,7 +110,6 @@ button.copy-button {
   line-height: 50px; /* Высота кнопки и текста на кнопке должны совпадать для центровки */
   opacity: 0.5; 
 }
-
 .scroll-to-top:hover {
   background-color: #555; /* Цвет фона кнопки при наведении курсора мыши */
 }
@@ -111,7 +117,11 @@ button.copy-button {
 .scroll-to-top:active {
   background-color: #777; /* Цвет фона кнопки при нажатии на кнопку */
 }
-
+p{
+	
+	font-size: 17px;
+	line-height: 1.5;
+}
     form {
       text-align: center;
       margin: 0 auto;
