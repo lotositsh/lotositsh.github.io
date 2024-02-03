@@ -3,8 +3,8 @@
 	
 <head>
 <meta charset="UTF-8">
-
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
+<link rel="stylesheet" href="./css/text.css">
+<link rel="icon" type="image/png" sizes="192x192" href="./img/favicon.png">
 <meta name="viewport" content="width=device-width">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Выбор и настройка VDS сервера для telegram bot">
@@ -140,12 +140,13 @@ systemctl start bot
 systemctl status bot</pre>
 <br><br>
 <p>Если всё сделано правильно - мы увидим активную работу нашего скрипта</p>
-	<div class="text_image">
-		<center>
-		
-		  <img src="img/vds-server-telegram-bot/05-vds.webp" alt="запущенный бот в сервисах" onclick = 'openImageWindow(this.src);' />
-		</center>
-	</div>
+<br>
+<div class="text_image">
+<center>
+<img src="img/vds-server-telegram-bot/05-vds.webp" alt="альтернативный текст">
+</center>
+</div>
+<br>
 	<br>
 	<p>Были проблемы с латиницей, запускай скрипты через команду</p>
 	<pre>PYTHONIOENCODING=utf-8 python3 main.py</pre>
@@ -165,13 +166,8 @@ systemctl status bot</pre>
 	
 		<p><b>ps.</b> некоторые библиотеки питона 3,6 уже не поддерживаються, вот список моих с их версиями</p>
  
-		<div class="spoiler">
-    <label>
-        <input type="checkbox"/>
-        <span class="btn">Список библиотек для работы с версиями python 3.6 (нажмите чтобы открыть)</span>
-        <div class="text">
-<pre>
-altgraph==0.17
+
+<pre class="code">altgraph==0.17
 attrs==19.3.0
 Automat==0.8.0
 beautifulsoup4==4.8.2
@@ -244,10 +240,9 @@ webencodings==0.5.1
 wget==3.2
 XlsxWriter==1.3.7
 youtube-dl==2020.6.16.1
-zope.interface==4.7.1
-</pre>
-        </div>
-    </label>
+zope.interface==4.7.1</pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
+<br><br><br>
 		
-</div> </body>
+ <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
 		</html>

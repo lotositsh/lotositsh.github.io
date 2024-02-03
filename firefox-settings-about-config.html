@@ -36,9 +36,10 @@
 
 <title>Firefox тонкая настройка about:config</title>
 <link rel="stylesheet" href="css/text.css">
-<link rel="stylesheet" href="css/spoiler.css">
+	<script src="css/script.js"></script>
 </head>
-<body>  <div class="size1">
+<body>  
+<div class="size1">
 	<div class="header">
  <h2>DzenIT</h2>
 </div>
@@ -60,13 +61,11 @@
 
 
 <p>Создаем файл user.js в папке с профилем, по умолчанию он находится <b>%APPDATA%\Mozilla\Firefox\Profiles\</b>, вставляем текст:</p>
-<div class="spoiler">
-    <label>
-        <input type="checkbox"/>
- <span class="btn">Отобразить текст</span>
-<div class="text">
-			<pre>
-<b>// Отключаем Pocket</b>
+
+<details><summary><b>Посмотреть код</b></summary>
+	
+		
+<pre class="code"><b>// Отключаем Pocket</b>
 user_pref("extensions.pocket.api", "");
 user_pref("extensions.pocket.enabled", false);
 user_pref("extensions.pocket.site", "");
@@ -265,13 +264,11 @@ user_pref("plugin.default.state", 0);
 <b>// Отключаем чтение pdf</b>
 user_pref("pdfjs.disabled", true);
 <b>// Маштаб страницы</b>
-user_pref("layout.css.devPixelsPerPx", "-1.0");
+user_pref("layout.css.devPixelsPerPx", "-1.0");</pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
 
-			
-			</pre>
-  </div>
-	    </label>
-</div>
+			</details>
+	
 
 <h3>Отключаем обновление в firefox</h3>
 <p>Эти настройки можно сохранить в указанный ранее файл и они применяться в профиле браузера. Но есть и другие настройки, которые не меняются если в папке с программой firefox.</p>
@@ -279,13 +276,11 @@ user_pref("layout.css.devPixelsPerPx", "-1.0");
 <pre>pref("general.config.filename", "firefox.cfg");
 pref("general.config.obscure_value", 0); </pre>
 <p>В папке C:\Program Files\Mozilla Firefox\ создаете файл firefox.cfg, пишем:	</p>
-	<div class="spoiler">
-    <label>
-        <input type="checkbox"/>
-        <span class="btn">Отобразить текст</span>
-        <div class="text">
-<pre>
-lockPref("app.update.migrated.updateDir", false);
+
+	
+	
+<details><summary><b>Посмотреть код</b></summary>
+<pre class="code">lockPref("app.update.migrated.updateDir", false);
 lockPref("app.update.channel", "");
 lockPref("app.update.checkInstallTime", false);
 lockPref("app.update.service.enabled", false);
@@ -332,17 +327,16 @@ lockPref("extensions.systemAddon.update.url", "");
 lockPref("extensions.update.background.url", "");
 lockPref("extensions.update.autoUpdateDefault", false);
 lockPref("extensions.update.enabled", false);
-lockPref("app.update.timerFirstInterval", 0);
-</pre>
-        </div>
-    </label>
-</div>
+lockPref("app.update.timerFirstInterval", 0);</pre>
+<button class="copy-button" onclick="copyCode(2)">Copy</button>
+	</details>
+
 <p>	Можно еще добавить ограничение хранения кэша. По умолчанию у него 1 Гб, мне хватает и 50 Мб</p>
 
 <pre>lockPref("browser.cache.disk.capacity", 50024);</pre>
 
 <p>Все настройки проводились в firefox 77. Можете скачать портативную версию браузер</p>
 	<a href="https://drive.google.com/file/d/1rGWLbJ3t6eaLP_-DgTvCNg1IhqHYCiGp/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1rGWLbJ3t6eaLP_-DgTvCNg1IhqHYCiGp/view?usp=sharing</a>
-	
-</div> </body>
+	 <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div>
+ </body>
 </html>

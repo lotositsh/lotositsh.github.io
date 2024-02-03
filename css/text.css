@@ -8,6 +8,7 @@ body {
     font-family: Arial;
     padding: 20px;
     background: #f1f1f1;
+	
 }
 li{
 	line-height: 1.5;
@@ -15,7 +16,11 @@ li{
 .size1 {
   max-width: 800px; 
 	margin: 0 auto;
-	padding 5 px;
+	
+}
+details {
+	
+	
 }
 body {
 }
@@ -170,4 +175,12 @@ p{
       width: 80%;
 		max-width: 600px;
     }
+footer {
+  clear: both;
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: #f2f2f2;
+	
+}
 
