@@ -149,40 +149,40 @@ read varname
 yt-dlp -f 'bv[height=1080][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 "$varname
 mv *.mp4 storage/downloads/</pre>
 <p><b>sh скрипты для скачивания с помощью yt-dlp в termux разных форматов</b></p>
-<br/>
+<br>
 <p>Скачать аудиоформат в mp3</p>
 <pre>#!/bin/bash
 cd storage/downloads/mp3/
 echo input URL video youtube [mp3]
 read varname
 yt-dlp -f 'ba' -x --audio-format mp3 "$varname" -o '%(title)s.%(ext)s'</pre>
-<br/>
+<br>
 <p>Качество 360p</p>
-<br/>
+<br>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [360p]
 read varname
 yt-dlp -f 18 "$varname"</pre>
-<br/>
+<br>
 <p>Скачать ролик в качестве 480p (редкий формат, нужен предустановлен ffmpeg)</p>
-<br/>
+<br>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [480p]
 read varname
 yt-dlp -f 'bv[height=480][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 "$varname"</pre>
-<br/>
+<br>
 <p>Скачать ролик в качестве 720p </p>
-<br/>
+<br>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [720p]
 read varname
 yt-dlp -f 18 "$varname"</pre>
-<br/>
+<br>
 <p>Скачать в лучшем качестве</p>
-<br/>
+<br>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [best]

@@ -75,7 +75,7 @@
 <h2 id="6"></h2>
 <p><b>Таймер для пранаям.</b></p> <p>Задайте время для вдоха, задержки, выдоха и задержки после выдоха (в секундах). Если задержка не нужна, выставьте 0. Выберите количество циклов, нажмите старт. Остановка произойдет после окончания дыхательных циклов или нажмите кнопку стоп.</p>
 <form>
-<center><p>Таймер для пранаям</p></center><br/>
+<center><p>Таймер для пранаям</p></center><br>
 <label for="inhaleTime">Вдох: </label>
 <input id="inhaleTime" max="100" min="1" type="number"/>
 <label for="delayTime">Задержка после вдоха:</label>
@@ -86,7 +86,7 @@
 <input id="delayTime2" max="100" min="0" type="number"/>
 <label for="count">Количество повторений</label>
 <input id="count" max="100" min="1" type="number"/>
-<br/><br/>
+<br><br>
 <button onclick="startSequence()" type="button">Старт</button>
 <button onclick="stopSequence()" type="button">Стоп</button>
 <p>Осталось посторений: <span id="remainingCount"></span></p>

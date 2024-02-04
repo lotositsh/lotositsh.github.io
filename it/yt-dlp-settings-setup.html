@@ -153,40 +153,40 @@ mv *.mp4 storage/downloads/</pre>
 <p>Качаем плейлист в 1080p с лучшим звуком</p>
 <pre>yt-dlp -f 'bv*[height=1080]+ba' --download-archive videos.txt  https://www.youtube.com/playlist?list=PLlVlyGVtvuVnUjA4d6gHKCSrLAAm2n1e6 -o '%(channel_id)s/%(playlist_id)s/%(title)s.%(id)s.%(ext)s'</pre>
 <p><b>sh скрипты для скачивания с помощью yt-dlp в termux разных форматов</b></p>
-<br/>
+<br>
 <p>Скачать аудиоформат в mp3</p>
 <pre>#!/bin/bash
 cd storage/downloads/mp3/
 echo input URL video youtube [mp3]
 read varname
 yt-dlp -f 'ba' -x --audio-format mp3 "$varname" -o '%(title)s.%(ext)s'</pre>
-<br/>
+<br>
 <p>Качество 360p</p>
-<br/>
+<br>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [360p]
 read varname
 yt-dlp -f 18 "$varname"</pre>
-<br/>
+<br>
 <p>Скачать ролик в качестве 480p (редкий формат, нужен предустановлен ffmpeg)</p>
-<br/>
+<br>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [480p]
 read varname
 yt-dlp -f 'bv[height=480][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 "$varname"</pre>
-<br/>
+<br>
 <p>Скачать ролик в качестве 720p </p>
-<br/>
+<br>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [720p]
 read varname
 yt-dlp -f 18 "$varname"</pre>
-<br/>
+<br>
 <p>Скачать в лучшем качестве</p>
-<br/>
+<br>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [best]
@@ -199,10 +199,10 @@ yt-dlp "$varname"</pre>
 <p>Данная команда скачивает видео с канала  в формате MP4 с лучшим качеством. Они сохраняются в отдельные папки с использованием имени канала и названия ролика, а также загружаются описания для каждого видео.</p>
 <pre class="code">yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a][ext=mp4]" -o "%(uploader)s/%(title)s/%(title)s.%(ext)s" --write-description https://youtube.com/@AnimadLive?si=9LmmKXLMefjRC_6W</pre>
 <button class="copy-button" onclick="copyCode(2)">Copy</button>
-<br/>
+<br>
 <p>Обновляем в термукс</p>
 <pre>pip install --upgrade yt-dlp</pre>
-<br/>
+<br>
 <p>Любим и чтим
 РЕСУРС</p>
 https://github.com/yt-dlp/yt-dlp

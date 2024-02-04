@@ -92,7 +92,7 @@
 <li>512 RAM</li>
 <li>3 Gb SSD</li>
 <li>Цена 70 центов</li>
-<br/><br/>
+<br><br>
 <div class="text_image">
 <center>
 <img alt="vds vps самый дешевый" onclick="openImageWindow(this.src);" src="img/vds-server-telegram-bot/02-vds.webp"/>
@@ -105,15 +105,15 @@
 <img alt="дешевый сервер для телеграм бота" onclick="openImageWindow(this.src);" src="img/vds-server-telegram-bot/03-vds.webp"/>
 </center>
 </div>
-<br/><br/>
+<br><br>
 <s><p>Пополняем, оплачиваем, заказываем через корзину, после ждем пару минут и сервер готов для использования. Все данные нам предоставляют: ссылку для прямого захода, логин, пароль, ip.</p></s>
 <p>Остается только подключиться к vds через ssh, я использую программу putty. Более подробно настройки и подключение по SSH можно прочесть в <a href="ssh-tunnel-android-and-pc.html" target="_blank">этой статье</a>. Вот как выглядит мое соединение к VDS</p>
-<br/><br/>
+<br><br>
 <div class="text_image">
 <center>
 <img alt="подключение по ssh к vps/vds" onclick="openImageWindow(this.src);" src="img/vds-server-telegram-bot/04-vds.webp"/>
 </center></div>
-<br/><br/>
+<br><br>
 <h2>Настройка VDS для bot telegram</h2>
 <p>Когда мы получили доступ в консоль, обычно под рутом (#root). Первым делом нужно обновить систему:</p>
 <pre>sudo apt update
@@ -163,16 +163,16 @@ WantedBy=multi-user.target</pre>
 systemctl enable bot
 systemctl start bot
 systemctl status bot</pre>
-<br/><br/>
+<br><br>
 <p>Если всё сделано правильно - мы увидим активную работу нашего скрипта</p>
-<br/>
+<br>
 <div class="text_image">
 <center>
 <img alt="альтернативный текст" src="img/vds-server-telegram-bot/05-vds.webp"/>
 </center>
 </div>
-<br/>
-<br/>
+<br>
+<br>
 <p>Были проблемы с латиницей, запускай скрипты через команду</p>
 <pre>PYTHONIOENCODING=utf-8 python3 main.py</pre>
 <s><p>Таким образом мы выбрали дешевый сервер, настроили телеграм бота на беспрерывную работу и получили бесценный опыт. </p>
