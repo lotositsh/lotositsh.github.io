@@ -1,57 +1,86 @@
 
 <!DOCTYPE html>
+
 <html><head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../css/text.css">
+<meta charset="utf-8"/>
+<link href="../css/text.css" rel="stylesheet"/>
 <title>Shuffling Lists</title>
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Shuffling Lists">
-<meta name="keywords" content="shuffling,lists"> 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shuffling Lists">
-<meta name="twitter:description" content="Shuffling Lists">
-<meta name="twitter:image" content="img/">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Shuffling Lists">
-<meta property="og:description" content="Shuffling Lists">
-<meta property="og:image" content="img/">
-<meta property="og:site_name" content="DzenIT">
-  </head>
-  <body>  <div class="size1">
-  <div class="header">
-    <h2>DzenIT</h2>
-  </div>
-    <div class="topnav">
-    <a href="../index.html">HOME</a>
-    <a href="../zen.html">ZEN</a>
-    <a href="../it.html">IT</a>
-    <a href="../soft.html">SOFT</a>
-    <a href="../apk.html">APK</a>
-    <a href="../live.html">LIVE</a>
-    <a href="../game.html">GAME</a>
-    <a href="../other.html">OTHER</a>
-    <a href="../w.html">W</a>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Shuffling Lists" name="description"/>
+<meta content="shuffling,lists" name="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Shuffling Lists" name="twitter:title"/>
+<meta content="Shuffling Lists" name="twitter:description"/>
+<meta content="img/" name="twitter:image"/>
+<meta content="article" property="og:type"/>
+<meta content="Shuffling Lists" property="og:title"/>
+<meta content="Shuffling Lists" property="og:description"/>
+<meta content="img/" property="og:image"/>
+<meta content="DzenIT" property="og:site_name"/>
+</head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
+</div>
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../w.html">W</a>
 <a href="../about.html">CONTACT</a>
-  </div>
-  <center><h1>Shuffling Lists</h1></center>
-  
-  <div>
-  <label for="input">Enter lines:</label>
-  <textarea id="input"></textarea>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<center><h1>Shuffling Lists</h1></center>
+<div>
+<label for="input">Enter lines:</label>
+<textarea id="input"></textarea>
 </div>
 <div>
-  <button id="shuffle">Shuffle List</button>
+<button id="shuffle">Shuffle List</button>
 </div>
 <div>
-  <label for="output">Shuffled list:</label>
-  <textarea id="output" readonly></textarea>
-  <button id="copy">Copy to Clipboard</button>
+<label for="output">Shuffled list:</label>
+<textarea id="output" readonly=""></textarea>
+<button id="copy">Copy to Clipboard</button>
 </div>
-
-
-	<script>
+<script>
 		function shuffleList() {
   var input = document.getElementById("input");
   var output = document.getElementById("output");
@@ -78,8 +107,7 @@ var copyButton = document.getElementById("copy");
 copyButton.addEventListener("click", copyToClipboard);
 
 	</script>
-	
-	<style>
+<style>
 	
 	* {
   box-sizing: border-box;
@@ -126,7 +154,5 @@ button:hover {
   margin-left: 10px;
 }
 </style>
-  
-    <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
-
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

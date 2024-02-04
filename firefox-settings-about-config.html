@@ -1,50 +1,46 @@
 <!DOCTYPE html>
+
 <html><head>
-<meta charset="UTF-8">
-
-<link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png"> 
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Firefox тонкая настройка about:config">
-<meta name="keywords" content="firefox, about:config"> 
-
+<meta charset="utf-8"/>
+<link href="img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Firefox тонкая настройка about:config" name="description"/>
+<meta content="firefox, about:config" name="keywords"/>
 <!-- Twitter -->
 <!-- Тип карты, по умолчанию используется summary -->
-<meta name="twitter:card" content="summary">
+<meta content="summary" name="twitter:card"/>
 <!-- Название страницы -->
-<meta name="twitter:title" content="Firefox тонкая настройка about:config">
+<meta content="Firefox тонкая настройка about:config" name="twitter:title"/>
 <!-- Описание страницы -->
-<meta name="twitter:description" content="Firefox настраиваем в about:config">
+<meta content="Firefox настраиваем в about:config" name="twitter:description"/>
 <!-- Cсылка на изображение -->
-<meta name="twitter:image" content="img/firefox-settings-about-config.webp">
+<meta content="img/firefox-settings-about-config.webp" name="twitter:image"/>
 <!-- fb -->
 <!-- локализация сайта, для русскоязычного сайта ru_RU -->
-<meta property="og:locale" content="ua_RU">
+<meta content="ua_RU" property="og:locale"/>
 <!-- тип контента, по умолчанию используется article -->
-<meta property="og:type" content="article">
+<meta content="article" property="og:type"/>
 <!-- заголовок страницы, который будет выводится в записи социальной сети -->
-<meta property="og:title" content="Firefox тонкая настройка about:config">
+<meta content="Firefox тонкая настройка about:config" property="og:title"/>
 <!-- описание страницы -->
-<meta property="og:description" content="Firefox тонкая настройка about:config">
+<meta content="Firefox тонкая настройка about:config" property="og:description"/>
 <!-- ссылка на изображение, которое будет публиковаться в записи -->
-<meta property="og:image" content="img/firefox-settings-about-config.webp">
+<meta content="img/firefox-settings-about-config.webp" property="og:image"/>
 <!-- ссылка на текущую страницу -->
-<meta property="og:url" content="firefox-settings-about-config.html">
+<meta content="firefox-settings-about-config.html" property="og:url"/>
 <!-- название сайта -->
-<meta property="og:site_name" content="DzenIT">
-	
-
+<meta content="DzenIT" property="og:site_name"/>
 <title>Firefox тонкая настройка about:config</title>
-<link rel="stylesheet" href="css/text.css">
-	<script src="css/script.js"></script>
+<link href="css/text.css" rel="stylesheet"/>
+<script src="css/script.js"></script>
 </head>
-<body>  
+<body>
 <div class="size1">
-	<div class="header">
- <h2>DzenIT</h2>
+<div class="header">
+<h2>DzenIT</h2>
 </div>
-
-	<div class="topnav">
+<div class="topnav">
 <a href="index.html">HOME</a>
 <a href="zen.html">ZEN</a>
 <a href="it.html">IT</a>
@@ -55,16 +51,42 @@
 <a href="other.html">OTHER</a>
 <a href="w.html">W</a>
 <a href="about.html">CONTACT</a>
-</div>	
-	<center> <h1>Firefox тонкая настройка about:config</h1></center>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<center> <h1>Firefox тонкая настройка about:config</h1></center>
 <p>Всю конфигурацию настроек firefox можно изменить в about:config, но многие из них заблокированные. Изменять их вручную не обязательно, можно просто настроить файл user.js который находится в папке с профилем.</p>
-
-
 <p>Создаем файл user.js в папке с профилем, по умолчанию он находится <b>%APPDATA%\Mozilla\Firefox\Profiles\</b>, вставляем текст:</p>
-
 <details><summary><b>Посмотреть код</b></summary>
-	
-		
 <pre class="code"><b>// Отключаем Pocket</b>
 user_pref("extensions.pocket.api", "");
 user_pref("extensions.pocket.enabled", false);
@@ -266,19 +288,13 @@ user_pref("pdfjs.disabled", true);
 <b>// Маштаб страницы</b>
 user_pref("layout.css.devPixelsPerPx", "-1.0");</pre>
 <button class="copy-button" onclick="copyCode(1)">Copy</button>
-
-			</details>
-	
-
+</details>
 <h3>Отключаем обновление в firefox</h3>
 <p>Эти настройки можно сохранить в указанный ранее файл и они применяться в профиле браузера. Но есть и другие настройки, которые не меняются если в папке с программой firefox.</p>
 <p>Переходим в папку <b>C:\Program Files\Mozilla Firefox\defaults\pref</b> создаем файл <b>config-prefs.js</b> открываете его блокнотом и вставляем:</p>
 <pre>pref("general.config.filename", "firefox.cfg");
 pref("general.config.obscure_value", 0); </pre>
 <p>В папке C:\Program Files\Mozilla Firefox\ создаете файл firefox.cfg, пишем:	</p>
-
-	
-	
 <details><summary><b>Посмотреть код</b></summary>
 <pre class="code">lockPref("app.update.migrated.updateDir", false);
 lockPref("app.update.channel", "");
@@ -329,14 +345,11 @@ lockPref("extensions.update.autoUpdateDefault", false);
 lockPref("extensions.update.enabled", false);
 lockPref("app.update.timerFirstInterval", 0);</pre>
 <button class="copy-button" onclick="copyCode(2)">Copy</button>
-	</details>
-
+</details>
 <p>	Можно еще добавить ограничение хранения кэша. По умолчанию у него 1 Гб, мне хватает и 50 Мб</p>
-
 <pre>lockPref("browser.cache.disk.capacity", 50024);</pre>
-
 <p>Все настройки проводились в firefox 77. Можете скачать портативную версию браузер</p>
-	<a href="https://drive.google.com/file/d/1rGWLbJ3t6eaLP_-DgTvCNg1IhqHYCiGp/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1rGWLbJ3t6eaLP_-DgTvCNg1IhqHYCiGp/view?usp=sharing</a>
-	 <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div>
- </body>
+<a href="https://drive.google.com/file/d/1rGWLbJ3t6eaLP_-DgTvCNg1IhqHYCiGp/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1rGWLbJ3t6eaLP_-DgTvCNg1IhqHYCiGp/view?usp=sharing</a>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div>
+</body>
 </html>

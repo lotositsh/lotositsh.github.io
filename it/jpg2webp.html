@@ -1,31 +1,29 @@
 <!DOCTYPE html>
+
 <html>
-	
 <head>
-<meta charset="UTF-8">
-
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="../css/script.js"></script>
-<meta name="description" content="python конвертация jpg и png в webp">
-<meta name="keywords" content="python, конвертация jpg png webp"> 
-
+<meta charset="utf-8"/>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<script src="../css/script.js"></script>
+<meta content="python конвертация jpg и png в webp" name="description"/>
+<meta content="python, конвертация jpg png webp" name="keywords"/>
 <!-- fb -->
 <!-- локализация сайта, для русскоязычного сайта ru_RU -->
-<meta property="og:locale" content="ua_RU">
+<meta content="ua_RU" property="og:locale"/>
 <!-- тип контента, по умолчанию используется article -->
-<meta property="og:type" content="article">
+<meta content="article" property="og:type"/>
 <!-- заголовок страницы, который будет выводится в записи социальной сети -->
-<meta property="og:title" content="python конвертация jpg и png в webp">
+<meta content="python конвертация jpg и png в webp" property="og:title"/>
 <!-- описание страницы -->
-<meta property="og:description" content="python, конвертация jpg png webp">
+<meta content="python, конвертация jpg png webp" property="og:description"/>
 <!-- ссылка на изображение, которое будет публиковаться в записи -->
-<meta property="og:image" content="img/jpg2webp/jpg2web.webp">
+<meta content="img/jpg2webp/jpg2web.webp" property="og:image"/>
 <!-- ссылка на текущую страницу -->
-<meta property="og:url" content="jpg2webp.html">
+<meta content="jpg2webp.html" property="og:url"/>
 <!-- название сайта -->
-<meta property="og:site_name" content="DzenIT">
+<meta content="DzenIT" property="og:site_name"/>
 <script type="text/javascript">
   function openImageWindow(src) {
     var image = new Image();
@@ -35,18 +33,14 @@
     window.open(src,"Image","width=" + width + ",height=" + height);
   }
 </script>
-
 <title>python конвертация jpg и png в webp</title>
-	
-	
-<link rel="stylesheet" href="../css/text.css">
-<link rel="stylesheet" href="../css/spoiler.css">
+<link href="../css/text.css" rel="stylesheet"/>
+<link href="../css/spoiler.css" rel="stylesheet"/>
 </head>
-<body>  <div class="size1">
-	<div class="header">
- <h2>DzenIT</h2>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
 </div>
-
 <div class="topnav">
 <a href="../index.html">HOME</a>
 <a href="../zen.html">ZEN</a>
@@ -58,11 +52,41 @@
 <a href="../other.html">OTHER</a>
 <a href="../w.html">W</a>
 <a href="../about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
 </div>
-	<center><h1><b>python 3 конвертация jpg и png в webp</b></h1></center>
-	<p>Напишем простой код на python 3 для конвертации всех файлов  в папке формата jpg и png в webp. Сам код с комментариями:</p>
-
-	<pre class="code">
+</div>
+<center><h1><b>python 3 конвертация jpg и png в webp</b></h1></center>
+<p>Напишем простой код на python 3 для конвертации всех файлов  в папке формата jpg и png в webp. Сам код с комментариями:</p>
+<pre class="code">
 	# Import necessary libraries
 import os
 from PIL import Image
@@ -95,16 +119,13 @@ for image in images:
 print("All images converted to webp format successfully!")
 	</pre>
 <button class="copy-button" onclick="copyCode(1)">Copy</button>
-	
-	<p>Скачать файл питона для изучения можно <a href="https://drive.google.com/file/d/1R-DJPKMJ_UC2vCS_qBFI_REoVPnLvaI3/view?usp=sharing" target="_blank">тут</a>, а также файл exe для windows <a href="https://drive.google.com/file/d/1ZXHfAfYqF9-sxLzMYMnAW3CK-B_tP7a-/view?usp=sharing" target="_blank">здесь</a>. Просто поместите программу с файлами jpg png, которые нужно перевести в формат webp и запустите.</p>
+<p>Скачать файл питона для изучения можно <a href="https://drive.google.com/file/d/1R-DJPKMJ_UC2vCS_qBFI_REoVPnLvaI3/view?usp=sharing" target="_blank">тут</a>, а также файл exe для windows <a href="https://drive.google.com/file/d/1ZXHfAfYqF9-sxLzMYMnAW3CK-B_tP7a-/view?usp=sharing" target="_blank">здесь</a>. Просто поместите программу с файлами jpg png, которые нужно перевести в формат webp и запустите.</p>
 <p>На картинке можем увидеть результат сжатия jpg в webp, разрешение 1600*1200. Без потери качества размер изображения уменьшился в 5 раз</p>
-<p>Улучшенная версия на github ---> <a href="https://github.com/lotositsh/image2webp.git" target="_blank" rel="noopener noreferrer">https://github.com/lotositsh/image2webp.git</a></p>
-
-
+<p>Улучшенная версия на github ---&gt; <a href="https://github.com/lotositsh/image2webp.git" rel="noopener noreferrer" target="_blank">https://github.com/lotositsh/image2webp.git</a></p>
 <div class="text_image">
-	<center>
-	  <img src="img/jpg2webp/222jpg2web.webp" alt="конвертация jpg to webp" onclick = 'openImageWindow(this.src);'/>
-	</center>
+<center>
+<img alt="конвертация jpg to webp" onclick="openImageWindow(this.src);" src="img/jpg2webp/222jpg2web.webp"/>
+</center>
 </div>
-	 <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

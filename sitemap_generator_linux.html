@@ -1,31 +1,30 @@
 ﻿<!DOCTYPE html>
-<html>
- <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/text.css">
-<script src="css/script.js"></script>
-  <title>Sitemap generator на linux используя php </title>
-    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
-	<meta name="viewport" content="width=device-width">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/text.css">
-	<meta name="description" content="Sitemap generator на linux используя php">
-    <meta name="keywords" content="sitemap, generator, linux, php, блог"> 
-	
-	<!-- локализация сайта, для русскоязычного сайта ru_RU -->
-	<meta property="og:locale" content="ru_RU">
-	<!-- тип контента, по умолчанию используется article -->
-	<meta property="og:type" content="article">
-	<!-- заголовок страницы, который будет выводится в записи социальной сети -->
-	<meta property="og:title" content="Sitemap generator на linux используя php">
-	<!-- описание страницы -->
-	<meta property="og:description" content="Делаем свою карту сайта без ограничений">
- </head>
- <body>  <div class="size1">
- <div class="header">
- <h2>DzenIT</h2>
-</div>
 
+<html>
+<head>
+<meta charset="utf-8"/>
+<link href="css/text.css" rel="stylesheet"/>
+<script src="css/script.js"></script>
+<title>Sitemap generator на linux используя php </title>
+<link href="img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="css/text.css" rel="stylesheet"/>
+<meta content="Sitemap generator на linux используя php" name="description"/>
+<meta content="sitemap, generator, linux, php, блог" name="keywords"/>
+<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+<meta content="ru_RU" property="og:locale"/>
+<!-- тип контента, по умолчанию используется article -->
+<meta content="article" property="og:type"/>
+<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+<meta content="Sitemap generator на linux используя php" property="og:title"/>
+<!-- описание страницы -->
+<meta content="Делаем свою карту сайта без ограничений" property="og:description"/>
+</head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
+</div>
 <div class="topnav">
 <a href="index.html">HOME</a>
 <a href="zen.html">ZEN</a>
@@ -37,26 +36,56 @@
 <a href="other.html">OTHER</a>
 <a href="w.html">W</a>
 <a href="about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
 </div>
-
-<center><h1>Sitemap generator на linux используя php </h1></center>  
-  <!-- Комментарий -->
-  <p>Я использую простой генератор sitemap для своего сайта который взял с репозитория с гитхаб</p>
-  <pre>git clone https://github.com/knyzorg/Sitemap-Generator-Crawler.git</pre>
-  <p>Переходим в каталог</p>
-  <pre>cd Sitemap-Generator-Crawler</pre>
-  <p>Устанавливаем модули</p>
-  <pre>apt-get install php-curl
+</div>
+<center><h1>Sitemap generator на linux используя php </h1></center>
+<!-- Комментарий -->
+<p>Я использую простой генератор sitemap для своего сайта который взял с репозитория с гитхаб</p>
+<pre>git clone https://github.com/knyzorg/Sitemap-Generator-Crawler.git</pre>
+<p>Переходим в каталог</p>
+<pre>cd Sitemap-Generator-Crawler</pre>
+<p>Устанавливаем модули</p>
+<pre>apt-get install php-curl
 apt-get install php</pre>
-  <p>Запускаем генератор</p>
-  <pre>php sitemap.php file=sitemap.xml site=https://site.com</pre>
-    <p>Для автоматизации можно создать скрипт и поместить в cron</p>
-	<p>Если репозитория нет, вот архив для скачивания (телеграм)
+<p>Запускаем генератор</p>
+<pre>php sitemap.php file=sitemap.xml site=https://site.com</pre>
+<p>Для автоматизации можно создать скрипт и поместить в cron</p>
+<p>Если репозитория нет, вот архив для скачивания (телеграм)
 	<a href="https://t.me/dzenit_xyz/5" target="_blank">--скачать--</a></p>
-	<p>Давайте создадим простой скрипт для автоматизации работы</p>
-	<pre>nano sitemap.sh</pre>
-	<p>Заполним его</p>
-  <pre>
+<p>Давайте создадим простой скрипт для автоматизации работы</p>
+<pre>nano sitemap.sh</pre>
+<p>Заполним его</p>
+<pre>
 #!/bin/bash
 
 rm /var/www/html/sitemap.xml ;
@@ -64,6 +93,5 @@ rm /var/www/html/sitemap.xml ;
 php /root/Sitemap-Generator-Crawler/sitemap.php file=/var/www/html/sitemap.xml site=https://lotositsh.github.io/
 </pre>
 <p>Директория /var/www/html/ расположение вашего сайта. Скрипт удаляет старый sitemap и создает на его месте новый. /root/Sitemap-Generator-Crawler/ это расположение директории со скриптом </p>
-  
-  <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

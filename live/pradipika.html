@@ -1,41 +1,69 @@
 
 <!DOCTYPE html>
+
 <html><head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../css/text.css">
+<meta charset="utf-8"/>
+<link href="../css/text.css" rel="stylesheet"/>
 <script src="../css/script.js"></script>
 <title>Хатха Йога Прадипика</title>
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-  </head>
-  <body>  <div class="size1">
-  <div class="header">
-    <h2>DzenIT</h2>
-  </div>
-    <div class="topnav">
-    <a href="../index.html">HOME</a>
-    <a href="../zen.html">ZEN</a>
-    <a href="../it.html">IT</a>
-    <a href="../soft.html">SOFT</a>
-    <a href="../apk.html">APK</a>
-    <a href="../live.html">LIVE</a>
-    <a href="../game.html">GAME</a>
-    <a href="../other.html">OTHER</a>
-    <a href="../w.html">W</a>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
+</div>
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../w.html">W</a>
 <a href="../about.html">CONTACT</a>
-  </div>
-  <center><h1>Хатха Йога Прадипика</h1></center>
-  
-
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<center><h1>Хатха Йога Прадипика</h1></center>
 <ul>
-    <li><a href="#asan">Асана</a>
-    <li><a href="#prana">Пранаяма и Шаткарма</a>
-    <li><a href="#mudra">Мудра и Бандха</a>
-	<li><a href="#samadhi">Самадхи</a>
-</ul>
-	  
+<li><a href="#asan">Асана</a>
+<li><a href="#prana">Пранаяма и Шаткарма</a>
+<li><a href="#mudra">Мудра и Бандха</a>
+<li><a href="#samadhi">Самадхи</a>
+</li></li></li></li></ul>
 <h2 id="asan">Асана</h2>
 <p>1.1. Поклоняюсь Шри Адинатхе (Шиве), обучившему науке Хатха-Йоги - лестнице, ведущей к достижению вершин Раджа-йоги.</p>
 <p>1.2. йогин Сватмарама после приветствия своего Гуру, излагает Хатха-йогу для достижения Раджа-Йоги.</p>
@@ -108,8 +136,7 @@
 <p>1.67. Успех (Сиддхи) достигается практикой. Как можно достичь успеха без практики? От одного только чтения книг по Йоге успех не придет.</p>
 <p>1.68. Сиддхи не достичь ношением одежды йогина или разговорами о йоге. Лишь в безустанной практике - секрет успеха. Это несомненно, и нет иного.</p>
 <p>1.69. Различными Асанами, Кумбхаками и другими божественными способами путь Хатха-йоги приводит к плодам Раджа-йоги.</p>
-
-	  <h2 id="prana">Пранаяма</h2>
+<h2 id="prana">Пранаяма</h2>
 <p>2.1. Когда Асаны освоены, пусть йогин, владеющий собой и соблюдающий диету, практикует Пранаяму согласно указаниям своего Гуру.</p>
 <p>2.2. Когда дыхание движется, тогда и ум беспокоен. Сдерживая дыхание, йогин достигает устойчивости ума.</p>
 <p>2.3. Человек живет, пока Прана (дыхание) есть в теле. Когда Прана покидает тело, его покидает и жизнь. Поэтому нужно замедлять дыхание.</p>
@@ -186,7 +213,6 @@
 <p>2.75. Нельзя достичь совершенства в Раджа-йоге без Хатха-йоги и нельзя достичь успеха в Хатха-йоге без Раджа-йоги. Обе они нужны для достижения Сиддхи.</p>
 <p>2.76. В конце Кумбхаки отвлеки мысли от всех объектов. Так йогин достигает Раджа-йоги.</p>
 <p>2.77. Вот признаки успеха в Хатха-йоге: тело становится худощавым, речь убедительной, ум спокоен, в сердце слышны звуки Нада, взор ясный, тело свободно от болезней, семя под контролем, аппетит хороший, а Нади очищены.</p>
-
 <h2 id="mudra">Мудры</h2>
 <p>3.1. Как змей Ананта поддерживает Землю со всеми ее горами и лесами, так Кундалини поддерживает всю йога-Тантру.</p>
 <p>3.2. Когда спящая Кундалини пробуждается благодаря милости Гуру, тогда все Чакры и Грантхи пронзаются.</p>
@@ -428,7 +454,5 @@
 <p>4.111. Находясь в состоянии бодрствования, он тем не менее подобен спящему. Не вдыхая и не выдыхая, он поистине свободен.</p>
 <p>4.112. Неуязвимый для всякого оружия, непобедимый всеми силами мира, по ту сторону мантр и янтр находится, йогин, достигший Самадхи.</p>
 <p>4.113. До тех пор, пока дыхание не пойдет по срединному каналу (Сушумна), до тех пор, пока семя не станет устойчивым от остановки дыхания; до тех пор, пока дыхание не соединит ум с объектом, на котором он сосредоточен,- до тех пор останутся пустыми болтунами и обманщиками все те, кто рассуждает о знании. Преклоняюсь пред Всепривлекательным.</p>
-  
-    <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
-
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

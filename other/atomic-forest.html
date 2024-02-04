@@ -1,100 +1,108 @@
 
 <!DOCTYPE html>
+
 <html><head>
-<meta charset="UTF-8">
-
-
-<link rel="stylesheet" href="../css/text.css">
+<meta charset="utf-8"/>
+<link href="../css/text.css" rel="stylesheet"/>
 <script src="../css/script.js"></script>
-
-
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
-
-
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <!-- Primary Meta Tags -->
 <title>Атомный лес</title>
-<meta name="title" content="Атомный лес" />
-<meta name="description" content="Брутальный отечественный мультипликационный сериал, который идет по телевизору после 22.00 под знаком 18+ от режиссера Алексея Лебедева. Если вы любите треш и откровенную жесть - вам обязательно стоит обратить на него внимание." />
-<meta name="keywords" content="смотреть онлайн, атомный, лес, все серии"> 
-
+<meta content="Атомный лес" name="title">
+<meta content="Брутальный отечественный мультипликационный сериал, который идет по телевизору после 22.00 под знаком 18+ от режиссера Алексея Лебедева. Если вы любите треш и откровенную жесть - вам обязательно стоит обратить на него внимание." name="description">
+<meta content="смотреть онлайн, атомный, лес, все серии" name="keywords"/>
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="DzenIT" />
-<meta property="og:title" content="Атомный лес" />
-<meta property="og:description" content="Брутальный отечественный мультипликационный сериал, который идет по телевизору после 22.00 под знаком 18+ от режиссера Алексея Лебедева. Если вы любите треш и откровенную жесть - вам обязательно стоит обратить на него внимание." />
-<meta property="og:image" content="img/atomic-forest.jpg" />
-
+<meta content="DzenIT" property="og:type">
+<meta content="Атомный лес" property="og:title">
+<meta content="Брутальный отечественный мультипликационный сериал, который идет по телевизору после 22.00 под знаком 18+ от режиссера Алексея Лебедева. Если вы любите треш и откровенную жесть - вам обязательно стоит обратить на него внимание." property="og:description"/>
+<meta content="img/atomic-forest.jpg" property="og:image"/>
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Атомный лес" />
-<meta property="twitter:description" content="Брутальный отечественный мультипликационный сериал, который идет по телевизору после 22.00 под знаком 18+ от режиссера Алексея Лебедева. Если вы любите треш и откровенную жесть - вам обязательно стоит обратить на него внимание." />
-<meta property="twitter:image" content="img/atomic-forest.jpg" />
-
-
-  </head>
-  <body>  <div class="size1">
-  <div class="header">
-    <h2>DzenIT</h2>
-  </div>
-    <div class="topnav">
-    <a href="../index.html">HOME</a>
-    <a href="../zen.html">ZEN</a>
-    <a href="../it.html">IT</a>
-    <a href="../soft.html">SOFT</a>
-    <a href="../apk.html">APK</a>
-    <a href="../live.html">LIVE</a>
-    <a href="../game.html">GAME</a>
-    <a href="../other.html">OTHER</a>
-    <a href="../w.html">W</a>
-    <a href="../about.html">CONTACT</a>
-  </div>
-<a href="#top" class="scroll-to-top">Up</a>
-  <center><h1>Атомный лес</h1></center>
- <p> Дата выхода:	16 ноября 2012 года</p>
-	  <p>Возраст:	16+ для более зрелых и понимающих</p>
-  <p>После ядерной катастрофы, практически истребившей всю человеческую цивилизацию, наше планета полностью покрылась густым лесом. Оставшиеся люди больше походят на призраков, скорее, чем на то, какими они были раньше. Они предпочли скрываться и погибать, вместо того чтобы выживать, поэтому род человеческий можно считать потерянным.</p>
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="Атомный лес" property="twitter:title"/>
+<meta content="Брутальный отечественный мультипликационный сериал, который идет по телевизору после 22.00 под знаком 18+ от режиссера Алексея Лебедева. Если вы любите треш и откровенную жесть - вам обязательно стоит обратить на него внимание." property="twitter:description"/>
+<meta content="img/atomic-forest.jpg" property="twitter:image"/>
+</meta></meta></meta></meta></head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
+</div>
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../w.html">W</a>
+<a href="../about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<a class="scroll-to-top" href="#top">Up</a>
+<center><h1>Атомный лес</h1></center>
+<p> Дата выхода:	16 ноября 2012 года</p>
+<p>Возраст:	16+ для более зрелых и понимающих</p>
+<p>После ядерной катастрофы, практически истребившей всю человеческую цивилизацию, наше планета полностью покрылась густым лесом. Оставшиеся люди больше походят на призраков, скорее, чем на то, какими они были раньше. Они предпочли скрываться и погибать, вместо того чтобы выживать, поэтому род человеческий можно считать потерянным.</p>
 <p>Однако нашей планете все еще есть обитатели. Животные, которые смогли выжить в этой войне, под воздействием радиации претерпели мутации и приобрели разумность. Теперь они стали разумными существами, пользующимися остатками цивилизации. Наш главный герой - медведь, который ходит на свою нелюбимую работу и зарабатывает на пропитание своей семьи. Его лучший друг - кролик-пофигист, который ничего не беспокоит, и к тому же является братом его жены. Бедный медведь вынужден содержать свою крольчиху-жену и их крольчат. В общем, все как у людей, только проживаем на зверином уровне. Однако у каждого обитателя Леса сохранились некоторые черты их истинной природы, поэтому животные часто сталкиваются с выбором между своим разумом и природной сущностью, и это не всегда заканчивается хорошо для окружающих. </p>
-	  <p>Этот мультфильм крайне забавен и необычен, но абсолютно не рекомендуется для детей или лиц со слабой психикой.</p>
- 	  
-	   
-	  
-	  <br>
-	  <div style="padding:55.56% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/872331387?h=93e6d4d3f2&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-	  <br>
-	  
-	 
-	  
-	  
-	  <details><summary><b>По сериям:</b></summary>
-		  <p><b>1 Сезон</b></p>
-	  <p><a href="https://vimeo.com/872331387#t=0s" target="_blank" rel="noopener noreferrer">01 - Здравствуй, папа!</a></p>
-<p><a href="https://vimeo.com/872331387#t=1325s" target="_blank" rel="noopener noreferrer">02 - Кровавая свадьба  Атомный лес</a></p>
-<p><a href="https://vimeo.com/872331387#t=2650s" target="_blank" rel="noopener noreferrer">03 - Лапы</a></p>
-<p><a href="https://vimeo.com/872331387#t=3994s" target="_blank" rel="noopener noreferrer">04 - Инстинкт требует жертв</a></p>
-<p><a href="https://vimeo.com/872331387#t=5320s" target="_blank" rel="noopener noreferrer">05 - Инстинкт требует жертв. Часть 2</a></p>
-<p><a href="https://vimeo.com/872331387#t=6641s" target="_blank" rel="noopener noreferrer">06 - Бремя самца</a></p>
-<p><a href="https://vimeo.com/872331387#t=7918s" target="_blank" rel="noopener noreferrer">07 - Мой Мишель</a></p>
-<p><a href="https://vimeo.com/872331387#t=9246s" target="_blank" rel="noopener noreferrer">08 - Последняя любовь</a></p>
-<p><a href="https://vimeo.com/872331387#t=10576s" target="_blank" rel="noopener noreferrer">09 - Поводы жить</a></p>
-<p><a href="https://vimeo.com/872331387#t=11903s" target="_blank" rel="noopener noreferrer">10 - Теперь надо жить осторожней</a></p>
-		  <p><b>2 Сезон</b></p>
-<p><a href="https://vimeo.com/872331387#t=13226s" target="_blank" rel="noopener noreferrer">11 - План природы</a></p>
-<p><a href="https://vimeo.com/872331387#t=14555s" target="_blank" rel="noopener noreferrer">12 - Защита зверей от информации</a></p>
-<p><a href="https://vimeo.com/872331387#t=15872s" target="_blank" rel="noopener noreferrer">13 - Отложенное путешествие</a></p>
-<p><a href="https://vimeo.com/872331387#t=17203s" target="_blank" rel="noopener noreferrer">14 - Внутренний Стас</a></p>
-<p><a href="https://vimeo.com/872331387#t=18525s" target="_blank" rel="noopener noreferrer">15 - Садовник</a></p>
-<p><a href="https://vimeo.com/872331387#t=19860s" target="_blank" rel="noopener noreferrer">16 - Юмор, будь ты проклят!</a></p>
-<p><a href="https://vimeo.com/872331387#t=21190s" target="_blank" rel="noopener noreferrer">17 - Бог, дьявол, его брат и их мать</a></p>
-<p><a href="https://vimeo.com/872331387#t=22520s" target="_blank" rel="noopener noreferrer">18 - Астрономы и врачи</a></p>
-<p><a href="https://vimeo.com/872331387#t=23861s" target="_blank" rel="noopener noreferrer">19 - Секрет скуки</a></p>
-
-	  
-	  </details>
-	  
-    <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
-
+<p>Этот мультфильм крайне забавен и необычен, но абсолютно не рекомендуется для детей или лиц со слабой психикой.</p>
+<br/>
+<div style="padding:55.56% 0 0 0;position:relative;"><iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" frameborder="0" src="https://player.vimeo.com/video/872331387?h=93e6d4d3f2&amp;title=0&amp;byline=0&amp;portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<br/>
+<details><summary><b>По сериям:</b></summary>
+<p><b>1 Сезон</b></p>
+<p><a href="https://vimeo.com/872331387#t=0s" rel="noopener noreferrer" target="_blank">01 - Здравствуй, папа!</a></p>
+<p><a href="https://vimeo.com/872331387#t=1325s" rel="noopener noreferrer" target="_blank">02 - Кровавая свадьба  Атомный лес</a></p>
+<p><a href="https://vimeo.com/872331387#t=2650s" rel="noopener noreferrer" target="_blank">03 - Лапы</a></p>
+<p><a href="https://vimeo.com/872331387#t=3994s" rel="noopener noreferrer" target="_blank">04 - Инстинкт требует жертв</a></p>
+<p><a href="https://vimeo.com/872331387#t=5320s" rel="noopener noreferrer" target="_blank">05 - Инстинкт требует жертв. Часть 2</a></p>
+<p><a href="https://vimeo.com/872331387#t=6641s" rel="noopener noreferrer" target="_blank">06 - Бремя самца</a></p>
+<p><a href="https://vimeo.com/872331387#t=7918s" rel="noopener noreferrer" target="_blank">07 - Мой Мишель</a></p>
+<p><a href="https://vimeo.com/872331387#t=9246s" rel="noopener noreferrer" target="_blank">08 - Последняя любовь</a></p>
+<p><a href="https://vimeo.com/872331387#t=10576s" rel="noopener noreferrer" target="_blank">09 - Поводы жить</a></p>
+<p><a href="https://vimeo.com/872331387#t=11903s" rel="noopener noreferrer" target="_blank">10 - Теперь надо жить осторожней</a></p>
+<p><b>2 Сезон</b></p>
+<p><a href="https://vimeo.com/872331387#t=13226s" rel="noopener noreferrer" target="_blank">11 - План природы</a></p>
+<p><a href="https://vimeo.com/872331387#t=14555s" rel="noopener noreferrer" target="_blank">12 - Защита зверей от информации</a></p>
+<p><a href="https://vimeo.com/872331387#t=15872s" rel="noopener noreferrer" target="_blank">13 - Отложенное путешествие</a></p>
+<p><a href="https://vimeo.com/872331387#t=17203s" rel="noopener noreferrer" target="_blank">14 - Внутренний Стас</a></p>
+<p><a href="https://vimeo.com/872331387#t=18525s" rel="noopener noreferrer" target="_blank">15 - Садовник</a></p>
+<p><a href="https://vimeo.com/872331387#t=19860s" rel="noopener noreferrer" target="_blank">16 - Юмор, будь ты проклят!</a></p>
+<p><a href="https://vimeo.com/872331387#t=21190s" rel="noopener noreferrer" target="_blank">17 - Бог, дьявол, его брат и их мать</a></p>
+<p><a href="https://vimeo.com/872331387#t=22520s" rel="noopener noreferrer" target="_blank">18 - Астрономы и врачи</a></p>
+<p><a href="https://vimeo.com/872331387#t=23861s" rel="noopener noreferrer" target="_blank">19 - Секрет скуки</a></p>
+</details>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

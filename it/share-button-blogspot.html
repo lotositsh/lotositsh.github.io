@@ -1,30 +1,28 @@
 <!DOCTYPE html>
+
 <html>
-	
 <head>
-<meta charset="UTF-8">
-
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Кнопки социальных сетей для blogspot">
-<meta name="keywords" content="blogspot, кнопки социальных сетей"> 
-
+<meta charset="utf-8"/>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Кнопки социальных сетей для blogspot" name="description"/>
+<meta content="blogspot, кнопки социальных сетей" name="keywords"/>
 <!-- fb -->
 <!-- локализация сайта, для русскоязычного сайта ru_RU -->
-<meta property="og:locale" content="ua_RU">
+<meta content="ua_RU" property="og:locale"/>
 <!-- тип контента, по умолчанию используется article -->
-<meta property="og:type" content="article">
+<meta content="article" property="og:type"/>
 <!-- заголовок страницы, который будет выводится в записи социальной сети -->
-<meta property="og:title" content="Кнопки социальных сетей для blogspot">
+<meta content="Кнопки социальных сетей для blogspot" property="og:title"/>
 <!-- описание страницы -->
-<meta property="og:description" content="Кнопки социальных сетей для blogspot">
+<meta content="Кнопки социальных сетей для blogspot" property="og:description"/>
 <!-- ссылка на изображение, которое будет публиковаться в записи -->
-<meta property="og:image" content="img/share-button-blogspot/blo-1.webp">
+<meta content="img/share-button-blogspot/blo-1.webp" property="og:image"/>
 <!-- ссылка на текущую страницу -->
-<meta property="og:url" content="share-button-blogspot.html">
+<meta content="share-button-blogspot.html" property="og:url"/>
 <!-- название сайта -->
-<meta property="og:site_name" content="DzenIT">
+<meta content="DzenIT" property="og:site_name"/>
 <script type="text/javascript">
   function openImageWindow(src) {
     var image = new Image();
@@ -34,17 +32,13 @@
     window.open(src,"Image","width=" + width + ",height=" + height);
   }
 </script>
-
 <title>Кнопки социальных сетей для blogspot</title>
-	
-	
-<link rel="stylesheet" href="../css/text.css">
+<link href="../css/text.css" rel="stylesheet"/>
 </head>
-<body>  <div class="size1">
-	<div class="header">
- <h2>DzenIT</h2>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
 </div>
-
 <div class="topnav">
 <a href="../index.html">HOME</a>
 <a href="../zen.html">ZEN</a>
@@ -56,36 +50,65 @@
 <a href="../other.html">OTHER</a>
 <a href="../w.html">W</a>
 <a href="../about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
 </div>
-		<center><h1><b>Кнопки социальных сетей для blogspot</b></h1></center>
-	<p>Мне не очень нравятся кнопки "поделиться", которые предоставляет blogspot, поэтому было решено создать свои стильные кнопки социальных сетей.</p>
-Делаем резервную копию нашей темы blogspot, чтобы мы её могли потом восстановить в случае  неудачи. Переходим в панель blogger Тема  ›  Резервное копирование и восстановление.</p>
-	
-	<div class ="text_image">
-	<center>
-	  <img src="img/share-button-blogspot/blo-2.webp" alt="" onclick = 'openImageWindow(this.src);'/>
-	</center>
-	</div>
-	<p>Весь процесс редактирования будет происходить в html редакторе блога. Тема  › Изменить HTML</p>
+</div>
+<center><h1><b>Кнопки социальных сетей для blogspot</b></h1></center>
+<p>Мне не очень нравятся кнопки "поделиться", которые предоставляет blogspot, поэтому было решено создать свои стильные кнопки социальных сетей.</p>
+Делаем резервную копию нашей темы blogspot, чтобы мы её могли потом восстановить в случае  неудачи. Переходим в панель blogger Тема  ›  Резервное копирование и восстановление.
+<div class="text_image">
+<center>
+<img alt="" onclick="openImageWindow(this.src);" src="img/share-button-blogspot/blo-2.webp"/>
+</center>
+</div>
+<p>Весь процесс редактирования будет происходить в html редакторе блога. Тема  › Изменить HTML</p>
 <p>Создаем кнопки поделится Facebook, Twitter, Telegram и VK:</p>
 Сочетанием клавиш Ctrl+F ищем тэг data:post.body. Между тэгов data:post.body/ и  /div вставляем код
-	<div class = "text_image">
-	<center>
-	  <img src="img/share-button-blogspot/blo-3.webp" alt="" onclick = 'openImageWindow(this.src);'/>
-	</center>
-	</div>
-	<pre>
-&lt;a class='facebook1' style='color:#fff' expr:href='&amp;quot;https://www.facebook.com/sharer.php?u=&amp;quot; + data:post.url + &amp;quot;&amp;amp;text=&amp;quot; + data:post.title' onclick='window.open(this.href,&amp;quot;popupwindow&amp;quot;,&amp;quot;status=0,height=500,width=500,resizable=0,top=50,left=100&amp;quot;);return false;' rel='nofollow' target='_blank'&gt;&lt;i class=&quot;facebook&quot;&gt;&lt;/i&gt; Facebook&lt;/a&gt;
+	<div class="text_image">
+<center>
+<img alt="" onclick="openImageWindow(this.src);" src="img/share-button-blogspot/blo-3.webp"/>
+</center>
+</div>
+<pre>
+&lt;a class='facebook1' style='color:#fff' expr:href='&amp;quot;https://www.facebook.com/sharer.php?u=&amp;quot; + data:post.url + &amp;quot;&amp;amp;text=&amp;quot; + data:post.title' onclick='window.open(this.href,&amp;quot;popupwindow&amp;quot;,&amp;quot;status=0,height=500,width=500,resizable=0,top=50,left=100&amp;quot;);return false;' rel='nofollow' target='_blank'&gt;&lt;i class="facebook"&gt;&lt;/i&gt; Facebook&lt;/a&gt;
 
-&lt;a class='twitter1' style='color:#fff' expr:href='&amp;quot;https://twitter.com/share?url=&amp;quot; + data:post.url + &amp;quot;&amp;amp;text=&amp;quot; + data:post.title' onclick='window.open(this.href,&amp;quot;popupwindow&amp;quot;,&amp;quot;status=0,height=500,width=500,resizable=0,top=50,left=100&amp;quot;);return false;' rel='nofollow' target='_blank'&gt;&lt;i class=&quot;twitter-tw&quot;&gt;&lt;/i&gt; Twitter&lt;/a&gt;
+&lt;a class='twitter1' style='color:#fff' expr:href='&amp;quot;https://twitter.com/share?url=&amp;quot; + data:post.url + &amp;quot;&amp;amp;text=&amp;quot; + data:post.title' onclick='window.open(this.href,&amp;quot;popupwindow&amp;quot;,&amp;quot;status=0,height=500,width=500,resizable=0,top=50,left=100&amp;quot;);return false;' rel='nofollow' target='_blank'&gt;&lt;i class="twitter-tw"&gt;&lt;/i&gt; Twitter&lt;/a&gt;
 
-&lt;a class='telegram1' style='color:#fff' expr:href='&amp;quot;https://telegram.me/share/url?url=&amp;quot; + data:post.url + &amp;quot;&amp;amp;text=&amp;quot; + data:post.title' onclick='window.open(this.href,&amp;quot;popupwindow&amp;quot;,&amp;quot;status=0,height=500,width=500,resizable=0,top=50,left=100&amp;quot;);return false;' rel='nofollow' target='_blank'&gt;&lt;i class=&quot;telega&quot;&gt;&lt;/i&gt; Telegram&lt;/a&gt;
+&lt;a class='telegram1' style='color:#fff' expr:href='&amp;quot;https://telegram.me/share/url?url=&amp;quot; + data:post.url + &amp;quot;&amp;amp;text=&amp;quot; + data:post.title' onclick='window.open(this.href,&amp;quot;popupwindow&amp;quot;,&amp;quot;status=0,height=500,width=500,resizable=0,top=50,left=100&amp;quot;);return false;' rel='nofollow' target='_blank'&gt;&lt;i class="telega"&gt;&lt;/i&gt; Telegram&lt;/a&gt;
 
-&lt;a class='vk1' style='color:#fff' expr:href='&amp;quot;https://vk.com/share.php?mini=true&amp;amp;amp;url=&amp;quot; + data:post.url + &amp;quot;&amp;amp;text=&amp;quot; + data:post.title' onclick='window.open(this.href,&amp;quot;popupwindow&amp;quot;,&amp;quot;status=0,height=500,width=500,resizable=0,top=50,left=100&amp;quot;);return false;' rel='nofollow' target='_blank'&gt;&lt;i class=&quot;vkonta&quot;&gt;&lt;/i&gt;ВКонтакте&lt;/a&gt;
+&lt;a class='vk1' style='color:#fff' expr:href='&amp;quot;https://vk.com/share.php?mini=true&amp;amp;amp;url=&amp;quot; + data:post.url + &amp;quot;&amp;amp;text=&amp;quot; + data:post.title' onclick='window.open(this.href,&amp;quot;popupwindow&amp;quot;,&amp;quot;status=0,height=500,width=500,resizable=0,top=50,left=100&amp;quot;);return false;' rel='nofollow' target='_blank'&gt;&lt;i class="vkonta"&gt;&lt;/i&gt;ВКонтакте&lt;/a&gt;
 	</pre>
-	
-	<p>Теперь добавляем стили css для социальных кнопок, Тема  › Настроить › Расширенные › Добавить CSS. Добавляем код и нажимаем Применить к Блогу</p>
-	<pre>
+<p>Теперь добавляем стили css для социальных кнопок, Тема  › Настроить › Расширенные › Добавить CSS. Добавляем код и нажимаем Применить к Блогу</p>
+<pre>
 .facebook1{padding:5px; border-radius:4px; box-shadow: 2px 2px 4px -2px rgb(0, 0, 0, 0.5); background:#3b5998; width: 150px; display: inline-block; margin: 5px; text-align: center;}
 
 .twitter1 {padding:5px; border-radius:4px; box-shadow: 2px 2px 4px -2px rgb(0, 0, 0, 0.5); background:#00acee; width: 150px; display: inline-block; margin: 5px; text-align: center;}
@@ -94,12 +117,12 @@
 
 .vk1{padding:5px; border-radius:4px; box-shadow: 2px 2px 4px -2px rgb(0, 0, 0, 0.5); background:#45668e; width: 150px; display: inline-block; margin: 5px; text-align: center;
 </pre>
-	<br><br>
-	<div class ="text_image">
-	<center>
-	  <img src="img/share-button-blogspot/blo-4.webp" alt="" onclick = 'openImageWindow(this.src);'/>
-	</center>
-	</div>
-	<p>В стилях css указаны размер share button, цвет, надпись на ней, расстояние между кнопками, тень. Эти параметры можно менять на свой вкус.</p>
-	 <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
+<br/><br/>
+<div class="text_image">
+<center>
+<img alt="" onclick="openImageWindow(this.src);" src="img/share-button-blogspot/blo-4.webp"/>
+</center>
+</div>
+<p>В стилях css указаны размер share button, цвет, надпись на ней, расстояние между кнопками, тень. Эти параметры можно менять на свой вкус.</p>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

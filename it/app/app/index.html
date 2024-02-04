@@ -1,53 +1,47 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-
-    <script type="text/javascript">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/>
+<script type="text/javascript">
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('service-worker.js');
         }
     </script>
-
-    <link rel="stylesheet" type="text/css" href="assets/lib/dialog-polyfill.css" />
-    <link rel="stylesheet" href="assets/lib/material.min.css">
-    <link rel="stylesheet" href="assets/style.css">
-
-    <script src="assets/lib/dialog-polyfill.js"></script>
-    <script src="assets/lib/material.min.js"></script>
-    <script src="assets/lib/clipboard.min.js"></script>
-    <script src="assets/app.js"></script>
+<link href="assets/lib/dialog-polyfill.css" rel="stylesheet" type="text/css"/>
+<link href="assets/lib/material.min.css" rel="stylesheet"/>
+<link href="assets/style.css" rel="stylesheet"/>
+<script src="assets/lib/dialog-polyfill.js"></script>
+<script src="assets/lib/material.min.js"></script>
+<script src="assets/lib/clipboard.min.js"></script>
+<script src="assets/app.js"></script>
 </head>
-<body>  <div class="size1">
-    <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
-
-    <video id="camera" autoplay>Вам нужна камера, чтобы использовать это приложение.</video>
-    <div id="snapshotLimitOverlay">
-        <div id="about">
-            <h4>QR Code Scanner</h4>
-            <p>
+<body> <div class="size1">
+<div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" id="loading"></div>
+<video autoplay="" id="camera">Вам нужна камера, чтобы использовать это приложение.</video>
+<div id="snapshotLimitOverlay">
+<div id="about">
+<h4>QR Code Scanner</h4>
+<p>
               Для использования функции считывания QR-кодов с камеры, пожалуйста, разрешите доступ к вашей камере
             </p>
-        </div>
-    </div>
-    <canvas id="snapshot"></canvas>
-    <button id="flipCamera" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Переключить камеру</button>
-
-
-    <dialog class="mdl-dialog">
-        <h4 class="mdl-dialog__title">Текст</h4>
-        <div class="mdl-dialog__content">
-            <p id="resultsContainer"><span id="result"></span></p>
-            <p>
-                <button type="button" class="copy mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" data-clipboard-target="#result">Копировать</button>
-                <a class="search mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Поиск</a>
-            </p>
-        </div>
-        <div class="mdl-dialog__actions">
-            <button type="button" class="continue mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Продолжить</button>
-        </div>
-    </dialog>
- <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
+</div>
+</div>
+<canvas id="snapshot"></canvas>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="flipCamera" type="button">Переключить камеру</button>
+<dialog class="mdl-dialog">
+<h4 class="mdl-dialog__title">Текст</h4>
+<div class="mdl-dialog__content">
+<p id="resultsContainer"><span id="result"></span></p>
+<p>
+<button class="copy mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" data-clipboard-target="#result" type="button">Копировать</button>
+<a class="search mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Поиск</a>
+</p>
+</div>
+<div class="mdl-dialog__actions">
+<button class="continue mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" type="button">Продолжить</button>
+</div>
+</dialog>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

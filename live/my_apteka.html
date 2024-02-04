@@ -1,20 +1,20 @@
 ﻿<!DOCTYPE html>
+
 <html>
  <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8"/>
   <title>Моя домашняя аптечка</title>
-    <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/text.css">
-<meta name="description" content="Моя домашняя аптечка">
-    <meta name="keywords" content="аптека, дом, лекарства"> 
+    <link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="../css/text.css" rel="stylesheet"/>
+<meta content="Моя домашняя аптечка" name="description"/>
+    <meta content="аптека, дом, лекарства" name="keywords"/> 
  </head>
- <body>  <div class="size1">
+ <body> <div class="size1">
  <div class="header">
  <h2>DzenIT</h2>
 </div>
-
 <div class="topnav">
 <a href="../index.html">HOME</a>
 <a href="../zen.html">ZEN</a>
@@ -26,14 +26,43 @@
 <a href="../other.html">OTHER</a>
 <a href="../w.html">W</a>
 <a href="../about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
 </div>
-
+</div>
 <center><h1>Моя аптечка</h1></center>  
   <!-- ссылка <a href="" target="_blank">скачать</a>-->
     <!-- спойлер <details><summary></b>Посмотреть код</b></summary><pre>содержание</pre></details></a>-->
   
 <p>Я не доктор и не врачь, а это не рекомендации. Просто сборник лекарств который мне помог. Опыт собраный в одном месте</p>
-
 <p><b>Варикоз ранняя стадия </b>- троксевазин</p>
 <p><b>Антибиотик</b> - Азитромицин (брать с пробиотиками иначе желудку хана). Может помоч от: 
 - отит, синусид, ангина, горло, бронхит, тонзилит. За час до еды и два часа не есть(пить можно).</p>
@@ -42,7 +71,7 @@
 <p><b>Обезбаливающее </b>- Фаниган содержит в себе деклафинак+парацетомол (подходит не всем)</p>
 <p><b>Синусид </b> - Синупред + постоянно промывать нос (бутылка+соска) использовать теплую воду с солю, перед этим снять отёк (капли или растворить соду в кипятке и дать остыть)</p>
 <p><b>Температура</b> - пол анальгина+парацетомол до 38, свыше 1 анальгин + 2 парацетомола</p>
-(парацетомол в таблетках!!!)</p>
+(парацетомол в таблетках!!!)
 <p><b>Гнойники</b> - фукорцин (мазать сверху)</p>
 <p><b>Кашель </b>- если только начинаться Сбор Бронхофит (чай) аптека рецептика,Бромгексин (Германия)</p>
 <p><b>Отит в ухе</b> - помог Амоксиклав, гной просто вытек, очень жесткий антибиотик просто убивает всё + Отипакс капли</p>
@@ -64,5 +93,5 @@
 <p><b>Мокрота / кашель </b>- Геделикс</p>
 <p><b>Отравление</b> - активированый заставить стошнить , уголь, белый уголь,  1 табл на 10 кг. И много пить воды  </p>
 <p><b>Гемморой</b> - Релiф АДВАНС</p>
-  <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
+  <br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></p></div> </body>
 </html>

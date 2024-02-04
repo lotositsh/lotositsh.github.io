@@ -1,30 +1,28 @@
 <!DOCTYPE html>
+
 <html>
-	
 <head>
-<meta charset="UTF-8">
-
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Выбор и настройка VDS сервера для telegram bot">
-<meta name="keywords" content="vds, vps, server, telegram, bot, настройка, выбор, дешевый, бесплатный"> 
-
+<meta charset="utf-8"/>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Выбор и настройка VDS сервера для telegram bot" name="description"/>
+<meta content="vds, vps, server, telegram, bot, настройка, выбор, дешевый, бесплатный" name="keywords"/>
 <!-- fb -->
 <!-- локализация сайта, для русскоязычного сайта ru_RU -->
-<meta property="og:locale" content="ua_RU">
+<meta content="ua_RU" property="og:locale"/>
 <!-- тип контента, по умолчанию используется article -->
-<meta property="og:type" content="article">
+<meta content="article" property="og:type"/>
 <!-- заголовок страницы, который будет выводится в записи социальной сети -->
-<meta property="og:title" content="Выбор и настройка VDS сервера для telegram bot">
+<meta content="Выбор и настройка VDS сервера для telegram bot" property="og:title"/>
 <!-- описание страницы -->
-<meta property="og:description" content="Выбираем самый дешевый vps/vds сервер для телеграм бота и настраиваем его">
+<meta content="Выбираем самый дешевый vps/vds сервер для телеграм бота и настраиваем его" property="og:description"/>
 <!-- ссылка на изображение, которое будет публиковаться в записи -->
-<meta property="og:image" content="img/vds-server-telegram-bot/01-vds.webp">
+<meta content="img/vds-server-telegram-bot/01-vds.webp" property="og:image"/>
 <!-- ссылка на текущую страницу -->
-<meta property="og:url" content="vds-server-telegram-bot.html">
+<meta content="vds-server-telegram-bot.html" property="og:url"/>
 <!-- название сайта -->
-<meta property="og:site_name" content="DzenIT">
+<meta content="DzenIT" property="og:site_name"/>
 <script type="text/javascript">
   function openImageWindow(src) {
     var image = new Image();
@@ -34,18 +32,14 @@
     window.open(src,"Image","width=" + width + ",height=" + height);
   }
 </script>
-
 <title>Выбор и настройка VDS сервера для telegram bot</title>
-	
-	
-<link rel="stylesheet" href="../css/text.css">
-	<link rel="stylesheet" href="../css/spoiler.css">
+<link href="../css/text.css" rel="stylesheet"/>
+<link href="../css/spoiler.css" rel="stylesheet"/>
 </head>
-<body>  <div class="size1">
-	<div class="header">
- <h2>DzenIT</h2>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
 </div>
-
 <div class="topnav">
 <a href="../index.html">HOME</a>
 <a href="../zen.html">ZEN</a>
@@ -57,11 +51,41 @@
 <a href="../other.html">OTHER</a>
 <a href="../w.html">W</a>
 <a href="../about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
 </div>
 <center><h1><b>Настройка VDS сервера для telegram bot</b></h1></center>
 <p>	Рано или поздно приходиться выбирать сервер для telegram бота. Поэтому я написал эту шпаргалку - как выбрать и настроить сервер на начальном этапе.</p>
-	
-		<h2>Настройка VDS для bot telegram</h2>
+<h2>Настройка VDS для bot telegram</h2>
 <p>Когда мы получили доступ в консоль, обычно под рутом (#root). Первым делом нужно обновить систему:</p>
 <pre>sudo apt update
 sudo apt upgrade</pre>
@@ -108,29 +132,22 @@ WantedBy=multi-user.target</pre>
 systemctl enable bot
 systemctl start bot
 systemctl status bot</pre>
-<br><br>
+<br/><br/>
 <p>Если всё сделано правильно - мы увидим активную работу нашего скрипта</p>
-	<div class="text_image">
-		<center>
-		
-		  <img src="img/vds-server-telegram-bot/05-vds.webp" alt="запущенный бот в сервисах" onclick = 'openImageWindow(this.src);' />
-		</center>
-	</div>
-	<br>
-	<p>Были проблемы с латиницей, запускай скрипты через команду</p>
-	<pre>PYTHONIOENCODING=utf-8 python3 main.py</pre>
-
-	
-	
-	
-	
-		<p><b>ps.</b> некоторые библиотеки питона 3,6 уже не поддерживаються, вот список моих с их версиями</p>
- 
-		<div class="spoiler">
-    <label>
-        <input type="checkbox"/>
-        <span class="btn">Список библиотек для работы с версиями python 3.6 (нажмите чтобы открыть)</span>
-        <div class="text">
+<div class="text_image">
+<center>
+<img alt="запущенный бот в сервисах" onclick="openImageWindow(this.src);" src="img/vds-server-telegram-bot/05-vds.webp"/>
+</center>
+</div>
+<br/>
+<p>Были проблемы с латиницей, запускай скрипты через команду</p>
+<pre>PYTHONIOENCODING=utf-8 python3 main.py</pre>
+<p><b>ps.</b> некоторые библиотеки питона 3,6 уже не поддерживаються, вот список моих с их версиями</p>
+<div class="spoiler">
+<label>
+<input type="checkbox"/>
+<span class="btn">Список библиотек для работы с версиями python 3.6 (нажмите чтобы открыть)</span>
+<div class="text">
 <pre>
 altgraph==0.17
 attrs==19.3.0
@@ -207,8 +224,7 @@ XlsxWriter==1.3.7
 youtube-dl==2020.6.16.1
 zope.interface==4.7.1
 </pre>
-        </div>
-    </label>
-		
- <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
-		</html>
+</div>
+</label>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </div></body>
+</html>

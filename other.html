@@ -1,22 +1,20 @@
 ﻿
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png"> 
+
+<meta charset="utf-8"/>
+<link href="img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
 <html>
 <head>
-	<title>OTHER</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/index.css">
-<link rel="stylesheet" href="css/text.css">
+<title>OTHER</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="css/index.css" rel="stylesheet"/>
+<link href="css/text.css" rel="stylesheet"/>
 <script src="css/script.js"></script>
 </head>
-<body>  <div class="size1">
-
+<body> <div class="size1">
 <div class="header">
-  <h2>OTHER</h2>
+<h2>OTHER</h2>
 </div>
-
-
 <div class="topnav">
 <a href="index.html">HOME</a>
 <a href="zen.html">ZEN</a>
@@ -28,66 +26,79 @@
 <a href="other.html">OTHER</a>
 <a href="w.html">W</a>
 <a href="about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
 </div>
-	
-	
-<div class="card">
-      <h2><a href="./other/atomic-forest.html">Атомный лес<br>
-      </a></h2>
-		
-</div>		
-<div class="card">
-      <h2><a href="./other/the-midnight-gospel.html">Полночные откровения<br>
-      </a></h2>
-		
-</div>		
-<div class="card">
-      <h2><a href="./other/adventure-time.html">Время приключений<br>
-      </a></h2>
-		
-</div>	
-	
-<div class="card">
-      <h2><a href="./other/inviders-zim.html">Завойовник Зім<br>
-      </a></h2>
-		
-</div>	
-<div class="card">
-      <h2><a href="./other/slayers-1995.html">Рубаки / Slayers <br>
-      </a></h2>
-		
-</div>			
-<div class="card">
-      <h2><a href="./other/tylerreik2.html">Тайлер Рейк: Операция по спасению 2 <br>
-      </a></h2>
-
-</div>	
-<div class="card">
-      <h2><a href="./other/rick-and-morty-sndk.html">Рик и Морти Сыендук<br>
-      </a></h2>
-      <p>все сезоны Рик и Морти в переводи Димы Сыендука</p>
-	  <p>#Рик и Морти #Сыендук</p>
-</div>	
-	
-
-
-<div class="card">
-      <h2><a href="./other/v-for-vendetta-online.html">V — значит вендетта смотреть онлай<br>
-      </a></h2>
-      <p>V — значит вендетта</p>
-	  <p>#film</p>
 </div>
-	
-
 <div class="card">
-      <h2><a href="./other/live-with-louie.html">Жизнь с Луи<br>
-      </a></h2>
-      <p>Можно посмотреть онлай качество плохое, дань уважения хорошим мультикам</p>
-	  <p>#Жизнь с Луи</p>
+<h2><a href="./other/atomic-forest.html">Атомный лес<br/>
+</a></h2>
 </div>
-
- <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
+<div class="card">
+<h2><a href="./other/the-midnight-gospel.html">Полночные откровения<br/>
+</a></h2>
+</div>
+<div class="card">
+<h2><a href="./other/adventure-time.html">Время приключений<br/>
+</a></h2>
+</div>
+<div class="card">
+<h2><a href="./other/inviders-zim.html">Завойовник Зім<br/>
+</a></h2>
+</div>
+<div class="card">
+<h2><a href="./other/slayers-1995.html">Рубаки / Slayers <br/>
+</a></h2>
+</div>
+<div class="card">
+<h2><a href="./other/tylerreik2.html">Тайлер Рейк: Операция по спасению 2 <br/>
+</a></h2>
+</div>
+<div class="card">
+<h2><a href="./other/rick-and-morty-sndk.html">Рик и Морти Сыендук<br/>
+</a></h2>
+<p>все сезоны Рик и Морти в переводи Димы Сыендука</p>
+<p>#Рик и Морти #Сыендук</p>
+</div>
+<div class="card">
+<h2><a href="./other/v-for-vendetta-online.html">V — значит вендетта смотреть онлай<br/>
+</a></h2>
+<p>V — значит вендетта</p>
+<p>#film</p>
+</div>
+<div class="card">
+<h2><a href="./other/live-with-louie.html">Жизнь с Луи<br/>
+</a></h2>
+<p>Можно посмотреть онлай качество плохое, дань уважения хорошим мультикам</p>
+<p>#Жизнь с Луи</p>
+</div>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>
-
-
-

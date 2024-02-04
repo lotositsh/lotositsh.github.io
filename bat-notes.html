@@ -1,22 +1,22 @@
 ﻿<!DOCTYPE html>
-<html>
- <head>
-  <meta charset="UTF-8">
-  <title>Bat файл заметки</title>
-  <link rel="stylesheet" href="css/text.css">
-<script src="css/script.js"></script>
-    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
-	<meta name="viewport" content="width=device-width">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/text.css">
-	<meta name="description" content="Bat файл заметки">
-    <meta name="keywords" content=".bat"> 
- </head>
- <body>  <div class="size1">
- <div class="header">
- <h2>DzenIT</h2>
-</div>
 
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Bat файл заметки</title>
+<link href="css/text.css" rel="stylesheet"/>
+<script src="css/script.js"></script>
+<link href="img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="./css/text.css" rel="stylesheet"/>
+<meta content="Bat файл заметки" name="description"/>
+<meta content=".bat" name="keywords"/>
+</head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
+</div>
 <div class="topnav">
 <a href="index.html">HOME</a>
 <a href="zen.html">ZEN</a>
@@ -28,14 +28,44 @@
 <a href="other.html">OTHER</a>
 <a href="w.html">W</a>
 <a href="about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
 </div>
-
-<center><h1>Bat файл заметки</h1></center>  
-  <!-- Комментарий -->
- <center><h2> <p>Собираем игры с EGS в автоматическом режиме</h2></center>  
-  <p>Берем портативный браузер хром. В нём логиним все наши профили с egs. Пишем простой батник для запуска их автоматически.</p>
-  <p>При запуске нужно вставить ссылку на игру, если ссылка одна то второе предложение пропускаем клавишей ENTER. Когда закончили забирать игры, жмем в bat окне любую клавишу и запускаетсья следующий профиль</p>
-  <details><summary><b>Посмотреть код</b></summary>  <pre>set /p url1=ssulka1: 
+</div>
+<center><h1>Bat файл заметки</h1></center>
+<!-- Комментарий -->
+<center><h2> <p>Собираем игры с EGS в автоматическом режиме</p></h2></center>
+<p>Берем портативный браузер хром. В нём логиним все наши профили с egs. Пишем простой батник для запуска их автоматически.</p>
+<p>При запуске нужно вставить ссылку на игру, если ссылка одна то второе предложение пропускаем клавишей ENTER. Когда закончили забирать игры, жмем в bat окне любую клавишу и запускаетсья следующий профиль</p>
+<details><summary><b>Посмотреть код</b></summary> <pre>set /p url1=ssulka1: 
 set /p url2=ssulka1: 
 start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Default" --new-window %url1% --new-window %url2%
 pause
@@ -54,23 +84,20 @@ pause
 start "Chrome.exe" "e:\egs\GoogleChromePortable\GoogleChromePortable.exe" --profile-directory="Profile 7" --new-window %url1% --new-window %url2%
 
 pause</pre></details>
-
 <p>Портативную версию хрома для windows x64 можно скачать отсюда <a href="https://t.me/dzenit_xyz/6" target="_blank">скачать</a>(телеграм)</p>
-
- <center><h2> <p>Удаление/копирование xcopy</h2></center>  
+<center><h2> <p>Удаление/копирование xcopy</p></h2></center>
 <p>Простые примеры копировать и удалить</p>
 <pre>DEL /S /Q z:\1\gm_scripts\*.*
 xcopy z:\3\gm_scripts\* z:\1\gm_scripts\ /f /i /y /s
 </pre>
-
 <p>И еще</p>
 <pre>cd c:\Users\fox\
 XCOPY c:\5\* z:\5 /s /i</pre>
-<br>
+<br/>
 <pre>cd c:\Users\fox\
 XCOPY c:\3\gm_scripts\* c:\grease\ /f /i /y /s
 XCOPY c:\grease\* c:\aesf\1\gm_scripts\ /f /i /y /s</pre>
- <center><h2> <p>Делаем Бэкап при помощи bat</h2></center>  
+<center><h2> <p>Делаем Бэкап при помощи bat</p></h2></center>
 <details><summary><b>Посмотреть код</b></summary><pre>set year=%date:~-4,4%
 set month=%date:~-10,2%
 set day=%date:~-7,2%
@@ -105,41 +132,30 @@ echo  http://7-zip.org/
 
 :end
 </pre></details>
-
-
- <center><h2> <p>Распаковываем архив при помощи 7zip и .bat</h2></center>  
- 
- 
- <pre>
+<center><h2> <p>Распаковываем архив при помощи 7zip и .bat</p></h2></center>
+<pre>
 TIMEOUT /T 5
 set AppExePath="c:\Program Files\7-Zip\7z.exe"
 %AppExePath% x c:\aesf.7z -o"d:\"</pre>
-
-	 <p><b>Запаковать каждый файл в отдельный zip</b> в командной строке cmd</p>
-		
-	 <pre>for %i in ("<b>D:\FOLDER_IN\*.*</b>") do ("C:\Program Files\7-zip\7z" a "<b>d:\FOLDER_OUT\%~ni.zip</b>" "%i")</pre>
-	 
-	 <p><b>>Сжать каждую папку отдельно 7z</b> используя командную строку (метод сжатия -t7z -m0=LZMA2:d=96m:fb=273 -mx=9 -mmt=2 )</p>
-	 
-	 	 <pre>for /d %i in ("<b>d:\FOLDER_IN</b>\*.*") do ("C:\Program Files\7-zip\7z" a -t7z -m0=LZMA2:d=96m:fb=273 -mx=9 -mmt=2"<b>d:\FOLDER_OUT</b>\%~ni.7z" "%i")</pre>
-	 
- <center><h2> <p>Запуск сетевых служб</h2></center>  
-  <pre>@echo off
+<p><b>Запаковать каждый файл в отдельный zip</b> в командной строке cmd</p>
+<pre>for %i in ("<b>D:\FOLDER_IN\*.*</b>") do ("C:\Program Files\7-zip\7z" a "<b>d:\FOLDER_OUT\%~ni.zip</b>" "%i")</pre>
+<p><b>&gt;Сжать каждую папку отдельно 7z</b> используя командную строку (метод сжатия -t7z -m0=LZMA2:d=96m:fb=273 -mx=9 -mmt=2 )</p>
+<pre>for /d %i in ("<b>d:\FOLDER_IN</b>\*.*") do ("C:\Program Files\7-zip\7z" a -t7z -m0=LZMA2:d=96m:fb=273 -mx=9 -mmt=2"<b>d:\FOLDER_OUT</b>\%~ni.7z" "%i")</pre>
+<center><h2> <p>Запуск сетевых служб</p></h2></center>
+<pre>@echo off
 ncpa.cpl</pre>
-
- <center><h2> <p>Остановка/запуск приложений exe</h2></center>  
+<center><h2> <p>Остановка/запуск приложений exe</p></h2></center>
 <pre>taskkill /F /IM  Lightshot.exe
 START C:\"Program Files (x86)"\joxi\joxi.exe</pre>
 <p>И наоборот</p>
 <pre>taskkill /F /IM  joxi.exe
 START C:\"Program Files (x86)"\Skillbrains\lightshot\Lightshot.exe</pre>
- <center><h2> <p>Качаем потоковое видео ffmpeg</h2></center>  
+<center><h2> <p>Качаем потоковое видео ffmpeg</p></h2></center>
 <pre>ffmpeg -i "https://url.m3u8" -c copy -bsf:a aac_adtstoasc "output.mp4"</pre>
 <a href="https://t.me/dzenit_xyz/7" target="_blank">ffmpeg</a>
-
- <center><h2> <p>Делаем меню</h2></center> 
+<center><h2> <p>Делаем меню</p></h2></center>
 <details><summary><b>Посмотреть код</b></summary>
- <pre>
+<pre>
 @Echo off
  
 :m0
@@ -179,20 +195,18 @@ goto m0
 
 :end
 pause</pre></details>
- <center><h2> <p>Работа со временем</h2></center>  
- <p>Синхронизация </p>
- <pre>@echo off
+<center><h2> <p>Работа со временем</p></h2></center>
+<p>Синхронизация </p>
+<pre>@echo off
 w32tm /resync
 </pre>
 <p>Запуск службы времени</p>
-  <pre>net start w32time</pre>
-  <p>Установка времени</p>
-   <pre>time 00:00</pre>
-   <a href="https://t.me/dzenit_xyz/10" target="_blank">+/- 1 min</a>
-	 
-	 <p>Небольшой скрипт бэкапа данный 2</p>
-	 
-	 <details><summary><b>Посмотреть код</b></summary><pre>
+<pre>net start w32time</pre>
+<p>Установка времени</p>
+<pre>time 00:00</pre>
+<a href="https://t.me/dzenit_xyz/10" target="_blank">+/- 1 min</a>
+<p>Небольшой скрипт бэкапа данный 2</p>
+<details><summary><b>Посмотреть код</b></summary><pre>
 @echo off
 setlocal
 
@@ -232,6 +246,5 @@ pause
 exit /b 0
 
 	 </pre></details>
-	 
-  <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

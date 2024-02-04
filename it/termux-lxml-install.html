@@ -1,49 +1,77 @@
 
 <!DOCTYPE html>
-<html><head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../css/text.css">
-<title>LXML Installation in Termux: A Short Guide</title>
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="LXML Installation in Termux: A Short Guide">
-<meta name="keywords" content="termux,lxml,install lxml termux"> 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LXML Installation in Termux: A Short Guide">
-<meta name="twitter:description" content="LXML Installation in Termux: A Short Guide">
-<meta name="twitter:image" content="img/lmxl.jpg">
-<meta property="og:type" content="article">
-<meta property="og:title" content="LXML Installation in Termux: A Short Guide">
-<meta property="og:description" content="LXML Installation in Termux: A Short Guide">
-<meta property="og:image" content="img/lmxl.jpg">
-<meta property="og:site_name" content="DzenIT">
-  </head>
-  <body>  <div class="size1">
-  <div class="header">
-    <h2>DzenIT</h2>
-  </div>
-    <div class="topnav">
-    <a href="../index.html">HOME</a>
-    <a href="../zen.html">ZEN</a>
-    <a href="../it.html">IT</a>
-    <a href="../soft.html">SOFT</a>
-    <a href="../apk.html">APK</a>
-    <a href="../live.html">LIVE</a>
-    <a href="../game.html">GAME</a>
-    <a href="../other.html">OTHER</a>
-    <a href="../w.html">W</a>
-<a href="../about.html">CONTACT</a>
-  </div>
-  <center><h1>LXML Installation in Termux: A Short Guide</h1></center>
-  
-  <p>LXML is a Python library that provides a powerful and easy-to-use interface for parsing and manipulating XML and HTML documents. If you're using Termux on your Android device, you may want to install LXML to take advantage of its features. Here's a short guide on how to install LXML in Termux:</p>
 
+<html><head>
+<meta charset="utf-8"/>
+<link href="../css/text.css" rel="stylesheet"/>
+<title>LXML Installation in Termux: A Short Guide</title>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="LXML Installation in Termux: A Short Guide" name="description"/>
+<meta content="termux,lxml,install lxml termux" name="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="LXML Installation in Termux: A Short Guide" name="twitter:title"/>
+<meta content="LXML Installation in Termux: A Short Guide" name="twitter:description"/>
+<meta content="img/lmxl.jpg" name="twitter:image"/>
+<meta content="article" property="og:type"/>
+<meta content="LXML Installation in Termux: A Short Guide" property="og:title"/>
+<meta content="LXML Installation in Termux: A Short Guide" property="og:description"/>
+<meta content="img/lmxl.jpg" property="og:image"/>
+<meta content="DzenIT" property="og:site_name"/>
+</head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
+</div>
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../w.html">W</a>
+<a href="../about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<center><h1>LXML Installation in Termux: A Short Guide</h1></center>
+<p>LXML is a Python library that provides a powerful and easy-to-use interface for parsing and manipulating XML and HTML documents. If you're using Termux on your Android device, you may want to install LXML to take advantage of its features. Here's a short guide on how to install LXML in Termux:</p>
 <p>Open the Termux app on your Android device.</p>
 <p>Type the following command to update the package list:</p><p><pre> pkg update</pre>.</p>
-	<p>Type the following command to install the dependencies required for LXML: </p>
-	<p><pre>pkg install libxml2 libxslt</pre></p>
-  
-    <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
-
+<p>Type the following command to install the dependencies required for LXML: </p>
+<p><pre>pkg install libxml2 libxslt</pre></p>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

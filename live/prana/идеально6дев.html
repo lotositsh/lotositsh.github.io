@@ -1,29 +1,27 @@
 
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Аудио плеер</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title> </title>
 </head>
-<body>  <div class="size1">
-  <h1>Аудио плеер</h1>
-  <input type="number" id="inhaleTime" min="1" max="100"> Вдох
-  <input type="number" id="delayTime" min="0" max="100"> Задержка
-  <input type="number" id="exhalationTime" min="1" max="100"> Выдох
-  <input type="number" id="delayTime2" min="0" max="100"> Задержка2
-  <input type="number" id="count" min="1" max="100"> Количество повторений
-  <button onclick="startSequence()">Старт</button>
-  <button onclick="stopSequence()">Стоп</button>
-
-  <p>Оставшиеся повторения: <span id="remainingCount"></span></p>
-
-  <audio id="audioPlayer">
-    <source src="01.ogg" type="audio/ogg">
+<body> <div class="size1">
+<h1> </h1>
+<input id="inhaleTime" max="100" min="1" type="number"/>
+<input id="delayTime" max="100" min="0" type="number"/>
+<input id="exhalationTime" max="100" min="1" type="number"/>
+<input id="delayTime2" max="100" min="0" type="number"/> 2
+  <input id="count" max="100" min="1" type="number"/>
+<button onclick="startSequence()"></button>
+<button onclick="stopSequence()"></button>
+<p> : <span id="remainingCount"></span></p>
+<audio id="audioPlayer">
+<source src="01.ogg" type="audio/ogg"/>
     Your browser does not support the audio element.
   </audio>
-
-  <script>
+<script>
     let isPlaying = false;
     let stopRequested = false;
 
@@ -72,7 +70,7 @@
             await playSound("02.ogg", delayTime2);
           }
         }
-        remainingCountDisplay.textContent = "Готово";
+        remainingCountDisplay.textContent = "";
         isPlaying = false;
         if (count > 0 && !stopRequested) {
           await playSound("ot20.ogg", 1);
@@ -82,5 +80,5 @@
       sequence();
     }
   </script>
- <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. В© 2024</footer></div> </body>
 </html>

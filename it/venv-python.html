@@ -1,119 +1,134 @@
 
 <!DOCTYPE html>
+
 <html><head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../css/text.css">
+<meta charset="utf-8"/>
+<link href="../css/text.css" rel="stylesheet"/>
 <script src="../css/script.js"></script>
 <title>Виртуальное окружение в python</title>
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Коротко о виртуальном окружении в python">
-<meta name="keywords" content="venv, python, виртуальное окружение"> 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Виртуальное окружение в python">
-<meta name="twitter:description" content="Виртуальное окружение в python">
-<meta name="twitter:image" content="img/venv.jpg">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Виртуальное окружение в python">
-<meta property="og:description" content="Виртуальное окружение в python">
-<meta property="og:image" content="img/venv.jpg">
-<meta property="og:site_name" content="DzenIT">
-  </head>
-  <body>  <div class="size1">
-  <div class="header">
-    <h2>DzenIT</h2>
-  </div>
-    <div class="topnav">
-    <a href="../index.html">HOME</a>
-    <a href="../zen.html">ZEN</a>
-    <a href="../it.html">IT</a>
-    <a href="../soft.html">SOFT</a>
-    <a href="../apk.html">APK</a>
-    <a href="../live.html">LIVE</a>
-    <a href="../game.html">GAME</a>
-    <a href="../other.html">OTHER</a>
-    <a href="../w.html">W</a>
-<a href="../about.html">CONTACT</a>
-  </div>
-  <center><h1>Виртуальное окружение в python</h1></center>
-  
-  <p>Виртуальная среда, широко известная как «venv», представляет собой инструмент Python, который позволяет создавать изолированную среду для ваших проектов Python. Эта функция позволяет устанавливать и управлять пакетами Python для конкретного проекта, не нарушая глобальную среду Python.</p>
-	  <p>Создаем виртуальное окружение</p>
-	  <p><b>Linux</b></p>
-	  <pre class="code">python3 -m venv venv</pre>
-<button class="copy-button" onclick="copyCode(1)">Copy</button>
-	  
-	  <p>Активируем виртуальное окружение</p>
-	  <pre class="code">source venv/bin/activate</pre>
-
-<button class="copy-button" onclick="copyCode(2)">Copy</button>
-	  
-	  <br>
-<div class="text_image">
-	<center>
-	<img src="data:image/webp;base64, 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
-" alt="venv pyton">
-	</center>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Коротко о виртуальном окружении в python" name="description"/>
+<meta content="venv, python, виртуальное окружение" name="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Виртуальное окружение в python" name="twitter:title"/>
+<meta content="Виртуальное окружение в python" name="twitter:description"/>
+<meta content="img/venv.jpg" name="twitter:image"/>
+<meta content="article" property="og:type"/>
+<meta content="Виртуальное окружение в python" property="og:title"/>
+<meta content="Виртуальное окружение в python" property="og:description"/>
+<meta content="img/venv.jpg" property="og:image"/>
+<meta content="DzenIT" property="og:site_name"/>
+</head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
 </div>
-<br>
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../w.html">W</a>
+<a href="../about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<center><h1>Виртуальное окружение в python</h1></center>
+<p>Виртуальная среда, широко известная как «venv», представляет собой инструмент Python, который позволяет создавать изолированную среду для ваших проектов Python. Эта функция позволяет устанавливать и управлять пакетами Python для конкретного проекта, не нарушая глобальную среду Python.</p>
+<p>Создаем виртуальное окружение</p>
+<p><b>Linux</b></p>
+<pre class="code">python3 -m venv venv</pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
+<p>Активируем виртуальное окружение</p>
+<pre class="code">source venv/bin/activate</pre>
+<button class="copy-button" onclick="copyCode(2)">Copy</button>
+<br/>
+<div class="text_image">
+<center>
+<img alt="venv pyton" src="data:image/webp;base64, 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
+"/>
+</center>
+</div>
+<br/>
 	  
 	  Можем убедиться в этом проверив установленные пакеты, командой
 	  
 	  <pre class="code">pip freeze</pre>
 <button class="copy-button" onclick="copyCode(3)">Copy</button>
-	  
-	  <p>Далее необходимо устноавить нужные пакеты</p>
-	  
-	  <pre class="code">pip install name</pre>
+<p>Далее необходимо устноавить нужные пакеты</p>
+<pre class="code">pip install name</pre>
 <button class="copy-button" onclick="copyCode(4)">Copy</button>
-	  
-  <p>Сохранить все зависимые библиотеки после завершения</p>
-	  <pre class="code">pip freeze > requirements.txt</pre>
+<p>Сохранить все зависимые библиотеки после завершения</p>
+<pre class="code">pip freeze &gt; requirements.txt</pre>
 <button class="copy-button" onclick="copyCode(5)">Copy</button>
-	  
-	  	  <p>Удалить пакеты:</p>
-	  <pre class="code">pip uninstall name</pre>
+<p>Удалить пакеты:</p>
+<pre class="code">pip uninstall name</pre>
 <button class="copy-button" onclick="copyCode(6)">Copy</button>
-	  
-	  <p>Деактивация виртуальной среды</p>
-	  
-	  <pre class="code">deactivate</pre>
+<p>Деактивация виртуальной среды</p>
+<pre class="code">deactivate</pre>
 <button class="copy-button" onclick="copyCode(7)">Copy</button>
-	  
-	  <p>Установку зависимостей можно выполнить командой</p>
-	 <pre class="code"> pip install -r requirements.txt</pre>
+<p>Установку зависимостей можно выполнить командой</p>
+<pre class="code"> pip install -r requirements.txt</pre>
 <button class="copy-button" onclick="copyCode(8)">Copy</button>
-	  <br>
-	  <p><b>Windows</b></p>
-	  
-	  <p>Запуск виртуальной среды</p>
-	  <pre class="code">python -m venv venv</pre>
+<br/>
+<p><b>Windows</b></p>
+<p>Запуск виртуальной среды</p>
+<pre class="code">python -m venv venv</pre>
 <button class="copy-button" onclick="copyCode(9)">Copy</button>
-	 <p>Активация виртуальной среды</p>
-	  <pre class="code">venv\Scripts\activate</pre>
+<p>Активация виртуальной среды</p>
+<pre class="code">venv\Scripts\activate</pre>
 <button class="copy-button" onclick="copyCode(10)">Copy</button>
-	 <p> Обновление пакетов pip</p>
-	  <pre class="code">python -m pip install --upgrade pip</pre>
+<p> Обновление пакетов pip</p>
+<pre class="code">python -m pip install --upgrade pip</pre>
 <button class="copy-button" onclick="copyCode(11)">Copy</button>
-	  <p>Установка пакетов</p>
-	  
-	   <pre class="code"> pip install -r requirements.txt</pre>
+<p>Установка пакетов</p>
+<pre class="code"> pip install -r requirements.txt</pre>
 <button class="copy-button" onclick="copyCode(12)">Copy</button>
-	  <p>Проверка установленных пакетов</p>
-	   <pre class="code">pip freeze</pre>
+<p>Проверка установленных пакетов</p>
+<pre class="code">pip freeze</pre>
 <button class="copy-button" onclick="copyCode(13)">Copy</button>
-	  <p>Сохранить все зависимые библиотеки после завершения</p>
-	  <pre class="code">pip freeze > requirements.txt</pre>
+<p>Сохранить все зависимые библиотеки после завершения</p>
+<pre class="code">pip freeze &gt; requirements.txt</pre>
 <button class="copy-button" onclick="copyCode(14)">Copy</button>
-	  <p>Деактивация виртуальной среды</p>
-	  
-	  <pre class="code">deactivate</pre>
+<p>Деактивация виртуальной среды</p>
+<pre class="code">deactivate</pre>
 <button class="copy-button" onclick="copyCode(15)">Copy</button>
-	  
-	  <p>После создания виртуальной среды новый интерпретатор Python устанавливается в подкаталог каталога вашего проекта. Этот интерпретатор полностью отличается от общесистемной установки Python и других виртуальных сред, которые вы, возможно, создали.</p>
-	  
-	  <p>С помощью этой функции вы можете устанавливать различные версии Python и отдельные пакеты для разных проектов, не беспокоясь о проблемах зависимости пакетов или конфликтах версий. Кроме того, эта функция упрощает совместное использование вашего проекта с другими, поскольку они могут удобно установить свою собственную отдельную виртуальную среду с идентичными зависимостями пакетов.</p>
-    <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
-
+<p>После создания виртуальной среды новый интерпретатор Python устанавливается в подкаталог каталога вашего проекта. Этот интерпретатор полностью отличается от общесистемной установки Python и других виртуальных сред, которые вы, возможно, создали.</p>
+<p>С помощью этой функции вы можете устанавливать различные версии Python и отдельные пакеты для разных проектов, не беспокоясь о проблемах зависимости пакетов или конфликтах версий. Кроме того, эта функция упрощает совместное использование вашего проекта с другими, поскольку они могут удобно установить свою собственную отдельную виртуальную среду с идентичными зависимостями пакетов.</p>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

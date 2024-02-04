@@ -1,74 +1,90 @@
 
 <!DOCTYPE html>
+
 <html><head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../css/text.css">
+<meta charset="utf-8"/>
+<link href="../css/text.css" rel="stylesheet"/>
 <title>Cron Setup in Termux: A Step-by-Step Guide</title>
-<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Cron Setup in Termux: A Step-by-Step Guide">
-<meta name="keywords" content="cron,termux,install,setting"> 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cron Setup in Termux: A Step-by-Step Guide">
-<meta name="twitter:description" content="Cron Setup in Termux: A Step-by-Step Guide">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Cron Setup in Termux: A Step-by-Step Guide">
-<meta property="og:description" content="Cron Setup in Termux: A Step-by-Step Guide">
-<meta property="og:site_name" content="DzenIT">
-  </head>
-  <body>  <div class="size1">
-  <div class="header">
-    <h2>DzenIT</h2>
-  </div>
-    <div class="topnav">
-    <a href="../index.html">HOME</a>
-    <a href="../zen.html">ZEN</a>
-    <a href="../it.html">IT</a>
-    <a href="../soft.html">SOFT</a>
-    <a href="../apk.html">APK</a>
-    <a href="../live.html">LIVE</a>
-    <a href="../game.html">GAME</a>
-    <a href="../other.html">OTHER</a>
-    <a href="../w.html">W</a>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Cron Setup in Termux: A Step-by-Step Guide" name="description"/>
+<meta content="cron,termux,install,setting" name="keywords"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Cron Setup in Termux: A Step-by-Step Guide" name="twitter:title"/>
+<meta content="Cron Setup in Termux: A Step-by-Step Guide" name="twitter:description"/>
+<meta content="article" property="og:type"/>
+<meta content="Cron Setup in Termux: A Step-by-Step Guide" property="og:title"/>
+<meta content="Cron Setup in Termux: A Step-by-Step Guide" property="og:description"/>
+<meta content="DzenIT" property="og:site_name"/>
+</head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
+</div>
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../w.html">W</a>
 <a href="../about.html">CONTACT</a>
-  </div>
-  <center><h1>Cron Setup in Termux: A Step-by-Step Guide</h1></center>
-  
- 
-
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<center><h1>Cron Setup in Termux: A Step-by-Step Guide</h1></center>
 <p>If you want to use cron in Termux, you need to follow these simple steps:</p>
-
-
-<p>Run the following command to update Termux packages:</p> 
-	  <pre>pkg update</pre>
-
-
+<p>Run the following command to update Termux packages:</p>
+<pre>pkg update</pre>
 <p>Install the cronie package by running this command: </p>
-	 <pre> pkg install cronie</pre>
-
+<pre> pkg install cronie</pre>
 <p>
 Use the <b>crontab -e</b> command to set up a cron job. For example, if you want to run a script named my-script.sh every hour, use this syntax:</p>
 <pre>0 * * * * /data/data/com.termux/files/home/my-script.sh
 </pre>
 <p>Check cron tasks:
 You can check all the cron tasks you have set up using the command:</p> <pre>crontab -l</pre>
-
 <p>
 Every time you start Termux, you need to start the cron service by running the command:</p><pre> sv up crond</pre>
-
-
-	  <p>For disable, close terminal or use:</p>
-	  <pre> sv down crond</pre>
-
+<p>For disable, close terminal or use:</p>
+<pre> sv down crond</pre>
 <p>To check the status of the cron service, run this command:</p> <pre>sv status crond</pre>
- <pre>run: crond: (pid 6408) 35s; run: log: (pid 6407) 35s</pre>
+<pre>run: crond: (pid 6408) 35s; run: log: (pid 6407) 35s</pre>
 <p>That's it! By following these simple steps, you can set up and use cron in Termux to automate your tasks.</p>
-  
-	  
-	  <p>Use random time for cron (120 sec)</p>
-	  
-	  <pre>* * * * * sleep $((RANDOM \% 120)) && sh /data/data/com.termux/files/home/testfind.sh</pre>
-    <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
-
+<p>Use random time for cron (120 sec)</p>
+<pre>* * * * * sleep $((RANDOM \% 120)) &amp;&amp; sh /data/data/com.termux/files/home/testfind.sh</pre>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

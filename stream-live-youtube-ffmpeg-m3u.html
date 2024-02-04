@@ -1,31 +1,28 @@
 <!DOCTYPE html>
+
 <html>
-	
 <head>
-<meta charset="UTF-8">
-<link rel="icon" type="image/png" sizes="192x192" href="./img/favicon.png"> 
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<link href="./img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <!-- Primary Meta Tags -->
 <title>Трансляция на ютуб с помощью ffmpeg</title>
-<meta name="title" content="Трансляция на ютуб с помощью ffmpeg">
-<meta name="description" content="Делаем прямую трансляцию на youtube используя ffmpeg">
-
+<meta content="Трансляция на ютуб с помощью ffmpeg" name="title"/>
+<meta content="Делаем прямую трансляцию на youtube используя ffmpeg" name="description"/>
 <!-- Open Graph / Facebook -->
-<meta property="og:locale" content="ua_RU">
-<meta property="og:type" content="article">
-<meta property="og:url" content="stream-live-youtube-ffmpeg-m3u.html">
-<meta property="og:title" content="Трансляция на ютуб с помощью ffmpeg">
-<meta property="og:description" content="Делаем прямую трансляцию на youtube используя ffmpeg">
-<meta property="og:image" content="/img/ffmpeg-youtube/1-ffmpeg-youtube.webp">
-
+<meta content="ua_RU" property="og:locale"/>
+<meta content="article" property="og:type"/>
+<meta content="stream-live-youtube-ffmpeg-m3u.html" property="og:url"/>
+<meta content="Трансляция на ютуб с помощью ffmpeg" property="og:title"/>
+<meta content="Делаем прямую трансляцию на youtube используя ffmpeg" property="og:description"/>
+<meta content="/img/ffmpeg-youtube/1-ffmpeg-youtube.webp" property="og:image"/>
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="stream-live-youtube-ffmpeg-m3u.html">
-<meta property="twitter:title" content="Трансляция на ютуб с помощью ffmpeg">
-<meta property="twitter:description" content="Делаем прямую трансляцию на youtube используя ffmpeg">
-<meta property="twitter:image" content="/img/ffmpeg-youtube/1-ffmpeg-youtube.webp">
-	
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="stream-live-youtube-ffmpeg-m3u.html" property="twitter:url"/>
+<meta content="Трансляция на ютуб с помощью ffmpeg" property="twitter:title"/>
+<meta content="Делаем прямую трансляцию на youtube используя ffmpeg" property="twitter:description"/>
+<meta content="/img/ffmpeg-youtube/1-ffmpeg-youtube.webp" property="twitter:image"/>
 <script type="text/javascript">
   function openImageWindow(src) {
     var image = new Image();
@@ -35,17 +32,14 @@
     window.open(src,"Image","width=" + width + ",height=" + height);
   }
 </script>
-
-	<title>Трансляция на ютуб с помощью ffmpeg</title>
-	
-	<link rel="stylesheet" href="./css/text.css">
-	</head>
-<body>  <div class="size1">
-		<div class="header">
- <h2>DzenIT</h2>
+<title>Трансляция на ютуб с помощью ffmpeg</title>
+<link href="./css/text.css" rel="stylesheet"/>
+</head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
 </div>
-
-	<div class="topnav">
+<div class="topnav">
 <a href="index.html">HOME</a>
 <a href="zen.html">ZEN</a>
 <a href="it.html">IT</a>
@@ -56,44 +50,70 @@
 <a href="other.html">OTHER</a>
 <a href="w.html">W</a>
 <a href="about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
 </div>
-		<center><h1><b>Трансляция на ютуб с помощью ffmpeg</b></h1></center>
+</div>
+<center><h1><b>Трансляция на ютуб с помощью ffmpeg</b></h1></center>
 <p>		На днях стал вопрос трансляции потокового видео телеканала на ютуб. Хотелось задействовать минимум ресурсов при максимальной эффективности. На помощь пришла консольная программа ffmpeg.</p>
 <p>FFmpeg не только потребляет минимум ресурсов, но и обладает мощным функционалом. Скачать её можно с официального сайта <a href="https://ffmpeg.org/" target="_blank">https://ffmpeg.org/</a> или мою версию программы под Windows <a href="https://drive.google.com/file/d/1LudGIuq8b0cc7q5CZI3jPBAClkl00lR3/view?usp=sharing" target="_blank">здесь</a>.</p>
 <p>Для запуска программы перейдите в командную строку Пуск - выполнить - пишем cmd или Пуск - поиск - cmd. Должна открыться командная строка, теперь переходим в папку с нашей программой</p>
-		<pre>cd c:\ffmpeg-20200812-bb59bdb-win64-static\ffmpeg-20200812-bb59bdb-win64-static\bin\</pre>
+<pre>cd c:\ffmpeg-20200812-bb59bdb-win64-static\ffmpeg-20200812-bb59bdb-win64-static\bin\</pre>
 <p>Где c:\* это расположение ffmpeg.exe</p>
 <p>Самый простой способ запустить трансляцию на ютуб и проверить работоспособность передачи потокового видео в формате m3u8 с помощью ffmpeg</p>
 <pre>ffmpeg -i https://HLS.m3u8 -f flv rtmp://a.rtmp.youtube.com/live2/<b>KEY</b></pre>
 <p><b>KEY</b> - ключ трансляции, чтобы его получить нужно перейти на свой канал на ютубе, начать трансляцию, во вкладке настройка трансляции мы видим заветный ключ.</p>
-	<div class="text_image">
-			 
-	<center><img src="img/ffmpeg-youtube/2-ffmpeg-youtube.webp" alt="Трансляция на ютуб с помощью ffmpeg" onclick = 'openImageWindow(this.src);' /></center>
-	</div>
-	<p>Если хотите транслировать видео используя ffmpeg</p>
+<div class="text_image">
+<center><img alt="Трансляция на ютуб с помощью ffmpeg" onclick="openImageWindow(this.src);" src="img/ffmpeg-youtube/2-ffmpeg-youtube.webp"/></center>
+</div>
+<p>Если хотите транслировать видео используя ffmpeg</p>
 <pre>ffmpeg -i video.mp4 -f flv rtmp://a.rtmp.youtube.com/live2/KEY</pre>
 <p>Такой способ передает картинку не самого лучшего качества, можно сказать она пиксельная даже в 720p. Это исправляется добавлением команды -vcodec libx264.</p>
 <pre>ffmpeg -i https://HLS.m3u8 -vcodec libx264 -f flv rtmp://a.rtmp.youtube.com/live2/KEY</pre>
 <p>Для сравнения взгляните на два изображения</p>
-	<div class="text_image">
-		<center>
-		  <img src="img/ffmpeg-youtube/3-ffmpeg-youtube.webp" alt="" onclick = 'openImageWindow(this.src);'/>
-		</center>
-																	
-	</div>
-	<div class="text_image">
-		<center>
-		  <img src="img/ffmpeg-youtube/4--ffmpeg-youtube.webp" alt="" onclick = 'openImageWindow(this.src);'/>
-        </center>
-																	
-	</div>
+<div class="text_image">
+<center>
+<img alt="" onclick="openImageWindow(this.src);" src="img/ffmpeg-youtube/3-ffmpeg-youtube.webp"/>
+</center>
+</div>
+<div class="text_image">
+<center>
+<img alt="" onclick="openImageWindow(this.src);" src="img/ffmpeg-youtube/4--ffmpeg-youtube.webp"/>
+</center>
+</div>
 <p>	Тут есть небольшой подвох, без параметра vcodec у меня процессор загружен на 7%, при обработке кодеком -vcodec libx264 на 40-80%. Пусть каждый выберет сам качество или потребляемый ресурс.</p>
 <p>Некоторые потоки используют только свое программное обеспечение, поэтому мы можем задать user agent в ffmpeg</p>
 <pre>ffmpeg -user-agent "Player/0.1.8 (Linux;Android 7.1.2) PlayerLib/0.8.0" -i https://hls.m3u8 -vcodec libx264 -f flv rtmp://a.rtmp.youtube.com/live2/ключ</pre>
 <p>Можно также "поиграться" с картинкой видео, т.к. ютуб сам обжимает видео, можно выставить битрейт повыше или пониже. Вот пример битрейта в 1000k с частотой кадра 24 и ограничением буфера</p>
 <pre>ffmpeg -i HLS.m3u8 -vcodec libx264 -profile:v baseline -b:v 1000k -maxrate 1000k -bufsize 1000k -r 24 -f flv rtmp://a.rtmp.youtube.com/live2/ключ</pre>
 <p>Исходя из выше сказанного, запустить трансляцию на ютубе программой ffmpeg можно одной строкой. Её можно запустить на любом самом дешевом VDS без графического окружения и даже на телефоне, например, используя termux.</p>
-																				
-
-	 <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
+<br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

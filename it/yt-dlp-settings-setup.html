@@ -1,47 +1,75 @@
 ﻿<!DOCTYPE html>
-<html>
 
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>yt-dlp </title>
-    <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
-    <meta name="viewport" content="width=device-width">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--   <link rel="stylesheet" href="../css/text.css">-->
-    <meta name="description" content="yt-dlp установка и настройка">
-    <meta name="keywords" content="Android, yt-dlp, termux">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="yt-dlp установка и настройка">
-    <meta property="og:description" content="Android, yt-dlp, termux">
-   <link rel="stylesheet" href="../css/text.css">
+<meta charset="utf-8"/>
+<title>yt-dlp </title>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!--   <link rel="stylesheet" href="../css/text.css">-->
+<meta content="yt-dlp установка и настройка" name="description"/>
+<meta content="Android, yt-dlp, termux" name="keywords"/>
+<meta content="article" property="og:type"/>
+<meta content="yt-dlp установка и настройка" property="og:title"/>
+<meta content="Android, yt-dlp, termux" property="og:description"/>
+<link href="../css/text.css" rel="stylesheet"/>
 <script src="../css/script.js"></script>
 </head>
-
-<body>  <div class="size1">
-    <div class="header">
-        <h2>DzenIT</h2>
-    </div>
-
-    <div class="topnav">
-        <a href="../index.html">HOME</a>
-        <a href="../zen.html">ZEN</a>
-        <a href="../it.html">IT</a>
-        <a href="../soft.html">SOFT</a>
-        <a href="../apk.html">APK</a>
-        <a href="../live.html">LIVE</a>
-        <a href="../game.html">GAME</a>
-        <a href="../other.html">OTHER</a>
-        <a href="../w.html">W</a>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
+</div>
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../w.html">W</a>
 <a href="../about.html">CONTACT</a>
-    </div>
-
-    <center>
-        <h1>yt-dlp установка и настройка </h1>
-    </center>
-    <!-- ссылка <a href="" target="_blank">скачать</a>-->
-    <!-- спойлер <details><summary></b>Посмотреть код</b></summary><pre>содержание</pre></details></a>-->
-    <!-- отображение рисунка в base64 <img src="data:image/webp;base64, тут код base64" alt="описание"/>-->
-    <!--Маштабируемый рисунок  -->
+<a href="#" id="searchLink">SEARCH</a>
+<script>
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
+</script>
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<center>
+<h1>yt-dlp установка и настройка </h1>
+</center>
+<!-- ссылка <a href="" target="_blank">скачать</a>-->
+<!-- спойлер <details><summary></b>Посмотреть код</b></summary><pre>содержание</pre></details></a>-->
+<!-- отображение рисунка в base64 <img src="data:image/webp;base64, тут код base64" alt="описание"/>-->
+<!--Маштабируемый рисунок  -->
 <!--   <br>
 <div class="text_image">
 	<center>
@@ -57,7 +85,7 @@
 <pre>termux-setup-storage</pre>
 <p>Обновляем пакеты</p>
 <p><pre>apt update</pre></p>
-	<p><pre>apt upgrade</pre></p>
+<p><pre>apt upgrade</pre></p>
 <p>Устанавливаем Питон (занимает много)</p>
 <pre>pkg install python</pre>
 <p>Сразу обновим менеджер пакетов пип</p>
@@ -65,39 +93,26 @@
 <p>Установим наш пакет yt-dlp</p>
 <pre>pip install yt-dlp</pre>
 <p>Если появилась ошибка ...Encountered error while trying to install package... пробуем установить пакет вот этой командой</p>
-
 <pre>python3 -m pip install --no-deps -U yt-dlp</pre>
 <p>В дальнейшем для поднятия качество потребуется установка ffmpeg</p>
 <pre>apt install ffmpeg</pre>
 <p>Качаем видео разных форматов и аудио в mp3
 Лучший формат в mp4 обычно 720p</p>
-
 <pre>yt-dlp -f mp4 url</pre>
-
 <p>По форматам
 
 720p</p>
-
 <pre>yt-dlp -f 22 url</pre>
-
 <p>360p</p>
-
 <pre>yt-dlp -f 18 url</pre>
-
 <p>Максимальное качество, обычно в формате webm</p>
-
 <pre>yt-dlp url</pre>
-
 <p>Скачать в mp3 (обычно битрейт от 128-140 зависит от видео)</p>
-
 <pre>yt-dlp -f 'ba' -x --audio-format mp3 URL -o '%(title)s.%(ext)s'</pre>
 <p>Дописав строчку --audio-quality и задав значение от 0 до 10 можно варьировать качество (по умолчанию 5, максимальное 0)</p>
-
 <pre>yt-dlp -f 'ba' -x --audio-format mp3 -o '%(title)s.%(ext)s'</pre>
-
 <p>Качаем в full HD формат mp4</p>
-	<pre>yt-dlp -f 'bv[height=1080][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 URL</pre>
-	
+<pre>yt-dlp -f 'bv[height=1080][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 URL</pre>
 <p>Пишем небольшие скрипты для скачивания видео и музыки с youtube в termux
 Для облгечения задачи и чтобы постоянно не вводить длинные команды, мы напишим пару скриптов для скачивания видео и музыки.
 Сперва установим текстовый редактор</p>
@@ -109,17 +124,13 @@
 <p>Должно быть так </p>
 <pre>/data/data/com.termux/files/home</pre>
 <p>Создадим свой скрип для скачивание в mp3</p>
-	
 <pre>nano mp3.sh</pre>
-	
 <p>Добавим туда строки</p>
-	
 <pre>#!/bin/bash    
 echo input URL video youtube    
 read varname  
 yt-dlp -f 'ba' -x --audio-format mp3 "$varname" -o '%(title)s.%(ext)s'    
 mv *.mp3 storage/downloads/</pre>
-	
 <p>Последняя строка переносит на файл в mp3 в папку downloads
 Проверим его работоспособность</p>
 <pre>sh mp3.sh</pre>
@@ -129,58 +140,53 @@ echo input URL video youtube
 read varname	    
 yt-dlp -f mp4 "$varname" 	    
 mv *.mp4 storage/downloads/</pre>
-	
-	<p>Качаем в FULLHD</p>
-	
+<p>Качаем в FULLHD</p>
 <pre>#!/bin/bash
 echo input URL video youtube
 read varname
 yt-dlp -f 'bv[height=1080][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 "$varname
 mv *.mp4 storage/downloads/</pre>
-	
-	<p>Качаем плейлист в формате mp3</p>
-	<pre>
+<p>Качаем плейлист в формате mp3</p>
+<pre>
 	yt-dlp --format bestaudio --extract-audio --audio-format mp3 --download-archive videos.txt  https://www.youtube.com/playlist?list=PLOnp-UE9ll3WuNulRhIQjAsfx7bwZGcYp -o '%(channel_id)s/%(playlist_id)s/%(title)s.%(id)s.%(ext)s'
 	</pre>
-	<p>Качаем плейлист в 1080p с лучшим звуком</p>
-	<pre>yt-dlp -f 'bv*[height=1080]+ba' --download-archive videos.txt  https://www.youtube.com/playlist?list=PLlVlyGVtvuVnUjA4d6gHKCSrLAAm2n1e6 -o '%(channel_id)s/%(playlist_id)s/%(title)s.%(id)s.%(ext)s'</pre>
-	
-	<p><b>sh скрипты для скачивания с помощью yt-dlp в termux разных форматов</b></p>
-<br>
+<p>Качаем плейлист в 1080p с лучшим звуком</p>
+<pre>yt-dlp -f 'bv*[height=1080]+ba' --download-archive videos.txt  https://www.youtube.com/playlist?list=PLlVlyGVtvuVnUjA4d6gHKCSrLAAm2n1e6 -o '%(channel_id)s/%(playlist_id)s/%(title)s.%(id)s.%(ext)s'</pre>
+<p><b>sh скрипты для скачивания с помощью yt-dlp в termux разных форматов</b></p>
+<br/>
 <p>Скачать аудиоформат в mp3</p>
-
 <pre>#!/bin/bash
 cd storage/downloads/mp3/
 echo input URL video youtube [mp3]
 read varname
 yt-dlp -f 'ba' -x --audio-format mp3 "$varname" -o '%(title)s.%(ext)s'</pre>
-<br>
+<br/>
 <p>Качество 360p</p>
-<br>
+<br/>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [360p]
 read varname
 yt-dlp -f 18 "$varname"</pre>
-<br>
+<br/>
 <p>Скачать ролик в качестве 480p (редкий формат, нужен предустановлен ffmpeg)</p>
-<br>
+<br/>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [480p]
 read varname
 yt-dlp -f 'bv[height=480][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 "$varname"</pre>
-<br>
+<br/>
 <p>Скачать ролик в качестве 720p </p>
-<br>
+<br/>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [720p]
 read varname
 yt-dlp -f 18 "$varname"</pre>
-<br>
+<br/>
 <p>Скачать в лучшем качестве</p>
-<br>
+<br/>
 <pre>#!/bin/bash
 cd storage/downloads/mp4/
 echo input URL video youtube [best]
@@ -193,13 +199,12 @@ yt-dlp "$varname"</pre>
 <p>Данная команда скачивает видео с канала  в формате MP4 с лучшим качеством. Они сохраняются в отдельные папки с использованием имени канала и названия ролика, а также загружаются описания для каждого видео.</p>
 <pre class="code">yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a][ext=mp4]" -o "%(uploader)s/%(title)s/%(title)s.%(ext)s" --write-description https://youtube.com/@AnimadLive?si=9LmmKXLMefjRC_6W</pre>
 <button class="copy-button" onclick="copyCode(2)">Copy</button>
-<br>
-	<p>Обновляем в термукс</p>
+<br/>
+<p>Обновляем в термукс</p>
 <pre>pip install --upgrade yt-dlp</pre>
-<br>
+<br/>
 <p>Любим и чтим
 РЕСУРС</p>
 https://github.com/yt-dlp/yt-dlp
- <br><br><br><footer>lotositsh.github.io. All rights reserved. &copy; 2024</footer></div> </body>
-
+ <br/><br/><br/><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>
