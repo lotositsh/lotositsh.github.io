@@ -203,5 +203,46 @@ w32tm /resync
 <p>Установка времени</p>
 <pre>time 00:00</pre>
 <a href="https://t.me/dzenit_xyz/10" target="_blank">+/- 1 min</a>
+<p><b>Небольшой скрипт бэкапа данный 2</b></p>
+<details><summary><b>Посмотреть код</b></summary><pre>
+@echo off
+setlocal
+
+set "timestamp=-%date:/=-%_%time::=-%"
+set "source1=F:\game2\M[FR]\game\TES3MP\server\data\cell"
+set "source2=F:\game2\M[FR]\game\TES3MP\server\data\world"
+set "destination=F:\game2\M[FR]\game\TES3MP\server\data\backup"
+set "server=F:\game2\M[FR]\game\TES3MP\tes3mp-server.exe"
+
+set "AppExePath=c:\Program Files\7-Zip\7z.exe"
+if not exist "%AppExePath%" set "AppExePath=%ProgramFiles%\7-Zip\7z.exe"
+if not exist "%AppExePath%" (
+    echo Error: 7-Zip not found.
+    pause
+    exit /b 1
+)
+
+if not exist "%destination%" mkdir "%destination%"
+
+echo Compressing %source1%
+"%AppExePath%" a -t7z -mx9 "%destination%\cell%timestamp%.7z" "%source1%"
+
+echo Compressing %source2%
+"%AppExePath%" a -t7z -mx9 "%destination%\world%timestamp%.7z" "%source2%"
+
+if errorlevel 1 (
+    echo Compression failed. Aborting.
+    pause
+    exit /b 1
+)
+
+echo Compression successful. Starting TES3MP server...
+start "" /B "%server%"
+
+echo Done.
+pause
+exit /b 0
+
+	 </pre></details>
 <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

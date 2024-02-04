@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta charset="utf-8"/>
+<link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="../css/text.css" rel="stylesheet"/>
+<script src="../css/script.js"></script>
+<meta content="width=device-width" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="termux создаем новую вкладку" name="description"/>
+<meta content="android, termux, create session " name="keywords"/>
+<!-- Twitter -->
+<!-- Тип карты, по умолчанию используется summary -->
+<meta content="summary" name="twitter:card"/>
+<!-- Название страницы -->
+<meta content="termux создаем новую вкладку" name="twitter:title"/>
+<!-- Описание страницы -->
+<meta content="Создание новой сессии в termux #termux " name="twitter:description"/>
+<!-- Cсылка на изображение -->
+<meta content="img/termux-session-create.webp" name="twitter:image"/>
+<!-- fb -->
+<!-- локализация сайта, для русскоязычного сайта ru_RU -->
+<meta content="ua_RU" property="og:locale"/>
+<!-- тип контента, по умолчанию используется article -->
+<meta content="article" property="og:type"/>
+<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+<meta content="termux создаем новую вкладку" property="og:title"/>
+<!-- описание страницы -->
+<meta content="Создание новой сессии в termux #termux" property="og:description"/>
+<!-- ссылка на изображение, которое будет публиковаться в записи -->
+<meta content="img/termux-session-create.webp" property="og:image"/>
+<!-- ссылка на текущую страницу -->
+<meta content="/termux-session-create.html" property="og:url"/>
+<!-- название сайта -->
+<meta content="DzenIT" property="og:site_name"/>
+<title>Termux создание новой вкладки</title>
+<link href="css/text.css" rel="stylesheet"/>
+</head>
+<body> <div class="size1">
+<div class="header">
+<h2>DzenIT</h2>
+</div>
+<div class="topnav">
+<a href="../index.html">HOME</a>
+<a href="../zen.html">ZEN</a>
+<a href="../it.html">IT</a>
+<a href="../soft.html">SOFT</a>
+<a href="../apk.html">APK</a>
+<a href="../live.html">LIVE</a>
+<a href="../game.html">GAME</a>
+<a href="../other.html">OTHER</a>
+<a href="../w.html">W</a>
+<a href="../about.html">CONTACT</a>
+<a href="#" id="searchLink">SEARCH</a>
+=
+<div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<center> <h1>Termux создание новой вкладки</h1></center>
+<p>Для создания новой сессии в Termux (открыть новую вкладку), нужно перейти в домашний каталог</p>
+<pre>cd~</pre>
+создать новую папку
+<pre>mkdir .termux
+cd .termux
+nano termux.properties</pre>
+<p>Если нет редактора nano устанавливаем</p>
+<pre>apt install nano</pre>
+прописать следующую команду
+<pre># Open a new terminal with ctrl + t (volume down + t)
+shortcut.create-session = ctrl + t
+# Go one session down with (for example) ctrl + 2
+shortcut.next-session = ctrl + 2
+# Go one session up with (for example) ctrl + 1
+shortcut.previous-session = ctrl + 1
+# Rename a session with (for example) ctrl + n
+shortcut.rename-session = ctrl + n</pre>
+<p>выходим</p>
+<pre>exit</pre>
+
+Теперь при нажатии сочетаний клавиш ctrl+t будет созданная новая сессия в termux, перемещаться между сессиями можно при помощи ctrl + 1 и ctr + 2 тд
+	
+	 <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
+</html>
