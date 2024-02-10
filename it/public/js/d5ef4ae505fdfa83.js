@@ -158,7 +158,7 @@
  * @author nuintun <nuintun@qq.com>
  * @description A pure JavaScript QRCode encode and decode library.
  * @see ##readme
- */function(e,t,n){let r=new X(2),w=new q(r);if(w.write(r.bof),e.length>0){let t=e[0],{length:n}=e;for(let i=1;i<n;i++){let n=e[i],s=r.get(t,n);null!=s?t=s:(w.write(t),r.add(t,n)||(w.write(r.bof),r.reset()),t=n)}w.write(t)}w.write(r.eof),w.pipe(n)}(this.#Z,0,n),n.writeByte(59),n.bytes}set(e,t,n){this.#Z[t*this.#U+e]=n}toDataURL(){let e=this.#F(),t=new en;for(let n of e)t.write(n);t.close();let n=t.bytes,r="data:image/jpg;base64,";for(let e of n)r+=ee(e);return r}}/**
+ */function(e,t,n){let r=new X(2),w=new q(r);if(w.write(r.bof),e.length>0){let t=e[0],{length:n}=e;for(let i=1;i<n;i++){let n=e[i],s=r.get(t,n);null!=s?t=s:(w.write(t),r.add(t,n)||(w.write(r.bof),r.reset()),t=n)}w.write(t)}w.write(r.eof),w.pipe(n)}(this.#Z,0,n),n.writeByte(59),n.bytes}set(e,t,n){this.#Z[t*this.#U+e]=n}toDataURL(){let e=this.#F(),t=new en;for(let n of e)t.write(n);t.close();let n=t.bytes,r="data:image/gif;base64,";for(let e of n)r+=ee(e);return r}}/**
  * @module QRCode
  * @package @nuintun/qrcode
  * @license MIT
