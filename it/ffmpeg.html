@@ -98,10 +98,14 @@
 <pre>ffmpeg -i input.mp3 -codec:a libmp3lame -b:a 128k output.mp3</pre>
 <p>Уменьшить качество 720p в 480p ffmpeg</p>
 <pre>ffmpeg -i input.avi -vf scale=-2:480 output.mp4</pre>
-<p>Вырезаем фрагмент фильма с 00:06:40 по 00:13:20 без кодирования в ffmpeg</p>
+<p><b>Вырезаем фрагмент фильма с 00:06:40 по 00:13:20 без кодирования в ffmpeg</b></p>
 <pre>ffmpeg -ss 00:06:40 -i 01full.mp4 -to 00:13:20 -c copy 02.mp4</pre>
 <p>или так</p>
 <pre>ffmpeg -i 06-01.mp4 -ss 00:00:33 -to 00:22:55 -c copy sndk06-01.mp4</pre>
+<p><b>Чтобы вырезать часть видеофайла с помощью FFmpeg в Windows, вам нужно открыть командную строку и использовать следующую команду (вырезаем с 00:00:24 до конца видео):</b></p>
+<pre>ffmpeg -i input.mp4 -ss 00:00:24 -c copy output.mp4</pre><br>
+<p><b>Можно обработать несколько файлов сразу (windows)</b></p>
+<pre>for %i in (*.mp4) do ffmpeg -i %i -ss 00:00:24 -c copy new_%i</pre><br>
 <p>ffmpeg качаем потоковое видео m3u8</p>
 <pre>ffmpeg -i "URL" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 video.mp4</pre>
 <p>Команда для linux bash:</p>
@@ -224,6 +228,8 @@ ffmpeg -i 1-1.mp4 -ss 01:00:00 -t 00:15:00 -c copy 1-1(05).mp4</pre>
 <p>На конкретном примере мы обрежем видео с 00:04:24 до 00:04:47, уменьшим разрешения до 530:295 для уменьшения размера gif, снизим частоту кадров до 5 и сохраним в gif файл</p>
 <pre class="code">ffmpeg -i input.mp4 -ss 00:04:24 -to 00:04:47 -vf "scale=530:295" -r 5 output.gif</pre>
 <button class="copy-button" onclick="copyCode(7)">Copy</button>
+
+
 <b><p>Добавляем ffmpeg в командную строку windows</p></b>
 <p>Мой компьютер - Свойства - Дополнительные параметры системы - Переменные среды</p>
 <p>Выбираем строку где Path - изменить, потом Создать, прописываем расположение папки ffmpeg.exe.</p>
