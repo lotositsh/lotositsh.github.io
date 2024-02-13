@@ -39,14 +39,14 @@
   
 
 	<form>
-    <center><h4>LED Resistor Calculator</h1></center>
-		<label for="voltage">Supply Voltage (V): </label>
+    <center><h4>Калькулятор расчета резистора для светодиода</h1></center>
+		<label for="voltage">Входное напряжение (V): </label>
 		<input type="number" id="voltage" name="voltage" min="1" max="100" step="0.1" required>
 		<br><br>
-		<label for="led-voltage">LED Voltage (V): </label>
+		<label for="led-voltage">Напряжение светодиода (LED) (V): </label>
 		<input type="number" id="led-voltage" name="led-voltage" min="1" max="100" step="0.1" required>
 		<br><br>
-		<label for="led-current">LED Current (mA): </label>
+		<label for="led-current">Потребление светодиода (mA): </label>
 		<input type="number" id="led-current" name="led-current" min="1" max="1000" required>
 		<br><br>
 		<input type="submit" value="Calculate">
@@ -65,7 +65,7 @@
 			const ledCurrent = parseInt(document.querySelector('#led-current').value);
 			const resistorValue = Math.round((voltage - ledVoltage) / (ledCurrent / 1000));
 			const resistorPower = Math.round((ledCurrent / 1000) * (voltage - ledVoltage));
-			document.querySelector('#result').innerHTML = `Resistor Value: ${resistorValue} ohms<br>Resistor Power: ${resistorPower} W`;
+			document.querySelector('#result').innerHTML = `Резистор: ${resistorValue} Ом<br>Мощность резистора: ${resistorPower} W`;
 		});
 	</script>
 	
