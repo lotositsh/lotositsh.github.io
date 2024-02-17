@@ -70,41 +70,56 @@
 <p>Before opening links, give your browser permission to open pop-up windows on this site</p>
 <br>
 <br>
-<textarea id="links"></textarea>
+<textarea id="links" placeholder="https://example.com/" rows="7"></textarea>
 <p>Enter delay in seconds</p>
-<input id="delay" placeholder="Enter delay in seconds" type="number"/>
+<input id="delay" placeholder="Enter delay in seconds" type="number" value="0"/>
 <button id="open-links-btn">Open links</button>
 <script>
-function openLinksInNewTab() {
-  var links = document.getElementById("links").value.split("\n");
-  var delay = document.getElementById("delay").value * 1000;
-  var count = delay / 1000;
-  for (var i = 0; i < links.length; i++) {
-    if (links[i].trim() !== "") {
-      setTimeout(function(url) {
-        var a = document.createElement("a");
-        a.href = url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        document.body.appendChild(a);
-        var linkText = document.createTextNode("Opening link in " + count + " seconds...");
-        a.appendChild(linkText);
-        var interval = setInterval(function() {
-          count--;
-          linkText.nodeValue = "Opening link in " + count + " seconds...";
-          if (count === 0) {
-            clearInterval(interval);
-            a.click();
-            count = delay / 1000;
-          }
-        }, 1000);
-      }, delay * i, links[i]);
+  function openLinksInNewTab() {
+    var links = document.getElementById("links").value.split("\n");
+    var delay = document.getElementById("delay").value * 1000;
+    var count = delay / 1000;
+    
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].trim() !== "") {
+        if (delay === 0) {
+          openLinkInstantly(links[i]);
+        } else {
+          setTimeout(function(url) {
+            var a = document.createElement("a");
+            a.href = url;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            document.body.appendChild(a);
+            var linkText = document.createTextNode("Opening link in " + count + " seconds...");
+            a.appendChild(linkText);
+            var interval = setInterval(function() {
+              count--;
+              linkText.nodeValue = "Opening link in " + count + " seconds...";
+              if (count === 0) {
+                clearInterval(interval);
+                a.click();
+                count = delay / 1000;
+              }
+            }, 1000);
+          }, delay * i, links[i]);
+        }
+      }
     }
   }
-}
-
-document.getElementById("open-links-btn").addEventListener("click", openLinksInNewTab);
-</script>
+  
+  function openLinkInstantly(url) {
+    var a = document.createElement("a");
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    document.body.appendChild(a);
+    a.click();
+  }
+  
+  document.getElementById("open-links-btn").addEventListener("click", openLinksInNewTab);
+  </script>
+  
 <h3>Convert time to seconds</h3>
 <form>
 <label for="hours">Hours:</label>
@@ -173,7 +188,7 @@ button {
 button:hover {
   background-color: #0062cc;
 }
-    }
+    
     #open-links-btn {
         display: block;
         margin: 20px auto;
@@ -214,7 +229,7 @@ button {
 
 button:hover {
   background-color: #3e8e41;
-  
+}
 
 </style><br><br><br>
 <details><summary><b>If not oppened</b></summary><div class="text_image">
