@@ -124,7 +124,7 @@ git push</pre>
 <p>9. В папке *\nodeSavePageWE\src\ создайте файл url2pdf.py для получения HTML-страницы.</p>
 <p>11. В репозитории создайте скрипт, который будет конвертировать страницу в PDF, копировать его в ваш репозиторий и выполнять test.js и т. д.</p>
 <p>12. Установите Puppeteer, необходимую библиотеку для работы с Chrome. Если у вас установлена версия Chromium 90, выполните следующую команду:</p>
-<pre>npm i puppeteer@8.0.0.0</pre>
+<pre>npm i puppeteer@8.0.0</pre>
 <p>13. Обратитесь к <a href="https://pptr.dev/chromium-support" rel="noopener noreferrer" target="_blank">документации</a> для получения дополнительной информации о поддерживаемых версиях браузера Chromium.</p>
 <p>Обратите внимание на следующие проблемы:
 - Если у вас возникли проблемы с Node.js на orangepi, установите его следующим образом:</p>
@@ -133,7 +133,37 @@ git push</pre>
 <p>- Если у вас установлена версия Debian 10, версия Chromium может быть 90, и библиотека Puppeteer не будет работать корректно с этой версией. Ссылка на поддерживаемые версии
 https://pptr.dev/chromium-support</p>
 <p>В моем случае устанавливал так</p>
-<pre>npm i puppeteer@8.0.0.0</pre>
+<pre>npm i puppeteer@8.0.0</pre>
+
+<p>Проблема еще была в обьявлении браузера на orangepi</p>
+<p>Вот небольшой пример смены useragent и указания браузера chromium для теста:</p>
+<pre>
+  const puppeteer = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch({ executablePath: '/usr/bin/chromium' });
+  const page = await browser.newPage();
+
+  // Custom user agent
+  const customUA = 'Mozilla/5.0 (Android 12; Mobile; rv:102.0) Gecko/102.0 Firefox/102.0';
+
+  // Set custom user agent
+  await page.setUserAgent(customUA);
+
+  // Navigate the page to the target website
+  await page.goto('https://httpbin.io/user-agent');
+
+  // Get the text content of the page's body
+  const content = await page.evaluate(() => document.body.textContent);
+
+  // Log the text content
+  console.log('Content: ', content);
+
+  // Close the browser
+  await browser.close();
+})();
+
+</pre>
 <p>Сервис для скрипта пришлось создать слегка необычным, т. к. файлы в корне создавались, а нам нужно было выполнение из папки src</p>
 <pre class="code">[Unit]
 Description=URL to PDF Conversion

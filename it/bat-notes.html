@@ -139,6 +139,9 @@ set AppExePath="c:\Program Files\7-Zip\7z.exe"
 <pre>for %i in ("<b>D:\FOLDER_IN\*.*</b>") do ("C:\Program Files\7-zip\7z" a "<b>d:\FOLDER_OUT\%~ni.zip</b>" "%i")</pre>
 <p><b>&gt;Сжать каждую папку отдельно 7z</b> используя командную строку (метод сжатия -t7z -m0=LZMA2:d=96m:fb=273 -mx=9 -mmt=2 )</p>
 <pre>for /d %i in ("<b>d:\FOLDER_IN</b>\*.*") do ("C:\Program Files\7-zip\7z" a -t7z -m0=LZMA2:d=96m:fb=273 -mx=9 -mmt=2"<b>d:\FOLDER_OUT</b>\%~ni.7z" "%i")</pre>
+<br>
+<p>Сжать каждую папку отдельно "без сжатия" zip</p>
+<pre><code>for /d %i in ("f:\<b>in</b>\*.*") do ("C:\Program Files\7-zip\7z" a "f:\<b>out</b>\%~ni.zip" "%i")</code></pre>
 <center><h2> <p>Запуск сетевых служб</p></h2></center>
 <pre>@echo off
 ncpa.cpl</pre>

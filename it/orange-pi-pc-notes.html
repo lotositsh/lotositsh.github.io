@@ -398,6 +398,64 @@ autologin-user-timeout=0</pre>
 <pre>wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.raspberrypi.buster_armhf.deb</pre>
 <pre>dpkg -i wkhtmltox_0.12.6-1.raspberrypi.buster_armhf.deb</pre>
 <pre>sudo apt install xvfb</pre>
-	
+	<br>
+<p><b> Установка и настройка удаленного торрента на Orange Pi с помощью qbittorrent-nox:</b></p>
+<ul>
+  <li><p>Установите qbittorrent-nox:</p>
+  <pre>sudo apt-get install qbittorrent-nox</pre>
+  </li>
+<li>
+  <p>Запустите qbittorrent-nox:</p>
+  <pre>qbittorrent-nox</pre>
+  <p>При первом запуске подтвердите ввод, введя 'yes'.</p>
+</li>
+<li>
+<p>Подключитесь через браузер на любом ПК по адресу:</p>
+<pre>192.188.0.102:8080</pre>
+</li>
+<p>(где 192.188.0.102 - IP вашего Orange Pi)</p>
+<p>Логин: admin</p>
+<p>Пароль: adminadmin</p>
+<p>Можно изменить в настройках.</p>
+</ul>
+<p><b>Для автоматического запуска:</b></p>
+<ul>
+  <li>
+    <p>Создайте файл службы в директории systemd:</p>
+    <pre>sudo nano /etc/systemd/system/qbittorrent.service</pre>
+  </li>
+
+  <li>
+<p>Добавьте следующий конфигурационный файл для службы:</p>
+<pre>
+[Unit]
+Description=qBittorrent-nox service
+After=network.target
+
+[Service]
+User=orangepi
+Group=orangepi
+ExecStart=/usr/bin/qbittorrent-nox
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+  </li>
+
+  <li><p>Сохраните и закройте файл.
+  </p></li>
+
+  <li><p>Загрузите изменения в systemd:</p>
+  <pre>sudo systemctl daemon-reload</pre>
+  </li>
+
+  <li>
+<p>Запустите службу и настройте ее на автозапуск:</p>
+<pre>sudo systemctl start qbittorrent</pre>
+<pre>sudo systemctl enable qbittorrent</pre>
+  </li>
+</ul>
+
+
 	<br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>
