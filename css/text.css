@@ -2,7 +2,20 @@
 * {
     box-sizing: border-box;
 }
+.block1 {
+  display: flex;
+  flex-wrap: wrap;
+	 padding: 5px;
+	 
+justify-content: center;
+	max-width: 1300 px;
+	}
+.text_image {
 
+	with: 33.3%;
+	margin: 5px;
+
+}
 /* Add a gray background color with some padding */
 body {
     font-family: Arial;
