@@ -1,0 +1,199 @@
+	
+* {
+    box-sizing: border-box;
+}
+.block1 {
+  display: flex;
+  flex-wrap: wrap;
+	 padding: 5px;
+	 
+justify-content: center;
+	max-width: 1300 px;
+	}
+.text_image {
+
+	with: 33.3%;
+	margin: 5px;
+
+}
+/* Add a gray background color with some padding */
+body {
+    font-family: Arial;
+    padding: 20px;
+    background: #f1f1f1;
+	
+}
+li{
+	line-height: 1.5;
+}
+.size1 {
+  max-width: 1100px; 
+	margin: 0 auto;
+	
+}
+details {
+	
+	
+}
+body {
+}
+
+	a { 
+    text-decoration: none; /* �������� ������������� � ������ */
+	color: #0065cc; /* ���� ������ */
+   } 
+	
+/* The navbar container */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar links */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Links - change color on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+/* Header/Blog Title */
+.header {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    background: white;
+		border-radius: 20px 20px 0 0;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.text_image img{
+		max-width: 100%
+	}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {   
+        width: 100%;
+        padding: 0;
+    }
+}
+	pre {
+   margin: 10px 0px 10px 10px;
+   padding: 10px;
+   color: #1f5757;
+   font: 16px normal helvetica, sans-serif;
+   border-left: 4px solid #d97025;
+   overflow: auto;
+}
+pre.code {
+  margin: 10px 0px 10px 10px;
+  padding: 10px;
+  color: #1f5757;
+  font: 16px normal helvetica, sans-serif;
+  border-left: 4px solid #d97025;
+  overflow: auto;
+
+}
+
+button.copy-button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  
+}
+.scroll-to-top {
+  display: none; /* �������� ������ ���������� */
+  position: fixed; /* ����������� ������ �� ������������� ������� */
+  bottom: 20px; /* ������ �� ������ ������� �������� */
+  right: 20px; /* ������ �� ������ ������� �������� */
+  width: 50px; /* ������ ������ */
+  height: 50px; /* ������ ������ */
+  background-color: #333; /* ���� ���� ������ */
+  color: #fff; /* ���� ������ �� ������ */
+  border: none; /* ������� ������� ������ */
+  border-radius: 50%; /* ��������� ���������� ����� ��� �������� ������� ����� ������ */
+  text-align: center; /* ������������ ������ �� ������ ������ */
+  font-size: 24px; /* ������ ������ ������ �� ������ */
+  line-height: 50px; /* ������ ������ � ������ �� ������ ������ ��������� ��� ��������� */
+  opacity: 0.5; 
+}
+.scroll-to-top:hover {
+  background-color: #555; /* ���� ���� ������ ��� ��������� ������� ���� */
+}
+
+.scroll-to-top:active {
+  background-color: #777; /* ���� ���� ������ ��� ������� �� ������ */
+}
+p{
+	
+	font-size: 17px;
+	line-height: 1.5;
+}
+    form {
+      text-align: center;
+      margin: 0 auto;
+      width: auto;
+      background-color: #ddd;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0px 0px 15px #ddd;
+		max-width: 600px;
+    }
+
+ button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+
+  button:hover {
+    background-color: #45a049;
+    color: white;
+  }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #1f1c1c;
+		max-width: 600px;
+    }
+    input[type=number] {
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 0px 0px 10px #ddd;
+      margin-bottom: 10px;
+      width: 80%;
+		max-width: 600px;
+    }
+footer {
+  clear: both;
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: #f2f2f2;
+	
+}
+
