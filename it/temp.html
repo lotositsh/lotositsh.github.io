@@ -75,14 +75,33 @@
 
     <hr />
     <div class="horizontalContainer">
-      <input id="addr" placeholder="email address" style="width: 49%" />
+      <input id="addr" placeholder="email address" />
+  </div>
+  <div>
       <button onclick="refreshMail()">Load Mail</button>
+  </div>
+  <div>
       <button onclick="genEmail()">New Address</button>
-    </div>
+  </div>
+  <div>
+      <button onclick="copyToClipboard()">Copy</button>
+  </div>
+  
+  <script>
+  function copyToClipboard() {
+      const addrInput = document.getElementById('addr');
+      addrInput.select();
+      document.execCommand('copy');
+      
+  }
+  </script>
+  
+    
+   
     <hr />
     <table id="emails"></table>
 
-    <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
+    
 
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="temp/api.js"></script>
