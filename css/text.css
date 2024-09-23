@@ -197,3 +197,23 @@ footer {
 	
 }
 
+.h2 {
+  font-family: 'Arial', sans-serif; /* Шрифт */
+  font-size: 28px; /* Размер шрифта */
+  color: #4A90E2; /* Цвет текста */
+  text-align: center; /* Выравнивание по центру */
+  margin: 20px 0; /* Отступы сверху и снизу */
+  text-transform: uppercase; /* Преобразование текста в верхний регистр */
+  letter-spacing: 1px; /* Межбуквенный интервал */
+}
+.desc {
+  font-family: 'Verdana', sans-serif; /* Шрифт */
+  font-size: 20px; /* Размер шрифта */
+  color: #34495E; /* Цвет текста */
+  line-height: 1.6; /* Межстрочный интервал */
+  text-align: justify; /* Выравнивание по ширине */
+  margin: 15px 0; /* Отступы сверху и снизу */
+  padding: 10px; /* Внутренние отступы */
+
+
+}
