@@ -18,6 +18,7 @@ justify-content: center;
 }
 /* Add a gray background color with some padding */
 body {
+	
     font-family: Arial;
     padding: 20px;
     background: #f1f1f1;
@@ -137,6 +138,8 @@ button.copy-button {
   background-color: #777; /* ���� ���� ������ ��� ������� �� ������ */
 }
 p{
+	  width: 100%;
+  text-align: justify;
 	
 	font-size: 17px;
 	line-height: 1.5;
@@ -207,10 +210,13 @@ footer {
   letter-spacing: 1px; /* Межбуквенный интервал */
 }
 .desc {
-
+  width: 100%;
+  text-align: justify;
 
 		font-size: 17px;
 	line-height: 1.5;
+
+
 
 
 
