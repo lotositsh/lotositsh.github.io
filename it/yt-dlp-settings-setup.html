@@ -203,6 +203,16 @@ yt-dlp "$varname"</pre>
 <p>Обновляем в термукс</p>
 <pre>pip install --upgrade yt-dlp</pre>
 <br>
+<p>Сохраняем комментарии</p>
+<pre>yt-dlp --write-comments <URL></pre>
+<pre>yt-dlp --skip-download --write-comments <URL></pre>
+<p>скачать в mp3 одно видео</p>
+<pre>yt-dlp -x --audio-format mp3 https://www.youtube.com/watch?v=i-RCPC929ck</pre>
+<p>все видео с канал игнор ошибок</p>
+<pre>yt-dlp -x --audio-format mp3 --ignore-errors https://www.youtube.com/@SukubaEnsemble</pre>
+<p>а вот так качаем плейлист игнор ошибок</p>
+<pre>yt-dlp -x --audio-format mp3 --ignore-errors https://www.youtube.com/playlist?list=PLVQ7g3e6O27cH8KG9mktLWH8zcqiwTntP</pre>
+
 <p>Любим и чтим
 РЕСУРС</p>
 https://github.com/yt-dlp/yt-dlp
