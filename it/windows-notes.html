@@ -80,32 +80,56 @@
 </div>
 </div>
 <a href="#top" class="scroll-to-top">Up</a>
+
+<style>
+	.video-container {
+		position: relative;
+		width: 100%;
+		padding-top: 56.25%; /* Соотношение сторон 16:9 */
+	}
+	.video-container video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
   <center><h1>Windows заметки</h1></center>
   
   <p>Ролики по своей сборке windows и не только</p>
 	 <p>1 серия</p>
 	 
-	 <video width="640" height="360" controls>
-    <source src="video\urtaev\01.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео тег.
-</video>
+	 <div class="video-container">
+		<video controls>
+			<source src="video/urtaev/01.mp4" type="video/mp4">
+			Ваш браузер не поддерживает видео тег.
+		</video>
+	</div>
+
 	 <p>2 серия</p>
-	 	 <video width="640" height="360" controls>
-    <source src="video\urtaev\02.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео тег.
-</video>
+	 	<div class="video-container">
+    <video controls>
+        <source src="video/urtaev/02.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео тег.
+    </video>
+</div>
    <p>3 серия</p>
-	  	 <video width="640" height="360" controls>
-    <source src="video\urtaev\03.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео тег.
-</video>
+   <div class="video-container">
+    <video controls>
+        <source src="video/urtaev/03.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео тег.
+    </video>
+</div>
 
 	 
 	 <p>Удаление лишних компонентов windows:</p>
-	 <video width="640" height="360" controls>
-    <source src="video\urtaev\04.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео тег.
-	 </video>
+	 <div class="video-container">
+		<video controls>
+			<source src="video/urtaev/04.mp4" type="video/mp4">
+			Ваш браузер не поддерживает видео тег.
+		</video>
+	</div>
 	 
 	 <p>Софт</p> 
 	<p> <a href="https://t.me/dzenit_xyz/93" target="_blank">dism</a></p>
@@ -218,6 +242,142 @@
 
 <pre>oobe\bypassnro</pre>
 <p>После этого перезагрузка и появиться кнопка нет подключения к интернету. Нажав её можно продолжить настройку без интернета.</p>
+
+
+
+<h1>Подключение к сети wifi через cmd</h1>
+
+<p>просмотр сетей</p>
+<pre>netsh wlan show networks</pre>
+<br>
+<div class="text_image">
+	<center>
+		<img src="data:image/webp;base64,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" alt="">
+	</center>
+</div>
+<br>
+
+<p>Создаем папку и файл будущего профиля сети</p>
+
+<pre>C:\WiFiProfiles\NameWIFI.xml</pre>
+
+<p>Содержание файла:</p>
+
+
+<pre>
+	&lt;?xml version=&quot;1.0&quot;?&gt;
+	&lt;WLANProfile xmlns=&quot;http://www.microsoft.com/networking/WLAN/profile/v1&quot;&gt;
+		&lt;name&gt;NameWIFI&lt;/name&gt;
+		&lt;SSIDConfig&gt;
+			&lt;SSID&gt;
+				&lt;name&gt;NameWIFI&lt;/name&gt;
+			&lt;/SSID&gt;
+		&lt;/SSIDConfig&gt;
+		&lt;connectionType&gt;ESS&lt;/connectionType&gt;
+		&lt;connectionMode&gt;auto&lt;/connectionMode&gt;
+		&lt;MSM&gt;
+			&lt;security&gt;
+				&lt;authEncryption&gt;
+					&lt;authentication&gt;WPA2PSK&lt;/authentication&gt;
+					&lt;encryption&gt;AES&lt;/encryption&gt;
+					&lt;useOneX&gt;false&lt;/useOneX&gt;
+				&lt;/authEncryption&gt;
+				&lt;sharedKey&gt;
+					&lt;keyType&gt;passPhrase&lt;/keyType&gt;
+					&lt;protected&gt;false&lt;/protected&gt;
+					&lt;keyMaterial&gt;PASSWORD&lt;/keyMaterial&gt;
+				&lt;/sharedKey&gt;
+			&lt;/security&gt;
+		&lt;/MSM&gt;
+	&lt;/WLANProfile&gt;
+</pre>
+
+<a href="https://t.me/dzenit_xyz/100" target="_blank" rel="noopener noreferrer">NameWIFI.xml</a>
+
+
+
+<p>Важно учитывать типы безопасности:</p>
+<pre>
+	Типы безопасности: WPA2 Enterprise или WPA2 Personal
+	Типы шифрования: AES или TKIP
+	Типы EAP: смарт-карта или другой сертификат или PEAP
+</pre>
+
+
+<p>Добавляем профиль:</p>
+<pre>netsh wlan add profile filename="C:\WiFiProfiles\NameWIFI.xml"</pre>
+
+
+<p>Проверяем его наличие:</p>
+<pre>netsh wlan show profiles</pre>
+
+<p>Подключаемся:</p>
+<pre>netsh wlan connect name="NameWIFI"</pre>
+
+
+<p>Отключаемся:</p>
+<pre>netsh wlan disconnect</pre>
+
+
+<p>Вот небольшой баник</p>
+<pre>
+	@echo off
+chcp 65001 > nul
+
+:menu
+echo.
+echo ======================
+echo 1. Сканировать сеть
+echo 2. Показать доступные Wi-Fi профили
+echo 3. Подключиться к профилю NameWIFI
+echo 4. Подключиться к профилю 2
+echo 5. Отключиться от Wi-Fi
+echo 6. Выйти
+echo ======================
+echo.
+set /p choice="Выберите действие: "
+
+if "%choice%" == "1" goto scan
+if "%choice%" == "2" goto show_profiles
+if "%choice%" == "3" goto connect_NameWIFI
+if "%choice%" == "4" goto connect_2
+if "%choice%" == "5" goto disconnect
+if "%choice%" == "6" exit
+
+echo Неверный выбор. Попробуйте снова.
+goto menu
+
+:scan
+echo Сканирование сети...
+netsh wlan show networks
+pause
+goto menu
+
+:show_profiles
+echo Доступные Wi-Fi профили:
+netsh wlan show profiles
+pause
+goto menu
+
+:connect_NameWIFI
+echo Подключение к профилю NameWIFI...
+netsh wlan connect name="NameWIFI"
+pause
+goto menu
+
+:connect_2
+echo Подключение к профилю 2...
+netsh wlan connect name="2"
+pause
+goto menu
+
+:disconnect
+echo Отключение от Wi-Fi...
+netsh wlan disconnect
+pause
+goto menu
+
+</pre>
 
 
 <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
