@@ -339,7 +339,9 @@ deb-src [arch=armhf] http://security.debian.org/ buster/updates main contrib non
 <p>Установим офис</p>
 <pre>apt install libreoffice libreoffice-l10n-ru libreoffice-help-ru </pre>
 <p>Дальше чисто для себя каждый сам выбирает нужные ему пакеты</p>
-<pre>apt install xfce4-goodies xpdf vlc iceweasel x11vnc aircrack-ng nmap wavemon openvpn vsftpd speedcrunch mc wavemon mednafen idle telegram-desktop ffmpeg transmission p7zip-full</pre>
+<pre>apt install xfce4 xorg lightdm xpdf vlc iceweasel x11vnc aircrack-ng nmap openvpn vsftpd speedcrunch mc wavemon mednafen idle telegram-desktop ffmpeg transmission p7zip-full</pre>
+<p>Баш по умолчанию</p>
+<pre>export PATH=$PATH:/usr/sbin</pre>
 <p>VNC viewer</p>
 <pre>wget https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-6.22.315-Linux-ARM.deb</pre>
 <pre>dpkg -i VNC-Viewer-6.22.315-Linux-ARM.deb</pre>
