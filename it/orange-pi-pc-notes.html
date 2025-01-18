@@ -305,6 +305,7 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</pre>
 <pre>local_enable=YES</pre>
 <pre>write_enable=YES</pre>
 <pre>force_dot_files=YES</pre>
+<pre>local_umask=022</pre>
 <p>Включить пользователя рут для доступа по ftp</p>
 <pre>nano /etc/ftpusers</pre>
 <p>Закомментировать строку <b>#root и перезапустить</b></p>

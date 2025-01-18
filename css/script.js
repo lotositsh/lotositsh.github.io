@@ -16,6 +16,16 @@ function copyCode(index) {
   document.execCommand("copy");
   window.getSelection().removeAllRanges();
 }
+//copybtn
+  document.getElementById('searchLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    var searchBox = document.getElementById('searchBox');
+    if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+      searchBox.style.display = 'block';
+    } else {
+      searchBox.style.display = 'none';
+    }
+  });
 //scroll
 window.addEventListener('scroll', function() {
   var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
