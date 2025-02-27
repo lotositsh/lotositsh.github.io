@@ -89,7 +89,7 @@
     <li><a href="#4">Debian 8 jessie iso скачать. Настройка sources.list</a></li>
     <li><a href="#5">Распаковка архивов</a></li>
     <li><a href="#6">Качаем с гугл диска по ссылке Curl</a></li>
-    <li><a href=""></a></li>
+    <li><a href="#7">Отключить управление питанием в ядре</a></li>
     <li><a href=""></a></li>
     <li><a href=""></a></li>
     <li><a href=""></a></li>
@@ -181,6 +181,20 @@
 <h2 id="6">Качаем с гугл диска по ссылке Curl</h2>
 <pre class="code">curl -L -o filename.tar.gz 'https://drive.google.com/uc?export=download&id=1Iy57ZOI2ivoPWTHcciweuqStbOx3332'</pre>
 <button class="copy-button" onclick="copyCode('1')">Copy</button>
+
+
+
+
+
+<h2 id="7">Отключить управление питанием в ядре</h2>
+
+<pre>sudo nano /etc/default/grub</pre>
+<p>Найдите строку GRUB_CMDLINE_LINUX_DEFAULT и добавьте параметры:</p>
+<pre>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash consoleblank=0"</pre>
+<p>consoleblank=0 отключает затемнение экрана.</p>
+<pre>sudo update-grub</pre>
+<pre>sudo reboot</pre>
+
 
 <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
 </html>

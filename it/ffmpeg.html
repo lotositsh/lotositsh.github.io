@@ -229,6 +229,66 @@ ffmpeg -i 1-1.mp4 -ss 01:00:00 -t 00:15:00 -c copy 1-1(05).mp4</pre>
 <pre class="code">ffmpeg -i input.mp4 -ss 00:04:24 -to 00:04:47 -vf "scale=530:295" -r 5 output.gif</pre>
 <button class="copy-button" onclick="copyCode(7)">Copy</button>
 
+<b>
+  <p>Чтобы конвертировать все файлы .mp3 в текущей папке в формат с битрейтом 320 kbps</p>
+</b>
+<pre>for %i in (*.mp3) do ffmpeg -i "%i" -b:a 320k "mp3_320\%~ni_320k.mp3"</pre>
+<p>Пояснение:</p>
+
+<p>for %i in (*.mp3) — цикл по всем файлам .mp3 в текущей папке.</p>
+
+<p>ffmpeg -i "%i" — указывает входной файл.</p>
+
+<p>-b:a 320k — задаёт битрейт аудио 320 kbps.</p>
+
+<p>"mp3_320\%~ni_320k.mp3" — сохраняет файл в папку mp3_320 с добавлением _320k к имени файла.</p>
+
+
+<p><b>Можно использовать ffmpeg для нормализации громкости всех MP3-файлов в папке.</b> Для этого можно использовать фильтр loudnorm, который нормализует громкость по стандарту EBU R128.</p>
+<p>Создайте папку normalized в той же директории, где находятся ваши MP3-файлы.</p>
+
+<pre>for %i in (*.mp3) do ffmpeg -i "%i" -af loudnorm -y "normalized\%i"</pre>
+
+<p><b>Автоматическое выравнивание громкости (максимальная громкость без искажений)</b>.</p>
+<p>Сначала определите максимальную громкость для всех треков, сохраними результат в сохранить результаты анализа в файл volume_log.txt</p>
+
+<pre>for %i in (*.mp3) do ffmpeg -i "%i" -af volumedetect -f null NUL >> volume_log.txt 2>&1</pre>
+
+<p>Извлекаем значения max_volume и применяем коррекцию, используя python3</p>
+
+<pre>
+  import re
+  import os
+  import subprocess
+  
+  # Чтение файла с логами
+  with open("volume_log.txt", "r", encoding="utf-8") as file:
+      logs = file.read()
+  
+  # Регулярное выражение для извлечения имени файла и max_volume
+  pattern = re.compile(r"Input #0, mp3, from '(.*?)'.*?max_volume: (-\d+\.\d+) dB", re.DOTALL)
+  
+  # Создаем папку для нормализованных файлов
+  if not os.path.exists("normalized"):
+      os.makedirs("normalized")
+  
+  # Обработка каждого файла
+  for match in pattern.findall(logs):
+      filename, max_volume = match
+      target_volume = 0  # Целевая громкость (0 dB — максимальная без искажений)
+      volume_adjustment = target_volume - float(max_volume)
+  
+      # Применяем коррекцию громкости
+      output_filename = os.path.join("normalized", os.path.basename(filename))
+      subprocess.run([
+          "ffmpeg", "-i", filename,
+          "-af", f"volume={volume_adjustment}dB",
+          "-y", output_filename
+      ])
+  
+      print(f"Обработан файл: {filename}, скорректировано на {volume_adjustment} dB")
+</pre>
+
 
 <b><p>Добавляем ffmpeg в командную строку windows</p></b>
 <p>Мой компьютер - Свойства - Дополнительные параметры системы - Переменные среды</p>
