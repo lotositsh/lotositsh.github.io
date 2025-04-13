@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обрезка и копирование текста</title>
+</head>
+<body>
+    <h1>Обрезка и копирование текста</h1>
+    
+    <div>
+        <label for="charLimit">Макс. символов:</label>
+        <input type="number" id="charLimit" value="150" min="1">
+    </div>
+    
+    <div>
+        <label for="inputText">Введите текст:</label><br>
+        <textarea 
+            id="inputText" 
+            rows="10" 
+            cols="50" 
+            placeholder="Вставьте текст — он обрежется автоматически"
+        ></textarea>
+    </div>
+    
+    <div>
+        <button onclick="copyText()">Копировать текст</button>
+    </div>
+    
+    <script>
+        const inputText = document.getElementById('inputText');
+        const charLimitInput = document.getElementById('charLimit');
+        
+        // Автоматическая обрезка при вводе
+        inputText.addEventListener('input', function() {
+            const charLimit = parseInt(charLimitInput.value) || 150;
+            if (this.value.length > charLimit) {
+                this.value = this.value.substring(0, charLimit);
+            }
+        });
+        
+        // Копирование текста в буфер обмена
+        function copyText() {
+            inputText.select(); // Выделяем текст
+            document.execCommand('copy'); // Копируем
+            
+            // Можно добавить уведомление (опционально)
+            alert('Текст скопирован в буфер обмена!');
+        }
+    </script>
+</body>
+</html>
