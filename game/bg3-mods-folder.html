@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<script src="../css/script.js"></script>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Primary Meta Tags -->
+<title>Baldur's Gate 3: как перенести папку с модами на другой диск</title>
+<meta name="title" content="Baldur's Gate 3: как перенести папку с модами на другой диск" />
+<meta name="description" content="Пошаговая инструкция, как правильно перенести папку с модами для Baldur's Gate 3 на другой диск без потери данных и с сохранением работоспособности модов." />
+<meta name="keywords" content="Baldur's Gate 3, перенос модов, папка с модами, mods folder, Baldur's Gate 3 моды, перенос на другой диск, гайд по модам, управление модами, оптимизация игры"> 
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="DzenIT" />
+<meta property="og:title" content="Baldur's Gate 3: как перенести папку с модами на другой диск" />
+<meta property="og:description" content="Пошаговая инструкция, как правильно перенести папку с модами для Baldur's Gate 3 на другой диск без потери данных и с сохранением работоспособности модов." />
+<meta property="og:image" content="img/bg3.webp" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Baldur's Gate 3: как перенести папку с модами на другой диск" />
+<meta property="twitter:description" content="Пошаговая инструкция, как правильно перенести папку с модами для Baldur's Gate 3 на другой диск без потери данных и с сохранением работоспособности модов." />
+<meta property="twitter:image" content="img/bg3.webp" />
+
+
+  </head>
+  
+  
+<body>
+ <div class="size1">
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../w.html">W</a>
+    <a href="#" id="searchLink">SEARCH</a>
+ <script>
+    document.getElementById('searchLink').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+      var searchBox = document.getElementById('searchBox');
+      if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+        searchBox.style.display = 'block';
+      } else {
+        searchBox.style.display = 'none';
+      }
+    });
+  </script>
+  
+  <div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<a href="#top" class="scroll-to-top">Up</a>
+  <center><h1>Baldur's Gate 3: как перенести папку с модами на другой диск</h1></center>
+  
+  <p>Сейв файлы и моды находятся по пути <i>%localappdata%\Larian Studios</i> </p>
+  <p>(просто скопируй и вставь в папку) будет такое расположение:</p>
+  <pre>C:\Users\YOU_USER_NAME\AppData\Local\Larian Studios</pre>
+  <p>YOU_USER_NAME - имя пользователя Windows</p>
+  
+  <p>Создаем папку куда будем переносить файлы</p>
+  F:\bg3
+  
+  <p>Копируем всё содержимое из <i>%localappdata%\Larian Studios\Baldur's Gate 3</i> в новую папку F:\bg3.</p>
+  <p>Папку Baldur's Gate 3 из <i>%localappdata%\Larian Studios\ </i>можно удалить. </p>
+  <p>Теперь открывает командную строку (win+R пишем cmd) или через поиск запускаем командную строку через администратора.</p>
+  <p>Переходим в нужную папку:</p>
+  <pre>cd /d %localappdata%\Larian Studios</pre>
+  <p>Создаем символьную ссылку для игры</p>
+  <pre>mklink /j "Baldur's Gate 3" "F:\bg3"  </pre>
+  <p>После этого в исходной паке %localappdata%\Larian Studios вы увидете папку Baldur's Gate 3, которая является ссылкой на файлы F:\bg3.</p>
+  
+
+<br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
+</html>
