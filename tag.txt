@@ -1,0 +1,32 @@
+<pre class="code"></pre>
+<button class="copy-button" onclick="copyCode(1)">Copy</button>
+
+<br>
+<div class="text_image">
+	<center>
+	<img src="data:image/gif;base64, тут код base64" alt="описание">
+	</center>
+</div>
+<br>
+
+
+<br>
+<div class="text_image">
+	<center>
+	<img src="data:image/webp;base64, тут код base64" alt="">
+	</center>
+</div>
+<br>
+
+
+  <p>Содержание:</p>
+  <ul>
+    <li><a href="#steer">Бычок</a></li>
+    <li><a href="#bunny">Зайка</a></li>
+    <li><a href="#bear">Мишка</a></li>
+  </ul>
+  
+  <h2 id="тут айди"></h2>
+  
+  
+  <a href="URL" target="_blank" rel="noopener noreferrer"></a>

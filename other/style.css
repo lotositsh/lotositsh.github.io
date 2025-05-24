@@ -1,0 +1,204 @@
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --bg: #f5f7fa;
+            --card-bg: #fff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: #000;
+        }
+        
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .series-container {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .dropdown {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .dropdown-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .dropdown-btn::after {
+            content: "▼";
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-btn.active::after {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: relative;
+            background: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1;
+        }
+        
+        .dropdown-content.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .episode-item {
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .episode-item:last-child {
+            border-bottom: none;
+        }
+        
+        .episode-item:hover {
+            background: #f0f7ff;
+        }
+        
+        .episode-item.active {
+            background: #e1f0ff;
+            font-weight: 500;
+        }
+        
+        .episode-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .episode-number {
+            font-weight: 600;
+            color: var(--primary);
+            margin-right: 10px;
+            min-width: 40px;
+        }
+        
+        .episode-time {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .control-btn {
+            padding: 12px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .control-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .control-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .series-container {
+                padding: 15px;
+            }
+            
+            .dropdown-btn {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .episode-item {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .control-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }

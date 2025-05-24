@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Генератор номеров с 0000</title>
+</head>
+<body>
+    <h2>Генератор номеров с "0000"</h2>
+    <button onclick="generateNumbers()">Сгенерировать</button>
+    <div id="results"></div>
+
+    <script>
+        function generateNumbers() {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = ''; // Очищаем предыдущие результаты
+            
+            for (let i = 0; i < 10; i++) {
+                // Генерируем части номера
+                const firstDigit = Math.floor(Math.random() * 10); // Первая цифра (0-9)
+                const prefix = Array.from({length: 3}, () => Math.floor(Math.random() * 10)).join(''); // 3 случайные цифры
+                const suffix = Array.from({length: 4}, () => Math.floor(Math.random() * 10)).join(''); // 4 случайные цифры
+                
+                // Собираем номер
+                const number = `${firstDigit}-${prefix}0000${suffix}`;
+                
+                // Выводим результат
+                const div = document.createElement('div');
+                div.textContent = number;
+                resultsContainer.appendChild(div);
+            }
+        }
+    </script>
+</body>
+</html>
