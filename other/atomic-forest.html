@@ -4,6 +4,7 @@
 <html><head>
 <meta charset="utf-8"/>
 <link href="../css/text.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
 <script src="../css/script.js"></script>
 <link href="../img/favicon.png" rel="icon" sizes="192x192" type="image/png"/>
 <meta content="width=device-width" name="viewport"/>
@@ -79,30 +80,178 @@
 <p>Однако нашей планете все еще есть обитатели. Животные, которые смогли выжить в этой войне, под воздействием радиации претерпели мутации и приобрели разумность. Теперь они стали разумными существами, пользующимися остатками цивилизации. Наш главный герой - медведь, который ходит на свою нелюбимую работу и зарабатывает на пропитание своей семьи. Его лучший друг - кролик-пофигист, который ничего не беспокоит, и к тому же является братом его жены. Бедный медведь вынужден содержать свою крольчиху-жену и их крольчат. В общем, все как у людей, только проживаем на зверином уровне. Однако у каждого обитателя Леса сохранились некоторые черты их истинной природы, поэтому животные часто сталкиваются с выбором между своим разумом и природной сущностью, и это не всегда заканчивается хорошо для окружающих. </p>
 <p>Этот мультфильм крайне забавен и необычен, но абсолютно не рекомендуется для детей или лиц со слабой психикой.</p>
 <br>
-<div style="padding:55.56% 0 0 0;position:relative;"><iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" frameborder="0" src="https://player.vimeo.com/video/872331387?h=93e6d4d3f2&amp;title=0&amp;byline=0&amp;portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-<br>
-<details><summary><b>По сериям:</b></summary>
-<p><b>1 Сезон</b></p>
-<p><a href="https://vimeo.com/872331387#t=0s" rel="noopener noreferrer" target="_blank">01 - Здравствуй, папа!</a></p>
-<p><a href="https://vimeo.com/872331387#t=1325s" rel="noopener noreferrer" target="_blank">02 - Кровавая свадьба  Атомный лес</a></p>
-<p><a href="https://vimeo.com/872331387#t=2650s" rel="noopener noreferrer" target="_blank">03 - Лапы</a></p>
-<p><a href="https://vimeo.com/872331387#t=3994s" rel="noopener noreferrer" target="_blank">04 - Инстинкт требует жертв</a></p>
-<p><a href="https://vimeo.com/872331387#t=5320s" rel="noopener noreferrer" target="_blank">05 - Инстинкт требует жертв. Часть 2</a></p>
-<p><a href="https://vimeo.com/872331387#t=6641s" rel="noopener noreferrer" target="_blank">06 - Бремя самца</a></p>
-<p><a href="https://vimeo.com/872331387#t=7918s" rel="noopener noreferrer" target="_blank">07 - Мой Мишель</a></p>
-<p><a href="https://vimeo.com/872331387#t=9246s" rel="noopener noreferrer" target="_blank">08 - Последняя любовь</a></p>
-<p><a href="https://vimeo.com/872331387#t=10576s" rel="noopener noreferrer" target="_blank">09 - Поводы жить</a></p>
-<p><a href="https://vimeo.com/872331387#t=11903s" rel="noopener noreferrer" target="_blank">10 - Теперь надо жить осторожней</a></p>
-<p><b>2 Сезон</b></p>
-<p><a href="https://vimeo.com/872331387#t=13226s" rel="noopener noreferrer" target="_blank">11 - План природы</a></p>
-<p><a href="https://vimeo.com/872331387#t=14555s" rel="noopener noreferrer" target="_blank">12 - Защита зверей от информации</a></p>
-<p><a href="https://vimeo.com/872331387#t=15872s" rel="noopener noreferrer" target="_blank">13 - Отложенное путешествие</a></p>
-<p><a href="https://vimeo.com/872331387#t=17203s" rel="noopener noreferrer" target="_blank">14 - Внутренний Стас</a></p>
-<p><a href="https://vimeo.com/872331387#t=18525s" rel="noopener noreferrer" target="_blank">15 - Садовник</a></p>
-<p><a href="https://vimeo.com/872331387#t=19860s" rel="noopener noreferrer" target="_blank">16 - Юмор, будь ты проклят!</a></p>
-<p><a href="https://vimeo.com/872331387#t=21190s" rel="noopener noreferrer" target="_blank">17 - Бог, дьявол, его брат и их мать</a></p>
-<p><a href="https://vimeo.com/872331387#t=22520s" rel="noopener noreferrer" target="_blank">18 - Астрономы и врачи</a></p>
-<p><a href="https://vimeo.com/872331387#t=23861s" rel="noopener noreferrer" target="_blank">19 - Секрет скуки</a></p>
-</details>
+
+
+<div class="container">
+  <div class="player-wrapper">
+      <iframe id="vimeo-player" src="https://player.vimeo.com/video/872331387?badge=0&autopause=0&player_id=0&app_id=58479&byline=0&title=0" 
+              frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+              allowfullscreen></iframe>
+  </div>
+  
+  <div class="series-container">
+      <div class="dropdown">
+          <button class="dropdown-btn" id="dropdownBtn">
+              <span id="currentEpisodeText">Выберите серию</span>
+          </button>
+          <div class="dropdown-content" id="dropdownContent">
+              <!-- Эпизоды будут добавлены через JavaScript -->
+          </div>
+      </div>
+      
+      <div class="controls">
+          <button class="control-btn" id="prevBtn" disabled>
+              ← Предыдущая
+          </button>
+          <button class="control-btn" id="nextBtn">
+              Следующая →
+          </button>
+      </div>
+  </div>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+  // Данные о сериях
+  
+  const episodes = [
+  { number: 'E01', title: 'Здравствуй, папа!', time: 0, timeStr: '00:00:00' },
+      { number: 'E02', title: 'Кровавая свадьба', time: 1325, timeStr: '00:21:33' },
+      { number: 'E03', title: 'Лапы', time: 2650, timeStr: '00:44:18' },
+      { number: 'E04', title: 'Инстинкт требует жертв', time: 3994, timeStr: '01:06:56' },
+      { number: 'E05', title: 'Инстинкт требует жертв. Часть 2', time: 5320, timeStr: '01:29:32' },
+      { number: 'E06', title: 'Бремя самца', time: 6641, timeStr: '01:51:30' },
+      { number: 'E07', title: 'Мой Мишель', time: 7918, timeStr: '02:14:14' },
+      { number: 'E08', title: 'Последняя любовь', time: 9246, timeStr: '02:36:21' },
+      { number: 'E09', title: 'Поводы жить', time: 10576, timeStr: '02:58:26' },
+      { number: 'E10', title: 'Теперь надо жить осторожней', time: 11903, timeStr: '03:21:14' },
+   	  { number: 'E11', title: 'План природы', time: 13226, timeStr: '03:21:14' },
+	  { number: 'E12', title: 'Защита зверей от информации', time: 14555, timeStr: '03:21:14' },
+	  { number: 'E13', title: 'Отложенное путешествие', time: 15872, timeStr: '03:21:14' },
+	  { number: 'E14', title: 'Внутренний Стас', time: 17203, timeStr: '03:21:14' },
+	  { number: 'E15', title: 'Садовник', time: 18525, timeStr: '03:21:14' },
+      { number: 'E16', title: 'Юмор, будь ты проклят!', time: 19860, timeStr: '03:21:14' },
+	  { number: 'E17', title: 'Бог, дьявол, его брат и их мать', time: 21190, timeStr: '03:21:14' },
+	  { number: 'E18', title: 'Астрономы и врачи', time: 22520, timeStr: '03:21:14' },
+      { number: 'E19', title: 'Секрет скуки', time: 23861, timeStr: '03:21:14' }
+	  
+	  
+  ];
+
+  let player;
+  let currentEpisodeIndex = -1;
+  
+  // Инициализация
+  document.addEventListener('DOMContentLoaded', async () => {
+      // Создаем плеер
+      player = new Vimeo.Player(document.getElementById('vimeo-player'));
+      
+      // Заполняем выпадающий список
+      renderEpisodes();
+      
+      // Назначаем обработчики
+      setupEventListeners();
+  });
+  
+  function renderEpisodes() {
+      const dropdownContent = document.getElementById('dropdownContent');
+      
+      episodes.forEach((episode, index) => {
+          const episodeItem = document.createElement('div');
+          episodeItem.className = 'episode-item';
+          episodeItem.innerHTML = `
+              <div class="episode-info">
+                  <span class="episode-number">${episode.number}</span>
+                  <span>${episode.title}</span>
+              </div>
+              <span class="episode-time">${episode.timeStr}</span>
+          `;
+          
+          episodeItem.addEventListener('click', () => {
+              playEpisode(index);
+              toggleDropdown();
+          });
+          
+          dropdownContent.appendChild(episodeItem);
+      });
+  }
+  
+  function setupEventListeners() {
+      // Кнопка выпадающего меню
+      document.getElementById('dropdownBtn').addEventListener('click', toggleDropdown);
+      
+      // Кнопки навигации
+      document.getElementById('prevBtn').addEventListener('click', playPrevEpisode);
+      document.getElementById('nextBtn').addEventListener('click', playNextEpisode);
+      
+      // Закрытие меню при клике вне его
+      document.addEventListener('click', (e) => {
+          if (!e.target.closest('.dropdown')) {
+              document.getElementById('dropdownContent').classList.remove('show');
+              document.getElementById('dropdownBtn').classList.remove('active');
+          }
+      });
+  }
+  
+  function toggleDropdown() {
+      const dropdown = document.getElementById('dropdownContent');
+      const btn = document.getElementById('dropdownBtn');
+      
+      dropdown.classList.toggle('show');
+      btn.classList.toggle('active');
+  }
+  
+  async function playEpisode(index) {
+      if (index < 0 || index >= episodes.length) return;
+      
+      const episode = episodes[index];
+      currentEpisodeIndex = index;
+      
+      try {
+          // Обновляем UI
+          updateUI();
+          
+          // Воспроизводим серию
+          await player.pause();
+          await player.setCurrentTime(episode.time);
+          await player.play();
+          
+          console.log(`Сейчас играет: ${episode.number} — ${episode.title}`);
+      } catch (error) {
+          console.error('Ошибка воспроизведения:', error);
+      }
+  }
+  
+  async function playNextEpisode() {
+      await playEpisode(currentEpisodeIndex + 1);
+  }
+  
+  async function playPrevEpisode() {
+      await playEpisode(currentEpisodeIndex - 1);
+  }
+  
+  function updateUI() {
+      const episode = episodes[currentEpisodeIndex];
+      
+      // Обновляем текст текущей серии
+      document.getElementById('currentEpisodeText').textContent = 
+          `${episode.number} — ${episode.title}`;
+      
+      // Обновляем активный элемент в списке
+      document.querySelectorAll('.episode-item').forEach((item, index) => {
+          if (index === currentEpisodeIndex) {
+              item.classList.add('active');
+          } else {
+              item.classList.remove('active');
+          }
+      });
+      
+      // Обновляем состояние кнопок
+      document.getElementById('prevBtn').disabled = currentEpisodeIndex <= 0;
+      document.getElementById('nextBtn').disabled = currentEpisodeIndex >= episodes.length - 1;
+  }
+</script>
+
+
 <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2025</footer></div> </body>
 </html>
