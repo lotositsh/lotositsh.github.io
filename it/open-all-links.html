@@ -71,10 +71,19 @@
 <br>
 <br>
 <textarea id="links" placeholder="https://example.com/" rows="7"></textarea>
+<p id="link-count">0 links inserted</p>
 <p>Enter delay in seconds</p>
 <input id="delay" placeholder="Enter delay in seconds" type="number" value="0"/>
 <button id="open-links-btn">Open links</button>
 <script>
+  function updateLinkCount() {
+    var links = document.getElementById("links").value.split("\n");
+    var nonEmptyLinks = links.filter(function(link) {
+      return link.trim() !== "";
+    });
+    document.getElementById("link-count").textContent = nonEmptyLinks.length + " links inserted";
+  }
+
   function openLinksInNewTab() {
     var links = document.getElementById("links").value.split("\n");
     var delay = document.getElementById("delay").value * 1000;
@@ -118,8 +127,11 @@
   }
   
   document.getElementById("open-links-btn").addEventListener("click", openLinksInNewTab);
-  </script>
+  document.getElementById("links").addEventListener("input", updateLinkCount);
   
+  // Initialize count on page load
+  updateLinkCount();
+</script>
 <h3>Convert time to seconds</h3>
 <form>
 <label for="hours">Hours:</label>
