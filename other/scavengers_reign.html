@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<script src="../css/script.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Primary Meta Tags -->
+<title>Царство падальщиков</title>
+<meta name="title" content="Царство падальщиков" />
+<meta name="description" content="Царство падальщиков» (англ. Scavengers Reign) - американский анимационный научно-фантастический телесериал для взрослых." />
+<meta name="keywords" content=""> 
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="DzenIT" />
+<meta property="og:title" content="Царство падальщиков" />
+<meta property="og:description" content="Царство падальщиков» (англ. Scavengers Reign) - американский анимационный научно-фантастический телесериал для взрослых." />
+<meta property="og:image" content="img/" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Царство падальщиков" />
+<meta property="twitter:description" content="Царство падальщиков» (англ. Scavengers Reign) - американский анимационный научно-фантастический телесериал для взрослых." />
+<meta property="twitter:image" content="img/" />
+
+
+  </head>
+  
+  
+<body>
+ <div class="size1">
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../w.html">W</a>
+    <a href="#" id="searchLink">SEARCH</a>
+ <script>
+    document.getElementById('searchLink').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+      var searchBox = document.getElementById('searchBox');
+      if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+        searchBox.style.display = 'block';
+      } else {
+        searchBox.style.display = 'none';
+      }
+    });
+  </script>
+  
+  <div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<a href="#top" class="scroll-to-top">Up</a>
+  <center><h1>Царство падальщиков</h1></center>
+  
+   <div class="container">
+    <div class="player-wrapper">
+        <iframe id="vimeo-player" src="https://player.vimeo.com/video/1090897775?badge=0&autopause=0&player_id=0&app_id=58479&byline=0&title=0" 
+                frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                allowfullscreen></iframe>
+    </div>
+    
+    <div class="series-container">
+        <div class="dropdown">
+            <button class="dropdown-btn" id="dropdownBtn">
+                <span id="currentEpisodeText">Выберите серию</span>
+            </button>
+            <div class="dropdown-content" id="dropdownContent">
+                <!-- Эпизоды будут добавлены через JavaScript -->
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="control-btn" id="prevBtn" disabled>
+                ← Предыдущая
+            </button>
+            <button class="control-btn" id="nextBtn">
+                Следующая →
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+    // Данные о сериях
+    
+    const episodes = [
+				{'number': 'S01E01', 'title': 'Scavengers.Reign.S01E01.WEB-DLRip.NewStation.avi', 'time': 0, 'timeStr': '00:24:02'},
+				{'number': 'S01E02', 'title': 'Scavengers.Reign.S01E02.WEB-DLRip.NewStation.avi', 'time': 1442, 'timeStr': '00:26:03'},
+				{'number': 'S01E03', 'title': 'Scavengers.Reign.S01E03.WEB-DLRip.NewStation.avi', 'time': 3005, 'timeStr': '00:24:08'},
+				{'number': 'S01E04', 'title': 'Scavengers.Reign.S01E04.WEB-DLRip.NewStation.avi', 'time': 4453, 'timeStr': '00:24:54'},
+				{'number': 'S01E05', 'title': 'Scavengers.Reign.S01E05.WEB-DLRip.NewStation.avi', 'time': 5947, 'timeStr': '00:23:35'},
+				{'number': 'S01E06', 'title': 'Scavengers.Reign.S01E06.WEB-DLRip.NewStation.avi', 'time': 7362, 'timeStr': '00:24:43'},
+				{'number': 'S01E07', 'title': 'Scavengers.Reign.S01E07.WEB-DLRip.NewStation.avi', 'time': 8845, 'timeStr': '00:24:16'},
+				{'number': 'S01E08', 'title': 'Scavengers.Reign.S01E08.WEB-DLRip.NewStation.avi', 'time': 10301, 'timeStr': '00:22:50'},
+				{'number': 'S01E09', 'title': 'Scavengers.Reign.S01E09.WEB-DLRip.NewStation.avi', 'time': 11671, 'timeStr': '00:25:23'},
+				{'number': 'S01E10', 'title': 'Scavengers.Reign.S01E10.WEB-DLRip.NewStation.avi', 'time': 13194, 'timeStr': '00:24:25'},
+				{'number': 'S01E11', 'title': 'Scavengers.Reign.S01E11.WEB-DLRip.NewStation.avi', 'time': 14659, 'timeStr': '00:26:47'},
+				{'number': 'S01E12', 'title': 'Scavengers.Reign.S01E12.WEB-DLRip.NewStation.avi', 'time': 16266, 'timeStr': '00:24:24'}
+    ];
+
+    let player;
+    let currentEpisodeIndex = -1;
+    
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Создаем плеер
+        player = new Vimeo.Player(document.getElementById('vimeo-player'));
+        
+        // Заполняем выпадающий список
+        renderEpisodes();
+        
+        // Назначаем обработчики
+        setupEventListeners();
+    });
+    
+    function renderEpisodes() {
+        const dropdownContent = document.getElementById('dropdownContent');
+        
+        episodes.forEach((episode, index) => {
+            const episodeItem = document.createElement('div');
+            episodeItem.className = 'episode-item';
+            episodeItem.innerHTML = `
+                <div class="episode-info">
+                    <span class="episode-number">${episode.number}</span>
+                    <span>${episode.title}</span>
+                </div>
+                <span class="episode-time">${episode.timeStr}</span>
+            `;
+            
+            episodeItem.addEventListener('click', () => {
+                playEpisode(index);
+                toggleDropdown();
+            });
+            
+            dropdownContent.appendChild(episodeItem);
+        });
+    }
+    
+    function setupEventListeners() {
+        // Кнопка выпадающего меню
+        document.getElementById('dropdownBtn').addEventListener('click', toggleDropdown);
+        
+        // Кнопки навигации
+        document.getElementById('prevBtn').addEventListener('click', playPrevEpisode);
+        document.getElementById('nextBtn').addEventListener('click', playNextEpisode);
+        
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.getElementById('dropdownContent').classList.remove('show');
+                document.getElementById('dropdownBtn').classList.remove('active');
+            }
+        });
+    }
+    
+    function toggleDropdown() {
+        const dropdown = document.getElementById('dropdownContent');
+        const btn = document.getElementById('dropdownBtn');
+        
+        dropdown.classList.toggle('show');
+        btn.classList.toggle('active');
+    }
+    
+    async function playEpisode(index) {
+        if (index < 0 || index >= episodes.length) return;
+        
+        const episode = episodes[index];
+        currentEpisodeIndex = index;
+        
+        try {
+            // Обновляем UI
+            updateUI();
+            
+            // Воспроизводим серию
+            await player.pause();
+            await player.setCurrentTime(episode.time);
+            await player.play();
+            
+            console.log(`Сейчас играет: ${episode.number} — ${episode.title}`);
+        } catch (error) {
+            console.error('Ошибка воспроизведения:', error);
+        }
+    }
+    
+    async function playNextEpisode() {
+        await playEpisode(currentEpisodeIndex + 1);
+    }
+    
+    async function playPrevEpisode() {
+        await playEpisode(currentEpisodeIndex - 1);
+    }
+    
+    function updateUI() {
+        const episode = episodes[currentEpisodeIndex];
+        
+        // Обновляем текст текущей серии
+        document.getElementById('currentEpisodeText').textContent = 
+            `${episode.number} — ${episode.title}`;
+        
+        // Обновляем активный элемент в списке
+        document.querySelectorAll('.episode-item').forEach((item, index) => {
+            if (index === currentEpisodeIndex) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+        
+        // Обновляем состояние кнопок
+        document.getElementById('prevBtn').disabled = currentEpisodeIndex <= 0;
+        document.getElementById('nextBtn').disabled = currentEpisodeIndex >= episodes.length - 1;
+    }
+</script>
+  
+
+<br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
+</html>
