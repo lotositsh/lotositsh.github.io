@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лунный календарь</title>
+    <link rel="stylesheet" href="moon_style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌙 Лунный календарь <span id="current-year"></span></h1>
+            <div class="location-info">
+                Часовой пояс: Киев | Высота: 100 м
+            </div>
+        </header>
+		        <!-- Добавлен блок текущего элемента -->
+        <div class="current-element-container">
+            <div class="current-time" id="current-time"></div>
+            <div class="active-element" id="active-element"></div>
+            <div class="next-element" id="next-element"></div>
+        </div>
+
+
+
+        <div class="controls">
+            <button id="prev-month">◀</button>
+            <h2 id="current-month"></h2>
+            <button id="next-month">▶</button>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item new-moon">🌑 Новолуние</div>
+            <div class="legend-item full-moon">🌕 Полнолуние</div>
+            <div class="legend-item waxing">🌒 Растущая</div>
+            <div class="legend-item waning">🌘 Убывающая</div>
+            <div class="legend-item lucky-left">Lucky ← (Ср,Чт,Пт)</div>
+            <div class="legend-item lucky-right">Lucky → (Вт,Сб,Вс)</div>
+        </div>
+
+        <div class="weekdays">
+            <div>Пн</div>
+            <div>Вт</div>
+            <div>Ср</div>
+            <div>Чт</div>
+            <div>Пт</div>
+            <div>Сб</div>
+            <div>Вс</div>
+        </div>
+
+        <div id="calendar-grid" class="calendar-grid"></div>
+
+        <div class="current-day-details" id="current-day-details">
+            <h3><span id="today-date"></span> <span id="lucky-indicator"></span></h3>
+            <div class="details-grid">
+                <div>
+                    <h4>Солнце</h4>
+                    <p>Восход: <span id="sunrise"></span></p>
+                    <p>Заход: <span id="sunset"></span></p>
+                </div>
+                <div>
+                    <h4>Луна</h4>
+                    <p>Фаза: <span id="moon-phase"></span></p>
+                    <p>День: <span id="lunar-day"></span></p>
+                    <p>Направление: <span id="direction"></span></p>
+                    <p>Восход: <span id="moonrise"></span></p>
+                    <p>Заход: <span id="moonset"></span></p>
+                </div>
+            </div>
+            
+            <div class="elements-container">
+                <h4>Циклы элементов (24 мин, весь день)</h4>
+                <div id="elements"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="moon_data.json"></script>
+    <script src="moon_script.js"></script>
+</body>
+</html>
