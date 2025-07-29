@@ -1,11 +1,11 @@
 const CACHE_NAME = 'lunar-cache-v1';
 const FILES_TO_CACHE = [
   '/',
-  '/index.html',
-  '/moon_style.css',
-  '/moon_script.js',
-  '/moon_data.json',
-  '/icon-192x192.png'
+  './live/moon/index.html',
+  './live/moon/moon_style.css',
+  './live/moon/moon_script.js',
+  './live/moon/moon_data.json',
+  './live/moon/icon-192x192.png'
 ];
 
 self.addEventListener('install', (event) => {

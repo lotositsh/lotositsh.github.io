@@ -1,7 +1,7 @@
 {
   "name": "Лунный календарь",
   "short_name": "Луна",
-  "start_url": "/",
+  "start_url": "./live/moon/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#3498db",
