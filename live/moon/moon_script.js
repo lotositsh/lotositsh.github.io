@@ -176,3 +176,6 @@ fetch('moon_data.json')
         renderCalendar(currentMonth);
     })
     .catch(error => console.error('Error loading calendar data:', error));
+	if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
