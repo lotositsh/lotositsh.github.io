@@ -1,23 +1,24 @@
-const CACHE_NAME = 'lunar-cache-v1';
-const FILES_TO_CACHE = [
-  '/',
-  './live/moon/moon_calendar.html',
-  './live/moon/moon_style.css',
-  './live/moon/moon_script.js',
-  './live/moon/moon_data.json',
-  './live/moon/icon-192x192.png'
+const CACHE_NAME = 'moon-cache-v2';
+const STATIC_FILES = [
+  './moon_calendar.html',
+  './moon_style.css',
+  './moon_script.js',
+  './moon_data.json',
+  './icon-192x192.png'
 ];
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
+// Установка и кеширование
+self.addEventListener('install', (e) => {
+  e.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(FILES_TO_CACHE))
+      .then(cache => cache.addAll(STATIC_FILES))
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
+// Стратегия: Сначала кеш, потом сеть
+self.addEventListener('fetch', (e) => {
+  e.respondWith(
+    caches.match(e.request)
+      .then(cached => cached || fetch(e.request))
   );
 });

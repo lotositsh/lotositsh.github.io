@@ -176,6 +176,10 @@ fetch('moon_data.json')
         renderCalendar(currentMonth);
     })
     .catch(error => console.error('Error loading calendar data:', error));
-	if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./live/moon/sw.js');
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('SW registered:', reg))
+      .catch(err => console.log('SW failed:', err));
+  });
 }
