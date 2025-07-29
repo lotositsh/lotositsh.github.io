@@ -183,3 +183,12 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.log('SW failed:', err));
   });
 }
+
+// Запрос на установку (сработает при выполнении условий Chrome)
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); // Блокируем автоматический показ
+  const installBtn = document.createElement('button');
+  installBtn.textContent = 'Установить приложение';
+  document.body.append(installBtn);
+  installBtn.onclick = () => e.prompt(); // Показываем баннер по клику
+});
