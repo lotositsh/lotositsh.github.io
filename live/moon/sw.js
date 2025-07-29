@@ -1,7 +1,7 @@
 const CACHE_NAME = 'lunar-cache-v1';
 const FILES_TO_CACHE = [
   '/',
-  './live/moon/index.html',
+  './live/moon/moon_calendar.html',
   './live/moon/moon_style.css',
   './live/moon/moon_script.js',
   './live/moon/moon_data.json',
