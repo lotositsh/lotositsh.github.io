@@ -177,5 +177,5 @@ fetch('moon_data.json')
     })
     .catch(error => console.error('Error loading calendar data:', error));
 	if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
+  navigator.serviceWorker.register('./live/moon/sw.js');
 }
