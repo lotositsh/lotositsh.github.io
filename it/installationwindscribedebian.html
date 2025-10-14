@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<script src="../css/script.js"></script>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Primary Meta Tags -->
+<title>Installing Windscribe on Debian 12: A Step-by-Step Guide</title>
+<meta name="title" content="Installing Windscribe on Debian 12: A Step-by-Step Guide" />
+<meta name="description" content="Узнайте, как установить Windscribe VPN на Debian 12 с помощью этого простого пошагового руководства. Настройте безопасное соединение за несколько минут!" />
+<meta name="keywords" content="Windscribe, Debian 12, VPN, установка, руководство, настройка, безопасность, интернет"> 
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="DzenIT" />
+<meta property="og:title" content="Installing Windscribe on Debian 12: A Step-by-Step Guide" />
+<meta property="og:description" content="Узнайте, как установить Windscribe VPN на Debian 12 с помощью этого простого пошагового руководства. Настройте безопасное соединение за несколько минут!" />
+<meta property="og:image" content="img/" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Installing Windscribe on Debian 12: A Step-by-Step Guide" />
+<meta property="twitter:description" content="Узнайте, как установить Windscribe VPN на Debian 12 с помощью этого простого пошагового руководства. Настройте безопасное соединение за несколько минут!" />
+<meta property="twitter:image" content="img/" />
+
+
+  </head>
+  
+  
+<body>
+ <div class="size1">
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../w.html">W</a>
+    <a href="#" id="searchLink">SEARCH</a>
+ <script>
+    document.getElementById('searchLink').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+      var searchBox = document.getElementById('searchBox');
+      if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+        searchBox.style.display = 'block';
+      } else {
+        searchBox.style.display = 'none';
+      }
+    });
+  </script>
+  
+  <div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<a href="#top" class="scroll-to-top">Up</a>
+  <center><h1>Installing Windscribe on Debian 12: A Step-by-Step Guide</h1></center>
+  
+     <h1>Installation of Windscribe on Debian 12</h1>
+    <p>This guide explains how to install the Windscribe CLI (version 2.13.4) on Debian 12 (Bookworm). Windscribe is a VPN client that provides secure and private internet access. Follow the steps below to set it up on your Debian system.</p>
+
+    <h2>Prerequisites</h2>
+    <p>Before starting, ensure you have:</p>
+    <ul>
+        <li>A Debian 12 (Bookworm) system with 64-bit architecture (<code>amd64</code>).</li>
+        <li>Internet access to download packages and the Windscribe installer.</li>
+        <li><code>sudo</code> privileges or access to the <code>root</code> user.</li>
+    </ul>
+    <p>You can verify your system architecture by running:</p>
+    <pre><code>uname -m</code></pre>
+    <p>Output should be <code>x86_64</code> for <code>amd64</code> compatibility.</p>
+
+    <h2>Installation Steps</h2>
+    <ol>
+        <li>
+            <p><strong>Set environment variables</strong> to ensure non-interactive installation and set the timezone to UTC:</p>
+            <pre><code>export DEBIAN_FRONTEND=noninteractive
+export TZ=UTC</code></pre>
+        </li>
+        <li>
+            <p><strong>Install required dependencies</strong> for Windscribe and clean up afterward:</p>
+            <pre><code>sudo apt update -y
+sudo apt dist-upgrade -y
+sudo apt install -y curl iptables libglib2.0-0 libdbus-1-3 sudo net-tools policykit-1 iproute2 iputils-ping iw ethtool
+sudo apt autoremove -y
+sudo apt clean -y
+sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*</code></pre>
+        </li>
+        <li>
+            <p><strong>Download the Windscribe CLI package</strong> (version 2.13.4):</p>
+            <pre><code>curl --location https://github.com/Windscribe/Desktop-App/releases/download/v2.13.4/windscribe-cli_2.13.4_guinea_pig_amd64.deb -o windscribe.deb</code></pre>
+        </li>
+        <li>
+            <p><strong>Install the Windscribe package</strong>, allowing downgrades if a newer version is already installed:</p>
+            <pre><code>sudo apt install ./windscribe.deb -y --allow-downgrades</code></pre>
+        </li>
+        <li>
+            <p><strong>Verify the installation</strong> by checking the installed version:</p>
+            <pre><code>dpkg -l | grep windscribe-cli</code></pre>
+            <p>This should show <code>windscribe-cli</code> with version <code>2.13.4</code>.</p>
+        </li>
+    </ol>
+    
+    <p>windscribe-cli_2.13.4_guinea_pig_amd64.deb https://t.me/dzenit_xyz/107</p>
+    <details>
+      <summary>Show/Hide Windscribe Servers</summary>
+      <ul>
+          <li>windscribe-cli connect Atlanta-Peachtree</li>
+          <li>windscribe-cli connect BBQ</li>
+          <li>windscribe-cli connect Vice</li>
+          <li>windscribe-cli connect Snow</li>
+          <li>windscribe-cli connect Grand-Central</li>
+          <li>windscribe-cli connect Empire</li>
+          <li>windscribe-cli connect Dogg</li>
+          <li>windscribe-cli connect Cobain</li>
+          <li>windscribe-cli connect Expo-67</li>
+          <li>windscribe-cli connect Comfort-Zone</li>
+          <li>windscribe-cli connect The-6</li>
+          <li>windscribe-cli connect Vansterdam</li>
+          <li>windscribe-cli connect Seine</li>
+          <li>windscribe-cli connect Jardin</li>
+          <li>windscribe-cli connect Castle</li>
+          <li>windscribe-cli connect Wurstchen</li>
+          <li>windscribe-cli connect Tulip</li>
+          <li>windscribe-cli connect Stroopwafel</li>
+          <li>windscribe-cli connect Fjord</li>
+          <li>windscribe-cli connect No-Vampires</li>
+          <li>windscribe-cli connect Alphorn</li>
+          <li>windscribe-cli connect Lindenhof</li>
+          <li>windscribe-cli connect Crumpets</li>
+          <li>windscribe-cli connect Custard</li>
+          <li>windscribe-cli connect Victoria</li>
+      </ul>
+  </details>
+    <h2>Notes</h2>
+    <ul>
+        <li>If you encounter errors during installation, ensure your system is up-to-date by running <code>sudo apt update && sudo apt install -f -y</code>.</li>
+        <li>If you prefer a newer version of Windscribe, visit <a href="https://github.com/Windscribe/Desktop-App/releases">Windscribe's GitHub releases page</a> to find the latest <code>.deb</code> file and update the <code>curl</code> command accordingly.</li>
+        <li>After installation, you can configure Windscribe by running <code>windscribe login</code> and following the prompts.</li>
+    </ul>
+  
+
+<br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
+</html>
