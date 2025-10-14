@@ -361,6 +361,16 @@ lockPref("app.update.timerFirstInterval", 0);
 
 <pre>lockPref("browser.cache.disk.capacity", 50024);</pre>
 
+
+<p>Параметр,Значение,Описание</p>
+<p>media.peerconnection.enabled,false,"Отключает WebRTC — предотвращает утечку реального IP при P2P-соединениях (основная причина ""смены"" в тестах)."</p>
+<p>media.peerconnection.ice.default_address_only,true,Ограничивает WebRTC только локальным IP (если включено).</p>
+<p>network.proxy.socks_remote_dns,true,DNS-запросы через прокси/VPN — IP не утекает.</p>
+<p>geo.enabled,false,Отключает геолокацию по IP — сайты не определяют локацию и не вызывают смену.</p>
+<p>privacy.resistFingerprinting,true,"Включает анти-fingerprinting: спуфит timezone, canvas и т.д. — стабилизирует ""вид"" вашего IP."</p>
+<p>network.dns.disablePrefetch,true,"Отключает предзагрузку DNS — меньше случайных запросов, меняющих IP."</p>
+<p>network.http.referer.XOriginPolicy,2,Блокирует рефереры с внешними доменами — меньше трекинга по IP.</p>
+
 <p>Все настройки проводились в firefox 77. Можете скачать портативную версию браузер</p>
 	<a href="https://drive.google.com/file/d/1rGWLbJ3t6eaLP_-DgTvCNg1IhqHYCiGp/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1rGWLbJ3t6eaLP_-DgTvCNg1IhqHYCiGp/view?usp=sharing</a>
 	<br><br><br><footer>lotositsh.github.io. All rights reserved. © 2025</footer></div> </body>
