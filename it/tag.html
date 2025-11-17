@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои любимые теги HTML</title>
+</head>
+<body>
+
+<p>Содержание:</p>
+<ul>
+    <li><a href="#code-copy">Код с копированием</a></li>
+    <li><a href="#italic">Курсив</a></li>
+    <li><a href="#gif">GIF в Base64</a></li>
+    <li><a href="#webp">WebP в Base64</a></li>
+    <li><a href="#image">Обычное изображение</a></li>
+    <li><a href="#link">Ссылка без реферера</a></li>
+    <li><a href="#spoiler">Сворачиваемый код</a></li>
+    <li><a href="#comment">Комментарий</a></li>
+</ul>
+
+<h2 id="code-copy">Код с копированием</h2>
+<pre class="code">&lt;pre class=&quot;code&quot;&gt;&lt;/pre&gt;&lt;button class=&quot;copy-button&quot; onclick=&quot;copyCode(1)&quot;&gt;Copy&lt;/button&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;/pre&gt;&lt;button class=&quot;copy-button&quot; onclick=&quot;copyCode(2)&quot;&gt;Copy&lt;/button&gt;</pre>
+
+<h2 id="italic">Курсив</h2>
+<pre class="code">&lt;em&gt;&lt;/em&gt;</pre>
+
+<h2 id="gif">GIF в Base64</h2>
+<pre class="code">&lt;br&gt;
+&lt;div class=&quot;text_image&quot;&gt;
+	&lt;center&gt;
+	&lt;img src=&quot;data:image/gif;base64, тут код base64&quot; alt=&quot;описание&quot;&gt;
+	&lt;/center&gt;
+&lt;/div&gt;
+&lt;br&gt;</pre>
+
+<h2 id="webp">WebP в Base64</h2>
+<pre class="code">&lt;br&gt;
+&lt;div class=&quot;text_image&quot;&gt;
+	&lt;center&gt;
+	&lt;img src=&quot;data:image/webp;base64, тут код base64&quot; alt=&quot;&quot;&gt;
+	&lt;/center&gt;
+&lt;/div&gt;
+&lt;br&gt;</pre>
+
+<h2 id="image">Обычное изображение</h2>
+<pre class="code">&lt;br&gt;
+&lt;div class=&quot;text_image&quot;&gt;
+&lt;center&gt;
+&lt;img src=&quot;URL&quot; alt=&quot;альтернативный текст&quot;&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;br&gt;</pre>
+
+<h2 id="link">Ссылка без реферера</h2>
+<pre class="code">&lt;a href=&quot;URL&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;</pre>
+
+<h2 id="spoiler">Сворачиваемый код</h2>
+<pre class="code">&lt;details&gt;&lt;summary&gt;&lt;b&gt;Посмотреть&lt;/b&gt;&lt;/summary&gt;&lt;pre&gt;тут сам код&lt;/pre&gt;&lt;/details&gt;</pre>
+
+<h2 id="comment">Комментарий</h2>
+<pre class="code">&lt;!-- комент --&gt;</pre>
+
+</body>
+</html>

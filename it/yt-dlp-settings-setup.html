@@ -214,7 +214,11 @@ yt-dlp "$varname"</pre>
 <pre>yt-dlp -x --audio-format mp3 --ignore-errors https://www.youtube.com/playlist?list=PLVQ7g3e6O27cH8KG9mktLWH8zcqiwTntP</pre>
 <p>Чтобы скачать видео с YouTube и конвертировать его в формат WAV с частотой 24000 Hz с помощью yt-dlp, вы можете использовать следующую команду в командной строке:</p>
 <pre>yt-dlp -x --audio-format wav --audio-quality 0 --postprocessor-args "-ar 24000" "https://www.youtube.com/wxxxxxxxx"</pre>
-
+<p>Получить все ссылки на ролики с канал</p>
+<pre>yt-dlp --flat-playlist --print "%(id)s" "https://www.youtube.com/@ИмяКанала" > ids.txt</pre>
+<pre>for /f %i in (ids.txt) do echo https://www.youtube.com/watch?v=%i >> urls.txt</pre>
+<p>Linux</p>
+<pre>yt-dlp --flat-playlist --print "%(id)s" "https://www.youtube.com/@ИмяКанала" > ids.txt</pre>
 <p>Любим и чтим
 РЕСУРС</p>
 https://github.com/yt-dlp/yt-dlp
