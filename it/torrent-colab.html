@@ -81,6 +81,23 @@
 <img alt="colabr torrent" src="img/colabr.png"/>
 </center>
 </div>
+<p>UPD</p>
+<pre>
+  from google.colab import drive
+  drive.mount("/content/drive")
+</pre>
+
+<pre>%cd /content/drive/MyDrive/</pre>
+
+<pre>!apt install -y aria2</pre>
+
+<pre>
+  !aria2c --seed-time=0 --bt-enable-lpd=true --max-connection-per-server=16 --max-concurrent-downloads=16 --bt-max-peers=200 --summary-interval=60 -d "/content/drive/MyDrive/" \
+  "magnet:link"
+</pre>
+
+<pre>!aria2c "file.torrent" --follow-torrent=mem --seed-time=0 --bt-max-peers=200 -d "/content/drive/MyDrive/"</pre>
+
 <br>
 <br>
 <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2025</footer></div> </body>
