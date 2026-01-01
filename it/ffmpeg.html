@@ -92,6 +92,7 @@
 <p>Качество без потерь "на глаз"</p>
 <pre>ffmpeg -i MyMovie.mkv -vf scale=-1:720 -c:v libx264 -crf 18 -preset veryslow -c:a copy MyMovie_720p.mkv</pre>
 <p>Неплохое сжатие в mkv</p>
+<pre>ffmpeg -i zvero2.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2" -c:v libx264 -preset medium -crf 23 -c:a aac -b:a 128k -movflags +faststart zvero2_hd.mp4</pre>
 <pre>ffmpeg -i in_video.mp4 -c:v vp9 -c:a libvorbis out_video.mkv</pre>
 <a href="https://t.me/dzenit_xyz/7" target="_blank">ffmpeg</a>
 <p>Битрейт mp3</p>
