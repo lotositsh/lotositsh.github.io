@@ -219,6 +219,8 @@ yt-dlp "$varname"</pre>
 <pre>for /f %i in (ids.txt) do echo https://www.youtube.com/watch?v=%i >> urls.txt</pre>
 <p>Linux</p>
 <pre>yt-dlp --flat-playlist --print "%(id)s" "https://www.youtube.com/@ИмяКанала" > ids.txt</pre>
+<p>Качаем ролики разбивая по таймкодам</p>
+<pre>yt-dlp --split-chapters -o "%%(chapter:title)s.%%(ext)s" https://youtu.be/JszA5AXmydM</pre>
 <p>Любим и чтим
 РЕСУРС</p>
 https://github.com/yt-dlp/yt-dlp
