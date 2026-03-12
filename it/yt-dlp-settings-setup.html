@@ -220,7 +220,7 @@ yt-dlp "$varname"</pre>
 <p>Linux</p>
 <pre>yt-dlp --flat-playlist --print "%(id)s" "https://www.youtube.com/@ИмяКанала" > ids.txt</pre>
 <p>Качаем ролики разбивая по таймкодам</p>
-<pre>yt-dlp --split-chapters -o "%%(chapter:title)s.%%(ext)s" https://youtu.be/JszA5AXmydM</pre>
+<pre>yt-dlp --split-chapters -o "%(chapter:title)s.%(ext)s" --restrict-filenames --no-part --no-mtime "https://youtu.be/JsmydM"</pre>
 <p>Любим и чтим
 РЕСУРС</p>
 https://github.com/yt-dlp/yt-dlp

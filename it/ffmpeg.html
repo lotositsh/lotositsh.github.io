@@ -290,7 +290,8 @@ ffmpeg -i 1-1.mp4 -ss 01:00:00 -t 00:15:00 -c copy 1-1(05).mp4</pre>
       print(f"Обработан файл: {filename}, скорректировано на {volume_adjustment} dB")
 </pre>
 
-
+<p>Обрезать FHD по центру получив формат тик ток</p>
+<pre>ffmpeg -i 50-002-Crisol_-_Theater_of_Idols-[JszA5AXmydM].webm -vf "crop=ih*9/16:ih" -c:a copy output_center.mp4</pre>
 <b><p>Добавляем ffmpeg в командную строку windows</p></b>
 <p>Мой компьютер - Свойства - Дополнительные параметры системы - Переменные среды</p>
 <p>Выбираем строку где Path - изменить, потом Создать, прописываем расположение папки ffmpeg.exe.</p>
