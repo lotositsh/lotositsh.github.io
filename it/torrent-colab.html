@@ -96,9 +96,30 @@
   "magnet:link"
 </pre>
 
-<pre>!aria2c "file.torrent" --follow-torrent=mem --seed-time=0 --bt-max-peers=200 -d "/content/drive/MyDrive/"</pre>
+<pre>!aria2c "file.torrent" --follow-torrent=mem --seed-time=0 --bt-max-peers=200 -d "/content/"</pre>
 
+<pre>!rsync -av /content/Mewgenics-InsaneRamZes /content/drive/MyDrive/
+#copy folder 2 gdrive
+</pre>
+
+<pre>
+!du -h /content/Mewgenics-InsaneRamZes
+#size
+</pre>
+<pre>
+#no compress
+!7z a -t7z -mx=0 -p'password' -v2g archive_name.7z /content/Foldername
+</pre>
+<pre>
+#compress
+!7z a -t7z -mx=5 -mhe=on -p'H5045zdK6pw"' -v2g archive1.7z /content/Foldername
+</pre>
+<pre>
+#copy2ddrive
+!cp *.7z* /content/drive/MyDrive/
+</pre>
 <br>
+
 <br>
 <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2025</footer></div> </body>
 </html>
