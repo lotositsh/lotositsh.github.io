@@ -114,7 +114,22 @@
 </center>
 </div>
 <br>
-<p>4. Закрываем свой стим, если он открыт. Запускаем SteamOffline.bat. Откроется консольное окно. Вводим пароль пользователя учетки Майкрософт (пароль отображаться не будет), нажимаем на Enter.</p>
-<p>5. Должен запуститься клиент Steam. Если не запускается — ошибка в пути к файлу и/или Службы — Вторичный вход в систему (она должна работать, тип запуска — Автоматический). Также у созданного пользователя 111 права должны быть Администратора.</p>
+<p>батник для запуска</p>
+<pre>
+@off
+:: Завершаем процесс steam.exe, если он запущен
+taskkill /f /im steam.exe 2>nul
+
+:: Небольшая пауза в 2 секунды, чтобы Steam успел выгрузиться из памяти
+timeout /t 2 /nobreak >nul
+
+:: Запуск Steam от имени пользователя max со сбережением пароля
+runas /user:max /savecred "F:\SteamOffline\Steam.exe"
+</pre>
+
+<p>:: 3. Создаем новые правила: блокируем исходящий и входящий трафик для конкретного файла</p>
+<pre>netsh advfirewall firewall add rule name="Steam_Offline_Block_Out" dir=out action=block program="F:\SteamOffline\steam.exe" enable=yes >nul</pre>
+<pre>netsh advfirewall firewall add rule name="Steam_Offline_Block_In" dir=in action=block program="F:\SteamOffline\steam.exe" enable=yes >nul</pre>
+
 <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2025</footer></div> </body>
 </html>
