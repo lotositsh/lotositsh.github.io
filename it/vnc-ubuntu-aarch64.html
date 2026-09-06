@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/text.css">
+<script src="../css/script.js"></script>
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png"> 
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Primary Meta Tags -->
+<title>VNC-сервер на Ubuntu ARM64 (aarch64): XFCE + TigerVNC + доступ по SSH-ключу</title>
+<meta name="title" content="VNC-сервер на Ubuntu ARM64 (aarch64): XFCE + TigerVNC + доступ по SSH-ключу" />
+<meta name="description" content="VNC-сервер на Ubuntu ARM64" />
+<meta name="keywords" content="vnc,ubuntu,linux,arm,aarch64,ssh"> 
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="DzenIT" />
+<meta property="og:title" content="VNC-сервер на Ubuntu ARM64 (aarch64): XFCE + TigerVNC + доступ по SSH-ключу" />
+<meta property="og:description" content="VNC-сервер на Ubuntu ARM64" />
+<meta property="og:image" content="img/vnc_ubuntu.webp" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="VNC-сервер на Ubuntu ARM64 (aarch64): XFCE + TigerVNC + доступ по SSH-ключу" />
+<meta property="twitter:description" content="VNC-сервер на Ubuntu ARM64" />
+<meta property="twitter:image" content="img/vnc_ubuntu.webp" />
+
+
+  </head>
+  
+  
+<body>
+ <div class="size1">
+  <div class="header">
+    <h2>DzenIT</h2>
+  </div>
+    <div class="topnav">
+    <a href="../index.html">HOME</a>
+    <a href="../zen.html">ZEN</a>
+    <a href="../it.html">IT</a>
+    <a href="../soft.html">SOFT</a>
+    <a href="../apk.html">APK</a>
+    <a href="../live.html">LIVE</a>
+    <a href="../game.html">GAME</a>
+    <a href="../other.html">OTHER</a>
+    <a href="../w.html">W</a>
+    <a href="#" id="searchLink">SEARCH</a>
+ <script>
+    document.getElementById('searchLink').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+      var searchBox = document.getElementById('searchBox');
+      if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+        searchBox.style.display = 'block';
+      } else {
+        searchBox.style.display = 'none';
+      }
+    });
+  </script>
+  
+  <div id="searchBox" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+<form accept-charset="utf-8" action="https://search.freefind.com/find.html" method="get" style="margin:0px; margin-top:4px;" target="_blank">
+<input name="si" type="hidden" value="41025751"/>
+<input name="pid" type="hidden" value="r"/>
+<input name="n" type="hidden" value="0"/>
+<input name="_charset_" type="hidden" value=""/>
+<input name="bcd" type="hidden" value="÷"/>
+<input name="query" size="15" type="text"/>
+<input type="submit" value="search"/>
+</form>
+</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</div>
+<a href="#top" class="scroll-to-top">Up</a>
+  <center><h1>VNC-сервер на Ubuntu ARM64 (aarch64): XFCE + TigerVNC + доступ по SSH-ключу</h1></center>
+  
+  <h4>VNC-сервер на Ubuntu ARM64 (aarch64): XFCE + TigerVNC + доступ по SSH-ключу</h4>
+
+  <p>Инструкция по установке лёгкого графического окружения XFCE и VNC-сервера на Ubuntu (aarch64), с безопасным доступом через SSH-туннель по приватному ключу — без открытия VNC-порта в интернет.</p>
+
+  <h4>Идея</h4>
+  <p>VNC-сервер слушает только localhost на сервере. Наружу открыт только SSH (порт 22), уже защищённый ключом. Клиент пробрасывает порт 5901 через SSH-туннель — VNC-трафик идёт внутри зашифрованного канала и снаружи вообще не виден.</p>
+
+  <h4>1. Обновление системы</h4>
+  <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+
+  <h4>2. Установка XFCE (лёгкий вариант)</h4>
+  <pre><code>sudo apt install xfce4 xfce4-terminal -y --no-install-recommends</code></pre>
+
+  <h4>3. Установка TigerVNC</h4>
+  <pre><code>sudo apt install tigervnc-standalone-server tigervnc-common -y</code></pre>
+
+  <h4>4. Пользователь</h4>
+  <p>Если рабочего пользователя ещё нет — создать его (не root):</p>
+  <pre><code>sudo adduser ubuntu
+sudo usermod -aG sudo ubuntu   # если нужны права администратора
+su - ubuntu</code></pre>
+  <p>Если пользователь уже существует и есть sudo-права (<code>sudo -l</code> показывает <code>(ALL : ALL) ALL</code>) — этот шаг пропускается, работаем от него напрямую.</p>
+
+  <h4>5. Пароль VNC-сессии</h4>
+  <pre><code>vncpasswd</code></pre>
+
+  <h4>6. Настройка автозапуска XFCE</h4>
+  <pre><code>mkdir -p ~/.vnc
+touch ~/.Xresources
+nano ~/.vnc/xstartup</code></pre>
+  <p>Содержимое xstartup:</p>
+  <pre><code>#!/bin/bash
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+xrdb $HOME/.Xresources 2>/dev/null
+exec startxfce4</code></pre>
+  <p><code>exec startxfce4</code> — важная деталь: без <code>exec</code> сессия может завершиться раньше, чем реально запустится ("cleanly exited too early").</p>
+  <pre><code>chmod +x ~/.vnc/xstartup</code></pre>
+  <p>Также стоит сразу поставить dbus-x11 — без него XFCE-сессия в VNC часто падает сразу после старта:</p>
+  <pre><code>sudo apt install dbus-x11 -y</code></pre>
+
+  <h4>7. Тестовый запуск (только localhost)</h4>
+  <pre><code>vncserver -localhost yes -geometry 1920x1080 -depth 24 :1</code></pre>
+  <p>Проверка, что порт слушает только локально:</p>
+  <pre><code>sudo ss -tlnp | grep 5901</code></pre>
+  <p>Ожидается <code>127.0.0.1:5901</code>, не <code>0.0.0.0:5901</code>.</p>
+  <p>Остановить тестовую сессию перед настройкой автозапуска:</p>
+  <pre><code>vncserver -kill :1</code></pre>
+
+  <h4>8. Автозапуск через systemd</h4>
+  <pre><code>sudo nano /etc/systemd/system/vncserver@.service</code></pre>
+  <pre><code>[Unit]
+Description=Start TigerVNC server at startup
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu
+
+ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1
+ExecStart=/usr/bin/vncserver -localhost yes -geometry 1920x1080 -depth 24 :%i
+ExecStop=/usr/bin/vncserver -kill :%i
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+  <p>Строку <code>PIDFile=...</code> в юнит добавлять не нужно — с ней systemd иногда не успевает найти PID-файл вовремя (<code>Can't open PID file... Operation not permitted</code>) из-за имени хоста с двоеточием в пути. Без неё <code>Type=forking</code> всё равно корректно отслеживает запуск.</p>
+  <p>Активация:</p>
+  <pre><code>sudo systemctl daemon-reload
+sudo systemctl enable vncserver@1.service
+sudo systemctl start vncserver@1.service
+sudo systemctl status vncserver@1.service</code></pre>
+  <p>Ожидаемый результат: <code>Active: active (running)</code>, <code>Loaded: ... enabled</code>.</p>
+  <div class="note">
+      <strong>Важно:</strong> после того как сервис управляется через systemd, не запускай <code>vncserver -kill</code> или <code>vncserver :1</code> вручную в терминале — это ломает связь между systemd и реальным процессом и приводит к статусу failed. Управление сессией — только через <code>systemctl start|stop|restart vncserver@1.service</code>.
+  </div>
+
+  <h4>9. Firewall</h4>
+  <p>VNC-порт (5901) наружу не открывается — доступ только через SSH-туннель.</p>
+  <pre><code>sudo ufw allow OpenSSH
+sudo ufw enable</code></pre>
+  <p>В облачном провайдере (Oracle Cloud Security List/NSG и т.п.) — тоже открыт должен быть только порт 22.</p>
+
+  <h4>10. Подключение с клиента</h4>
+  <p>Через терминал (Linux/macOS):</p>
+  <pre><code>ssh -i /path/to/private_key -L 5901:localhost:5901 -N ubuntu@ПУБЛИЧНЫЙ_IP</code></pre>
+  <p>Через Bitvise SSH Client (Windows): на вкладке C2S (Client-to-Server forwarding) добавить правило:</p>
+  <ul>
+      <li><strong>Listen Interface</strong> — 127.0.0.1</li>
+      <li><strong>Listen Port</strong> — 5901</li>
+      <li><strong>Destination Host</strong> — localhost</li>
+      <li><strong>Destination Port</strong> — 5901</li>
+  </ul>
+  <p>Затем в VNC-клиенте (TigerVNC Viewer, Remmina, RealVNC) подключиться к <code>localhost:5901</code> и ввести VNC-пароль.</p>
+  <p>Подключаться так можно из любой точки мира — публичный IP сервера уже используется для самого SSH-соединения, а VNC-трафик идёт внутри зашифрованного туннеля.</p>
+
+  <h4>Частые ошибки</h4>
+  <ul>
+      <li><strong>Authorization required, but no authorization protocol specified</strong> при запуске приложения (например, firefox) — значит команда была введена в обычной SSH-сессии, а не в терминале внутри VNC-сессии. Решение: открыть терминал через меню XFCE внутри VNC, либо явно указать <code>DISPLAY=:1</code> и <code>XAUTHORITY=~/.Xauthority</code>.</li>
+      <li><strong>xrdb: No such file or directory</strong> — нет файла ~/.Xresources, решается командой <code>touch ~/.Xresources</code>.</li>
+      <li><strong>Сессия падает сразу после старта</strong> — чаще всего не хватает dbus-x11, либо в xstartup использован <code>startxfce4 &</code> вместо <code>exec startxfce4</code>.</li>
+  </ul>
+
+  <h4>Итог</h4>
+  <p>Такая схема даёт полноценный удалённый рабочий стол XFCE на Ubuntu ARM64, при этом VNC-порт физически недоступен снаружи — единственная точка входа это SSH, защищённый приватным ключом.</p>
+
+  
+
+<br><br><br><footer>lotositsh.github.io. All rights reserved. © 2024</footer></div> </body>
+</html>
