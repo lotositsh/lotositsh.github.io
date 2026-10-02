@@ -66,6 +66,7 @@
 </table>
 </div>
 </div>
+
 <center><h1>Open all links online</h1></center>
 <p>Before opening links, give your browser permission to open pop-up windows on this site</p>
 <br>
@@ -125,9 +126,27 @@
     document.body.appendChild(a);
     a.click();
   }
+
+  // При вставке оставляем только ссылки (без нумерации и лишнего текста)
+  function handlePaste(e) {
+    var text = (e.clipboardData || window.clipboardData).getData("text");
+    var found = text.match(/https?:\/\/[^\s<>"']+/gi);
+    if (!found) return; // если ссылок нет — обычная вставка
+
+    e.preventDefault();
+    var cleaned = found.map(function(url) {
+      return url.replace(/[.,;:!?)\]}]+$/, "");
+    });
+
+    var ta = e.target;
+    var insert = cleaned.join("\n") + "\n";
+    ta.setRangeText(insert, ta.selectionStart, ta.selectionEnd, "end");
+    updateLinkCount();
+  }
   
   document.getElementById("open-links-btn").addEventListener("click", openLinksInNewTab);
   document.getElementById("links").addEventListener("input", updateLinkCount);
+  document.getElementById("links").addEventListener("paste", handlePaste);
   
   // Initialize count on page load
   updateLinkCount();
@@ -152,6 +171,8 @@
 			document.getElementById("result").innerHTML = "Total seconds: " + totalSeconds;
 		}
 	</script>
+
+
 <style>
 form {
   display: flex;
