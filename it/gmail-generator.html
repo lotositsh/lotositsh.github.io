@@ -63,12 +63,34 @@
 </div>
 </div>
 <center><h1>Free Gmail Dot Trick Generator</h1></center>
-<p>Max 3000 gmail in text area</p>
+
+
+
 <div class="container">
 <div class="row">
 <div class="col-md-8">
+
+<div class="form-row mb-3">
+  <div class="col">
+    <label for="maxCount">Max gmail</label>
+    <select class="form-control" id="maxCount">
+      <option value="100">100</option>
+      <option value="500">500</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+      <option value="3000" selected>3000</option>
+    </select>
+  </div>
+  <div class="col">
+    <label for="dotsCount">Dots</label>
+    <select class="form-control" id="dotsCount">
+      <option value="all">All (0 - max)</option>
+    </select>
+  </div>
+</div>
+
 <div class="input-group mb-3">
-<input aria-describedby="basic-addon2" aria-label="example@gmail.com" class="form-control" id="username" max="14" min="1" placeholder="example@gmail.com" type="text"/>
+<input aria-describedby="basic-addon2" aria-label="example@gmail.com" class="form-control" id="username" placeholder="example@gmail.com" type="text"/>
 <div class="input-group-append">
 <button class="btn btn-primary" id="generate" type="button"><i class="fas fa-cog"></i> Generate</button>
 </div>
@@ -85,6 +107,93 @@
 </div>
 </div>
 </div>
+
+<script>
+const usernameInput = document.getElementById("username");
+const maxCountSelect = document.getElementById("maxCount");
+const dotsSelect = document.getElementById("dotsCount");
+const emailsArea = document.getElementById("emails");
+const counterLabel = document.getElementById("counter");
+const maxText = document.getElementById("maxText");
+
+// "example@gmail.com" -> "example"
+function getUsername() {
+  return usernameInput.value.trim().split("@gmail.com")[0].replace(/[^a-zA-Z0-9]/g, "");
+}
+
+// Обновление списка точек: от 1 до (длина имени - 1)
+function updateDotsOptions() {
+  const maxDots = Math.max(getUsername().length - 1, 0);
+  const prev = dotsSelect.value;
+  dotsSelect.innerHTML = '<option value="all">All (0 - ' + maxDots + ')</option>';
+  for (let i = 1; i <= maxDots; i++) {
+    const opt = document.createElement("option");
+    opt.value = i;
+    opt.textContent = i;
+    dotsSelect.appendChild(opt);
+  }
+  if ([...dotsSelect.options].some(o => o.value === prev)) {
+    dotsSelect.value = prev;
+  }
+}
+
+// Генератор вариантов ровно с k точками
+function* rec(s, i, cur, k) {
+  if (i === s.length) {
+    if (k === 0) yield cur;
+    return;
+  }
+  const gaps = s.length - i;
+  if (k > gaps) return;
+  if (k > 0) yield* rec(s, i + 1, cur + "." + s[i], k - 1);
+  if (k < gaps) yield* rec(s, i + 1, cur + s[i], k);
+}
+
+function* generate(s, dots) {
+  if (dots === "all") {
+    for (let k = 0; k <= s.length - 1; k++) {
+      yield* rec(s, 1, s[0], k);
+    }
+  } else {
+    yield* rec(s, 1, s[0], parseInt(dots));
+  }
+}
+
+function updateEmails(username) {
+  const limit = parseInt(maxCountSelect.value);
+  const result = [];
+  for (const name of generate(username, dotsSelect.value)) {
+    if (result.length >= limit) break;
+    result.push(name + "@gmail.com");
+  }
+  emailsArea.value = result.join("\r\n");
+  counterLabel.innerText = "Generated: " + result.length;
+}
+
+usernameInput.addEventListener("input", updateDotsOptions);
+
+maxCountSelect.addEventListener("change", function () {
+  maxText.innerText = "Max " + maxCountSelect.value + " gmail in text area";
+});
+
+document.getElementById("generate").addEventListener("click", function () {
+  if (!/@gmail\.com$/.test(usernameInput.value.trim())) {
+    alert("Please enter a valid Email Address");
+    return;
+  }
+  const username = getUsername();
+  if (username.length > 1) {
+    updateEmails(username);
+  }
+});
+
+document.getElementById("copy").addEventListener("click", function () {
+  emailsArea.select();
+  document.execCommand("copy");
+});
+
+updateDotsOptions();
+</script>
 <script>
     document.getElementById("copy").addEventListener("click", function() {
         var textarea = document.getElementById("emails");
@@ -156,26 +265,6 @@ button:hover {
   background-color: #3e8e41;
 }
 </style>
-<script>
-	
-          let counterLabel=document.getElementById("counter"),count=0,username=document.getElementById("username").value;function*generate(e){if(e.length<=1)yield e;else{let t=e[0],n=e.slice(1);for(let e of generate(n))yield t+e,yield t+"."+e}}function updateEmails(e){document.getElementById("emails").value="",count=0;let t=new Date;for(let t of generate(e))document.getElementById("emails").value+=t+"@gmail.com\r\n",count+=1,counterLabel.innerText="Generated: "+count;document.getElementById("emails").value=document.getElementById("emails").value.slice(0,-1);new Date}document.getElementById("generate").onclick=function(){let e=document.getElementById("username").value,t=document.getElementById("username").value;/@gmail\.com$/.test(t)?username!==e&&(username=e.split("@gmail.com")[0].replace(/[^a-zA-Z0-9]/g,""),console.log(username),username.length>1&&setTimeout(updateEmails(username),150)):alert("Please enter a valid Email Address")},document.getElementById("save").onclick=function(){blob=new Blob([document.getElementById("emails").value],{type:"text/plain;charset=utf-8",endings:"transparent"}),FileSaver.saveAs(blob,document.getElementById("username").value+".txt")};
-function updateEmails(e) {
-  document.getElementById("emails").value = "";
-  count = 0;
-  let t = new Date;
-  for (let t of generate(e)) {
-    if (count >= 3000) {
-      break;
-    }
-    document.getElementById("emails").value += t + "@gmail.com\r\n";
-    count += 1;
-    counterLabel.innerText = "Generated: " + count;
-  }
-  document.getElementById("emails").value = document.getElementById("emails").value.slice(0, -1);
-  new Date;
-}
 
-
-	  </script>
 <br><br><br><footer>lotositsh.github.io. All rights reserved. © 2026</footer></div> </body>
 </html>
